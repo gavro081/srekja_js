@@ -1,31 +1,26 @@
-import { useState } from 'react'
-import '/stylesheets/general.css'
+import {useEffect, useState} from 'react'
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <h1>Home</h1>
+    },
+    {
+        path: '/placeholder',
+        element: <h1>Placeholder</h1>
+    },
+    // {
+//  path: '/{ime na komponenta}
+//  element: <Ime na komponentata />
+// }
+])
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <p>zdr</p>
-    </>
-  )
+    return (
+        <RouterProvider router={router} />
+    )
 }
 
 export default App
-
-
-// import Router from './Router'
-// import { BrowserRouter, Route } from 'react-router-dom'
-
-// function App() {
-
-//   return (
-//     <>
-//     <BrowserRouter>
-//       <Router />
-//     </BrowserRouter>
-//     </>
-//   )
-// }
-
-// export default App
