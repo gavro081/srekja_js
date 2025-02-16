@@ -1,0 +1,19 @@
+site sliki / svgs .. vo public
+site css file-ovi vo folder stylesheets
+koristenje na css variables
+naming convention 
+    - site components so prva bukva golema
+    - {ime na component}.css
+
+router ovozmozuva od edna strana da se ide na druga
+
+interesni stvari tuka:
+https://www.reactbits.dev/
+https://mui.com/
+
+https://tympanus.net/Development/OnScrollTextHighlight/
+^ github link ima gore
+
+https://easings.net/
+^ pomalce bitno
+
