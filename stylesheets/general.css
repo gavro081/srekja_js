@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet');
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@200..700&family=Pacifico&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 
 * {
@@ -7,8 +6,8 @@
     padding: 0;
     box-sizing: border-box;
     border-radius: 5px;
-    font-family: "Roboto", serif;
-    font-weight: 400;
+    font-family: "Oswald", sans-serif;
+    font-weight: 100;
     font-style: normal;
 }
 
@@ -23,3 +22,14 @@
 #primer{
     color: var(--logo-green);
 }
+
+h1,h2,h3,h4,h5,h6{
+    font-family: "Lobster", sans-serif;
+    font-weight: 600;
+}
+
+.hero-section-title{
+    font-family: "Lobster", sans-serif;
+    font-weight: bold;
+}
+
