@@ -1,4 +1,5 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import Login from "./Login";
 
 const router = createBrowserRouter([
     {
@@ -8,6 +9,10 @@ const router = createBrowserRouter([
     {
         path: '/placeholder',
         element: <h1>Placeholder</h1>
+    },
+    {
+        path: '/login',
+        element: <Login />
     },
     // {
 //  path: '/{ime na komponenta}
