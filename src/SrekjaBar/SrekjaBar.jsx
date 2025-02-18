@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import TableReservation from "./TableReservation.jsx";
 import Navbar from "../shumaComponents/Navbar.jsx";
-import Reviews from "./Reviews.jsx";
+import Reviews from "./Reviews/Reviews.jsx";
 
 export default function SrekjaBar() {
     return (
