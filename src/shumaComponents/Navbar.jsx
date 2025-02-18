@@ -19,12 +19,12 @@ export default function Navbar() {
                 <NavItem to="/shop">Среќни производи</NavItem>
                 <NavItem to="/about">За Нас</NavItem>
 
-                <NavItem to="/register" style={{backgroundColor:'#0B776F', padding:'10px',marginLeft:'40px'}}>
+                <Button to="/register">
                     <img src="/assets/images/shop2.svg" alt="Регистрирај се" style={{ width: '22px', height: '22px' }} />
-                </NavItem>
-                <NavItem to="/register" style={{backgroundColor:'#0B776F', padding:'10px'}}>
+                </Button>
+                <Button to="/register">
                     <img src="/assets/images/person2.svg" alt="Корпа" style={{ width: '24px', height: '24px' }} />
-                </NavItem>
+                </Button>
 
             </NavLinks>
         </Nav>
@@ -51,11 +51,23 @@ const NavItem = styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 35px;
+    height: 40px;
     &:hover {
         color: var(--logo-green);
     }
 `;
+
+const Button = styled(Link)`
+    background-color:#0B776F;
+    padding:10px;
+    border:2px solid white;
+    height: 40px;
+    
+    &:hover {
+        border:2px  solid var(--logo-green) ;
+        box-shadow: 2px 2px 10px grey ;
+    }
+`
 
 const Logo = styled.img`
     height: 100px;
