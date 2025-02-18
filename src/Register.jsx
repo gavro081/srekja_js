@@ -1,6 +1,6 @@
 import React from 'react'
 import Stepper, { Step } from './Stepper/Stepper'
-function Login() {
+function Register() {
     return (
         <>
             <Stepper
@@ -30,4 +30,4 @@ function Login() {
     )
 }
 
-export default Login
+export default Register
