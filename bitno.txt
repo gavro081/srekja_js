@@ -47,8 +47,7 @@ git checkout -b login-page
 koa nesto ke napravis i sakas da go updatenes proektot
 git checkout dev // menja branch vo dev za da iskocis od branchot kaj so si bil
 git pull origin dev // gi simnuvas site novi stvari so u meguvreme gi stavil nekoj
-git checkout <your-feature-name> // se vrakas na tvojot branch
-git merge dev // spojuvas so dev 
+git merge <your-feature-name> // spojuvas dev so tvojot branch
 
 ****
 If conflicts happen:
