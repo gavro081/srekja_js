@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import TableReservation from "./TableReservation.jsx";
-
+import Navbar from "../shumaComponents/Navbar.jsx";
 
 export default function SrekjaBar() {
     return (
         <Wrapper >
-            <Nav >
-                <h1>Ova ke bide navigacijata sto shuma ke ja napravi</h1>
-            </Nav>
+            <Navbar></Navbar>
             <TableReservation />
         </Wrapper>
     )

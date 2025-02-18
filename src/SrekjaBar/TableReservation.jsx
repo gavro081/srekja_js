@@ -126,7 +126,7 @@ export default function TableReservation() {
                                 onClick={() => setPlaceIsTerrace(true)}
                                 className={placeIsTerrace ? "activeButton" : ""}
                             >
-                                Тараса
+                                Тераса
                             </button>
                             <button
                                 onClick={() => setPlaceIsTerrace(false)}
