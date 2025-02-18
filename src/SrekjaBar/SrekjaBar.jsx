@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 
 const Nav = styled.div`
     width: 100%;
-    background: #eee;
+    background: #fff;
     text-align: center;
     padding: 2rem;  
 `

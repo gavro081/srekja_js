@@ -12,11 +12,79 @@ export default function TableReservation() {
     const [selectedTime, setSelectedTime] = React.useState(dayjs().minute(0));
     const [placeIsTerrace, setPlaceIsTerrace] = React.useState(false);
     const [hourlyDuration, setHourlyDuration] = React.useState(1);
+    const [inactiveTables, setInactiveTables] = React.useState(['t1', 't2', 't4', 't7', 't9', 't11', 't12']);
 
+    useEffect(() => {
+        console.log(inactiveTables)
+    }, []);
+
+    const renderTableChairs = () => (
+        <>
+            <div style={{top: '.4rem', left: '-1rem', transform: 'rotate(-45deg)'}}/>
+            <div style={{top: '.4rem', right: '-1rem', transform: 'rotate(45deg)'}}/>
+            <div style={{bottom: '.4rem', right: '-1rem', transform: 'rotate(-45deg)'}}/>
+            <div style={{bottom: '.4rem', left: '-1rem', transform: 'rotate(45deg)'}}/>
+        </>
+    )
 
     return (
         <Wrapper>
-            <TableMap />
+            <TablesMap>
+                <div>
+                    <Table id={'t1'} className={inactiveTables.includes('t1') ? 'inactive' : ''}>
+                        4-6
+                        {renderTableChairs()}
+                    </Table>
+                    <Table id={'t2'} className={inactiveTables.includes('t2') ? 'inactive' : ''}>
+                        4-6
+                        {renderTableChairs()}
+                    </Table>
+                    <Table id={'t3'} className={inactiveTables.includes('t3') ? 'inactive' : ''}>
+                        4-6
+                        {renderTableChairs()}
+                    </Table>
+                    <Table id={'t4'} className={inactiveTables.includes('t4') ? 'inactive' : ''}>
+                        4-6
+                        {renderTableChairs()}
+                    </Table>
+                </div>
+                <div>
+                    <Table id={'t5'} className={inactiveTables.includes('t5') ? 'inactive' : ''}>
+                        4-6
+                        {renderTableChairs()}
+                    </Table>
+                    <Table id={'t6'} className={inactiveTables.includes('t6') ? 'inactive' : ''}>
+                        2-4
+                        {renderTableChairs()}
+                    </Table>
+                    <Table id={'t7'} className={inactiveTables.includes('t7') ? 'inactive' : ''}>
+                        2-4
+                        {renderTableChairs()}
+                    </Table>
+                    <Table id={'t8'} className={inactiveTables.includes('t8') ? 'inactive' : ''}>
+                        2-4
+                        {renderTableChairs()}
+                    </Table>
+                </div>
+                <div>
+                    <Table id={'t9'} className={inactiveTables.includes('t9') ? 'inactive' : ''}>
+                        4-6
+                        {renderTableChairs()}
+                    </Table>
+                    <Table id={'t10'} className={inactiveTables.includes('t10') ? 'inactive' : ''}>
+                        2-4
+                        {renderTableChairs()}
+                    </Table>
+                    <Table id={'t11'} className={inactiveTables.includes('t11') ? 'inactive' : ''}>
+                        2-4
+                        {renderTableChairs()}
+                    </Table>
+                    <Table id={'t12'} className={inactiveTables.includes('t12') ? 'inactive' : ''}>
+                        4-6
+                        {renderTableChairs()}
+                    </Table>
+                </div>
+            </TablesMap>
 
             <ResDetails>
                 <h1>Направи Резервација!</h1>
@@ -102,11 +170,55 @@ export default function TableReservation() {
 
 const Wrapper = styled.div`
     display: flex;
+    flex: 1;
 `
 
-const TableMap = styled.div`
+const TablesMap = styled.div`
     width: 70%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4rem 4rem;
+    gap: 4rem;
+    background: #eee;
+    border-radius: 0;
+    
+    & > div {
+        display: flex;
+        justify-content: space-between;
+    }
 `
+
+const Table = styled.button`
+    position: relative;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--logo-green);
+    width: fit-content;
+    padding: 3rem;
+    color: white;
+    border-radius: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+    
+    &.inactive {
+        background: var(--logo-red);
+        cursor: auto;
+        opacity: .2;
+    }
+    
+    &>div {
+        position: absolute;
+        width: 3rem;
+        height: .4rem;
+        background: inherit;
+        opacity: .4;
+    }
+`
+
 const ResDetails = styled.div`
     display: flex;
     flex-direction: column;
