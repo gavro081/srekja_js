@@ -4,7 +4,8 @@ import {Link} from 'react-router-dom';
 export default function Navbar() {
     return (
         <Nav>
-            <Logo src="/public/slikiZaEshop/logoDark-1.jpg" alt="Logo"/>
+            <Link to="/"><Logo src="/public/slikiZaEshop/logoDark-1.jpg" alt="Logo"/></Link>
+
             <NavLinks>
                 <NavItem to="/">Почетна</NavItem>
                 <NavItemContainer>
@@ -20,10 +21,10 @@ export default function Navbar() {
                 <NavItem to="/about">За Нас</NavItem>
 
                 <Button to="/register">
-                    <img src="/assets/images/shop2.svg" alt="Регистрирај се" style={{ width: '22px', height: '22px' }} />
+                    <img src="/assets/images/shop2.svg" style={{ width: '18px', height: '18px' }} />
                 </Button>
                 <Button to="/register">
-                    <img src="/assets/images/person2.svg" alt="Корпа" style={{ width: '24px', height: '24px' }} />
+                    <img src="/assets/images/person2.svg" style={{ width: '20px', height: '22px', marginTop: '-2px'}} />
                 </Button>
 
             </NavLinks>

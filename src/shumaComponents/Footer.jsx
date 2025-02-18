@@ -5,7 +5,12 @@ export default function Footer() {
     return (
         <FooterContainer>
             <FooterSection>
-                <img src="/public/slikiZaEshop/darkLogo!.png" style={{height:'20px',width:'20px'}}/>
+                <Link to="/"><img src="/public/slikiZaEshop/logo.png" style={{height: '160px', width: '180px'}}/></Link>
+                <Paragraph>Стартап Клуб Скопје помагаат на
+                    бизниси да се кренат на нозе т.е за остварување на идеи за start up. Тие снимаат
+                    поткасти и учестуваат во организизација на разни настани.</Paragraph>
+
+                <Paragraph style={{margin:'20px 0', textAlign:'center'}}>contact@srekja.mk</Paragraph>
                 <SocialLinks>
                     <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
                         <img src="/assets/images/social/ig2.svg" alt="Instagram" />
@@ -18,20 +23,25 @@ export default function Footer() {
                     </a>
                 </SocialLinks>
             </FooterSection>
-            <FooterSection style={{marginLeft:'600px'}}>
-                <h3>ИСТРАЖИ</h3>
+            <FooterSection style={{marginLeft:'500px'}}>
+                <Heading3>ИСТРАЖИ</Heading3>
                 <QuickLinks>
-                    <FooterLink to="/">Home</FooterLink>
-                    <FooterLink to="/shop">Shop</FooterLink>
-                    <FooterLink to="/about">About Us</FooterLink>
-                    <FooterLink to="/contact">Contact</FooterLink>
+                    <FooterLink to="/">Почетна</FooterLink>
+                    <FooterLink to="/">Мени</FooterLink>
+                    <FooterLink to="/srekjaBar">Резервирај</FooterLink>
+                    <FooterLink to="/">Оцена</FooterLink>
+                    <FooterLink to="/">Среќни Производи</FooterLink>
+                    <FooterLink to="/">За Нас</FooterLink>
                 </QuickLinks>
             </FooterSection>
             <FooterSection>
-                <h3>КОНТАКТ</h3>
+                <Heading3>КОНТАКТ</Heading3>
                 <ContactInfo>
-                    <p>Address: 123 Main Street, City, Country</p>
-                    <p>Phone: +123 456 7890</p>
+                    <p>Адреса: 3та Македонска Бригада 60,
+                        <br/>Скопје 1000 <br/></p>
+                    <br/>
+                    <p>info@srekja.mk<br/></p><br/>
+                    <p>Инфо тел: 075 / 228-777<br/></p>
                 </ContactInfo>
             </FooterSection>
         </FooterContainer>
@@ -39,15 +49,20 @@ export default function Footer() {
 }
 
 
-
+const Heading3 = styled.h3`
+    font-size: 2rem;
+    margin:  40px 0;
+   
+`;
 const FooterContainer = styled.footer`
     display: flex;
     justify-content: space-around;
-    padding: 70px 20px;
+    padding: 30px 160px;
     border-radius:0 ;
-    background-color: #0B776F;
+    background-color: rgba(11, 119, 111, 0.95);
+    margin-top: 70px;
     color: white;
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
 `;
@@ -77,7 +92,8 @@ const QuickLinks = styled.div`
 const FooterLink = styled(Link)`
     color: white;
     text-decoration: none;
-
+    text-align: center;
+    margin: 3px;
     &:hover {
         text-decoration: underline;
     }
@@ -85,4 +101,10 @@ const FooterLink = styled(Link)`
 
 const ContactInfo = styled.div`
     text-align: center;
+`;
+
+const Paragraph = styled.p`
+    text-align: left;
+    width: 30ch ;
+    
 `;
