@@ -6,8 +6,8 @@
     padding: 0;
     box-sizing: border-box;
     border-radius: 5px;
-    font-family: "Oswald", sans-serif;
-    font-weight: 100;
+    /*font-family: "Oswald", sans-serif;*/
+    font-family: "Roboto", sans-serif;
     font-style: normal;
 }
 
@@ -19,6 +19,8 @@
     --logo-red: #D41E47;
 
     --hover-red: #ff0055;
+
+    --silver-text: #aaa;
 }
 
 #primer{

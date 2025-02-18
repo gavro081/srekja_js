@@ -1,4 +1,5 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import SrekjaBar from "./SrekjaBar/SrekjaBar.jsx";
 import Register from "./Register";
 
 const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register />
     },
+    {
+        path: '/srekjaBar',
+        element: <SrekjaBar />
+    }
     // {
 //  path: '/{ime na komponenta}
 //  element: <Ime na komponentata />
