@@ -12,7 +12,7 @@ export default function Navbar() {
                     <Dropdown>
                         <DropdownItem to="/srekjaBar/option1">Мени</DropdownItem>
                         <DropdownItem to="/srekjaBar">Резервирај</DropdownItem>
-                        <DropdownItem to="/srekjaBar/option3">Оцена</DropdownItem>
+                        <DropdownItem to="/reviews">Оцена</DropdownItem>
                     </Dropdown>
                 </NavItemContainer>
 
