@@ -1,22 +1,24 @@
 // ova e json file so site menu items, pls ako neso menjas pisi mi - Gavro
 const menu_items = [
     {
+      'id': 1,
       "name": "Custom Omelet",
       "macedonian_name": "ОМЛЕТ ПО ИЗБОР",
       "details": "Customizable omelet with three eggs and ham.",
-      "ingredients": ["3 eggs", "ham", "cheese", "yellow cheese"],
+      "ingredients": ["eggs", "ham", "cheese", "yellow cheese"],
       "tags": ["breakfast", "customizable"],
       "hasSideDish": false,
       "sideDishes": [],
       "spiceLevel": "none",
-      "customize-options": ["kulen", "bacon", "mushrooms", "mozzarella", "pepper"],
+      "customize-options": ["pepperoni", "bacon", "mushrooms", "mozzarella", "pepper"],
       "price": 170
     },
     {
+      'id': 2,
       "name": "Bagel with Eggs",
       "macedonian_name": "ЃЕВРЕК СО ЈАЈЦА",
       "details": "Bagel with eggs, cheese, and fresh vegetables.",
-      "ingredients": ["2 eggs", "bagel", "cheese", "tomato", "cucumber"],
+      "ingredients": ["eggs", "bagel", "cheese", "tomato", "cucumber"],
       "tags": ["breakfast"],
       "hasSideDish": false,
       "sideDishes": [],
@@ -25,9 +27,10 @@ const menu_items = [
       "price": 160
     },
     {
+      'id': 3,
       "name": "Club Sandwich",
       "macedonian_name": "КЛУБ СЕНДВИЧ",
-      "details": "Club sandwich with ham, kulen, cheese, and fries.",
+      "details": "Club sandwich with ham, pepperoni, cheese, and fries.",
       "ingredients": [
         "toast bread",
         "sour cream with dill",
@@ -38,7 +41,7 @@ const menu_items = [
         "tomato",
         "fries"
       ],
-      "tags": ["sandwich"],
+      "tags": ["sandwich", "breakfast"],
       "hasSideDish": false,
       "sideDishes": [],
       "spiceLevel": "mild",
@@ -46,6 +49,7 @@ const menu_items = [
       "price": 230
     },
     {
+      'id': 4,
       "name": "Classic Toast",
       "macedonian_name": "ТОСТ КЛАСИК",
       "details": "Classic toast with ham, cheese, and sour cream with dill.",
@@ -58,6 +62,7 @@ const menu_items = [
       "price": 200
     },
     {
+      'id': 5,
       "name": "Sreḱa Toast",
       "macedonian_name": "ТОСТ СРЕЌА",
       "details": "Special 'Sreḱa' toast with kulen, mozzarella, pesto, and arugula.",
@@ -70,6 +75,7 @@ const menu_items = [
       "price": 230
     },
     {
+      'id': 6,
       "name": "Vegetarian Sandwich",
       "macedonian_name": "ВЕГЕТАРИЈАНСКИ СЕНДВИЧ",
       "details": "Vegetarian sandwich with sesame bread, guacamole, and mixed vegetables.",
@@ -87,6 +93,7 @@ const menu_items = [
       "price": 200
     },
     {
+      'id': 7,
       "name": "Chicken Sandwich",
       "macedonian_name": "ПИЛЕШКИ СЕНДВИЧ",
       "details": "Chicken sandwich with mayonnaise, lettuce, tomato, and Edam cheese.",
@@ -99,10 +106,11 @@ const menu_items = [
       "price": 210
     },
     {
+      'id': 8,
       "name": "Chicken Fingers",
       "macedonian_name": "ПИЛЕШКИ ПРСТИ",
       "details": "Crispy chicken fillet with breadcrumbs and a dressing, served with ribbed fries.",
-      "ingredients": ["230g chicken fillet", "breadcrumbs", "dressing", "100g ribbed fries"],
+      "ingredients": ["chicken fillet", "breadcrumbs", "dressing", "ribbed fries"],
       "tags": [],
       "hasSideDish": true,
       "sideDishes": ["ribbed fries"],
@@ -111,6 +119,7 @@ const menu_items = [
       "price": 280
     },
     {
+      'id': 9,
       "name": "Chicken Wings",
       "macedonian_name": "ПИЛЕШКИ КРИЛЦА",
       "details": "Chicken wings with a flavorful sauce consisting of ketchup, cumin, chili, honey, mustard, and pepper.",
@@ -123,10 +132,11 @@ const menu_items = [
       "price": 0
     },
     {
+      'id': 10,
       "name": "Fries",
       "macedonian_name": "ПОМФРИТ",
       "details": "A mix of ribbed and bakery fries.",
-      "ingredients": ["150g ribbed fries", "150g bakery fries"],
+      "ingredients": ["ribbed fries", "bakery fries"],
       "tags": [],
       "hasSideDish": false,
       "sideDishes": [],
@@ -135,6 +145,7 @@ const menu_items = [
       "price": 260
     },
     {
+      'id': 11,
       "name": "Nachos",
       "macedonian_name": "НАЧОС",
       "details": "Nachos with Edam cheese, mozzarella, cheddar, guacamole sauce, and salsa sauce.",
@@ -147,10 +158,11 @@ const menu_items = [
       "price": 310
     },
     {
+      'id': 12,
       "name": "Caesar Salad",
       "macedonian_name": "ЦЕЗАР САЛАТА",
       "details": "Classic Caesar salad with lettuce, corn, croutons, chicken fillet, cherry tomatoes, Parmesan, and dressing.",
-      "ingredients": ["150g lettuce", "20g corn", "20g croutons", "100g chicken fillet", "20g cherry tomatoes", "20g Parmesan", "40ml dressing"],
+      "ingredients": ["lettuce", "corn", "croutons", "chicken fillet", "cherry tomatoes", "Parmesan", "dressing"],
       "tags": ["salad"],
       "hasSideDish": false,
       "sideDishes": [],
@@ -159,10 +171,11 @@ const menu_items = [
       "price": 270
     },
     {
+      'id': 13,
       "name": "Sreḱa Salad",
       "macedonian_name": "СРЕЌА САЛАТА",
       "details": "Sreḱa salad with iceberg, arugula, carrot, Indian walnuts, dried cranberries, bacon, gorgonzola, and a balsamic dressing.",
-      "ingredients": ["100g iceberg lettuce", "100g arugula", "50g carrot", "20g Indian walnuts", "20g dried cranberries", "50g bacon", "20g gorgonzola", "30g dressing", "40ml balsamic cream"],
+      "ingredients": ["iceberg lettuce", "arugula", "carrot", "Indian walnuts", "dried cranberries", "bacon", "gorgonzola", "dressing", "balsamic cream"],
       "tags": ["salad", "customizable"],
       "hasSideDish": false,
       "sideDishes": [],
@@ -171,10 +184,11 @@ const menu_items = [
       "price": 280
     },
     {
+      'id': 14,
       "name": "Chicken in Peanut Sauce",
       "macedonian_name": "ПИЛЕШКО ВО КИКИРИКИ СОС",
       "details": "Chicken fillet served with peanut butter sauce, peanuts, and bakery fries.",
-      "ingredients": ["220g chicken fillet", "10g peanut butter", "30g peanuts", "200ml cream", "100g bakery fries"],
+      "ingredients": ["chicken fillet", "peanut butter", "peanuts", "cream", "bakery fries"],
       "tags": [],
       "hasSideDish": true,
       "sideDishes": ["bakery fries"],
@@ -183,10 +197,11 @@ const menu_items = [
       "price": 310
     },
     {
+      'id': 15,
       "name": "Chicken in 4 Types of Cheese",
       "macedonian_name": "ПИЛЕШКО ВО 4 ВИДА СИРЕЊЕ",
       "details": "Chicken fillet served with mozzarella, gorgonzola, cheddar, and Edam cheese, with bakery fries.",
-      "ingredients": ["220g chicken fillet", "20g mozzarella", "20g gorgonzola", "20g cheddar", "20g Edam cheese", "200ml cream", "100g bakery fries"],
+      "ingredients": ["chicken fillet", "mozzarella", "gorgonzola", "cheddar", "Edam cheese", "cream", "bakery fries"],
       "tags": [],
       "hasSideDish": true,
       "sideDishes": ["bakery fries"],
@@ -195,10 +210,11 @@ const menu_items = [
       "price": 330
     },
     {
+      'id': 16,
       "name": "Sreḱa Burger",
       "macedonian_name": "СРЕЌА БУРГЕР",
       "details": "Sreḱa Burger with 100% beef patty, cheddar, caramelized onion, bacon, and a side of bakery fries.",
-      "ingredients": ["burger bun", "160g beef patty", "20g iceberg lettuce", "20g cheddar", "20g caramelized onion", "20g bacon", "10g burger sauce", "20g pickles", "100g bakery fries"],
+      "ingredients": ["burger bun", "beef patty", "iceberg lettuce", "cheddar", "caramelized onion", "bacon", "burger sauce", "pickles", "bakery fries"],
       "tags": ["burger", "customizable"],
       "hasSideDish": true,
       "sideDishes": ["bakery fries"],
@@ -207,10 +223,11 @@ const menu_items = [
       "price": 350
     },
     {
+      'id': 17,
       "name": "Vegan Garden Gourmet Burger",
       "macedonian_name": "ВЕГАНСКИ GARDEN GOURMET БУРГЕР",
       "details": "Vegan Garden Gourmet burger with mustard, lettuce, tomato, red onion, pickles, and fries.",
-      "ingredients": ["burger bun", "Vegan Garden Gourmet patty", "10g mustard", "20g lettuce", "20g tomato", "20g red onion", "20g pickles", "150g fries"],
+      "ingredients": ["burger bun", "Vegan Garden Gourmet patty", "mustard", "lettuce", "tomato", "red onion", "pickles", "fries"],
       "tags": ["burger", "vegan"],
       "hasSideDish": true,
       "sideDishes": ["fries"],
@@ -219,10 +236,11 @@ const menu_items = [
       "price": 280
     },
     {
+      'id': 18,
       "name": "Vegetarian Garden Gourmet Burger",
       "macedonian_name": "ВЕГЕТАРИЈАНСКИ GARDEN GOURMET БУРГЕР",
       "details": "Vegetarian Garden Gourmet burger with sour cream with dill, lettuce, cheddar, caramelized onion, tomato, and bakery fries.",
-      "ingredients": ["burger bun", "Vegetarian Garden Gourmet patty", "10g sour cream with dill", "20g lettuce", "20g cheddar", "20g caramelized onion", "10g tomato", "100g bakery fries"],
+      "ingredients": ["burger bun", "Vegetarian Garden Gourmet patty", "sour cream with dill", "lettuce", "cheddar", "caramelized onion", "tomato", "bakery fries"],
       "tags": ["burger", "vegetarian"],
       "hasSideDish": true,
       "sideDishes": ["bakery fries"],
@@ -231,10 +249,11 @@ const menu_items = [
       "price": 300
     },
     {
+      'id': 19,
       "name": "BBQ Burger",
       "macedonian_name": "BBQ БУРГЕР",
       "details": "BBQ Burger with 100% beef patty, cheddar, crispy onion, bacon, lettuce, tomato, and BBQ sauce.",
-      "ingredients": ["burger bun", "160g beef patty", "20g cheddar", "20g crispy onion", "20g bacon", "10g lettuce", "20g tomato", "20g BBQ sauce", "100g bakery fries"],
+      "ingredients": ["burger bun", "beef patty", "cheddar", "crispy onion", "bacon", "lettuce", "tomato", "BBQ sauce", "bakery fries"],
       "tags": ["burger"],
       "hasSideDish": true,
       "sideDishes": ["bakery fries"],
@@ -243,6 +262,7 @@ const menu_items = [
       "price": 350
     },
     {
+      'id': 20,
       "name": "Snickers Cake",
       "macedonian_name": "СНИКЕРС ТОРТА",
       "details": "A delicious Snickers cake made with whey protein, dates, honey, oats, peanuts, dark chocolate, peanut butter, beef gelatin, and coconut oil.",
@@ -255,10 +275,11 @@ const menu_items = [
       "price": 180
     },
     {
+      'id': 21,
       "name": "Pancake",
       "macedonian_name": "ПАЛАЧИНКА",
       "details": "A pancake topped with Nutella, customizable with additional toppings.",
-      "ingredients": ["pancake", "100g Nutella"],
+      "ingredients": ["pancake", "Nutella"],
       "tags": ["dessert", "customizable"],
       "hasSideDish": false,
       "sideDishes": [],
@@ -267,6 +288,7 @@ const menu_items = [
       "price": 140
     },
     {
+      'id': 22,
       "name": "Vegetarian Pizza",
       "macedonian_name": "ВЕГЕТАРИЈАНСКА ПИЦА",
       "details": "Vegetarian pizza with zucchini, red pepper, onion, cherry tomatoes, mushrooms, olives, oregano, and plant-based cheese.",
@@ -279,6 +301,7 @@ const menu_items = [
       "price": 310
     },
     {
+      'id': 23,
       "name": "Fresh Orange Juice",
       "macedonian_name": "Цеден Портокал",
       "details": "Freshly squeezed orange juice.",
@@ -291,6 +314,7 @@ const menu_items = [
       "price": 150
     },
     {
+      'id': 24,
       "name": "Fresh Lemon Juice",
       "macedonian_name": "Цеден Лимон",
       "details": "Freshly squeezed lemon juice.",
@@ -303,6 +327,7 @@ const menu_items = [
       "price": 150
     },
     {
+      'id': 25,
       "name": "Cosmopolitan",
       "macedonian_name": "COSMOPOLITAN",
       "details": "A classic cocktail made with vodka, fresh orange juice, lime, and cranberry.",
@@ -315,6 +340,7 @@ const menu_items = [
       "price": 250
     },
     {
+      'id': 26,
       "name": "Pina Colada",
       "macedonian_name": "PINA COLADA",
       "details": "A tropical cocktail with rum, coconut cream, and pineapple juice.",
@@ -327,6 +353,7 @@ const menu_items = [
       "price": 260
     },
     {
+      'id': 27,
       "name": "Vodka Sour",
       "macedonian_name": "ВОДКА САУР",
       "details": "A sour vodka-based drink.",
@@ -339,6 +366,7 @@ const menu_items = [
       "price": 250
     },
     {
+      'id': 28,
       "name": "Whiskey Sour",
       "macedonian_name": "WHISKEY SOUR",
       "details": "A whiskey-based sour cocktail.",
@@ -351,6 +379,7 @@ const menu_items = [
       "price": 300
     },
     {
+      'id': 29,
       "name": "Tequila Shot",
       "macedonian_name": "TEQUILA SHOT",
       "details": "A classic shot of tequila.",
@@ -363,6 +392,7 @@ const menu_items = [
       "price": 100
     },
     {
+      'id': 30,
       "name": "Brain Shot",
       "macedonian_name": "BRAIN SHOT",
       "details": "A layered shot with martini, Baileys, and Monin grenadine.",
@@ -375,6 +405,7 @@ const menu_items = [
       "price": 100
     },
     {
+      'id': 31,
       "name": "Protein Shake",
       "macedonian_name": "ПРОТЕИНСКИ ШЕЈК",
       "details": "Protein shake made with whey protein and milk.",

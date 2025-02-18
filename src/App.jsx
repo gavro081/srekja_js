@@ -1,6 +1,7 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import SrekjaBar from "./SrekjaBar/SrekjaBar.jsx";
 import Register from "./Register";
+import GPTtester from "./AI/GPTtester";
 
 const router = createBrowserRouter([
     {
@@ -16,8 +17,13 @@ const router = createBrowserRouter([
         element: <Register />
     },
     {
+
         path: '/srekjaBar',
         element: <SrekjaBar />
+    },{
+
+         path: '/testAI',
+        element: <GPTtester />
     }
     // {
 //  path: '/{ime na komponenta}
