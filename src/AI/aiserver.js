@@ -40,7 +40,8 @@ const systemContent = [
         4. If the user mentions any ingredients you may pass the ingredients as well.
         5. You are allowed to pick any tag that you think is relevant to the user query.
         6. Associate excitement, happiness or will for celebration with alchohol and desserts.
-
+        7. Associate sadness, depression or will for comfort with comfort food.
+        8. Associate health, diet, fitness with vegeterian food, protein, salads etc.
         The tags are: ${tags.join(', ')}
     `
     }
@@ -115,7 +116,7 @@ const getMenuItems = (preferences) => {
 
 app.post('/api/chat', async (req, res) => {
     // za testiranje na spinner
-    // await new Promise(resolve => setTimeout(resolve, 5000));
+    // await new Promise(resolve => setTimeout(resolve, 1000));
     // return res.json([]);
     const userContent = req.body.message;
     console.log(userContent);
