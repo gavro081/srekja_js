@@ -114,6 +114,9 @@ const getMenuItems = (preferences) => {
 
 
 app.post('/api/chat', async (req, res) => {
+    // za testiranje na spinner
+    // await new Promise(resolve => setTimeout(resolve, 5000));
+    // return res.json([]);
     const userContent = req.body.message;
     console.log(userContent);
     const query = [

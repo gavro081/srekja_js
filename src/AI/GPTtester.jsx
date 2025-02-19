@@ -1,13 +1,27 @@
 import { useState, useEffect } from "react";
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import Spinner from "../Spinner";
 
 const GPTtester = () => {
   const [input, setInput] = useState("");
   const [response, setResponse] = useState("");
   const [hasResponse, setHasResponse] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
 
   const fetchQuery = async () => {
     console.log(input)
+    setisLoading(true);
+    setHasResponse(false);
+    SearchInput = styled.input`
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    animation: ${gradientAnimation} 2s ease-out infinite;
+  `;
     // const messages = [
     //   { role: "system", content: "Whatever the user says respond with Quack." },
     //   { role: "user", content: input },
@@ -19,15 +33,18 @@ const GPTtester = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        // body: JSON.stringify({ messages }),
         body: JSON.stringify({ message: input }),
       });
       const data = await res.json();
       console.log(data);
       setResponse(data); 
       setHasResponse(true);
+      setisLoading(false);
+      resetCSS();
     } catch (error) {
       console.error("Error fetching OpenAI response:", error);
+      setisLoading(false);
+      resetCSS();
     }
   }
   return (
@@ -36,10 +53,14 @@ const GPTtester = () => {
         <SearchInput 
           value={input} 
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Search..." 
+          placeholder="Дај ми нешто вегетеријанско..." 
+          isloading={isLoading}
         />
-        <SearchButton onClick={fetchQuery}>/</SearchButton>
+        <SearchButton onClick={fetchQuery}>
+          <img src="../../public/slikiZaEshop/logo.png" alt="Search" width={50} />
+        </SearchButton>
       </SearchContainer>
+      {isLoading ? <Spinner /> : null}
       {!hasResponse ? null : (
         response.length === 0 ? (
           <h2 style={{ fontFamily: "Arial, sans-serif" }}>Немам производи за вас. Обидете се повторно.</h2>
@@ -61,34 +82,64 @@ const GPTtester = () => {
   );
 };
 
-
+const gradientAnimation = keyframes`
+  0% {
+    border-color: #ccc;
+    box-shadow: none;
+  }
+  20% {
+    border-color: rgba(212, 30, 71, 0.3);
+    box-shadow: inset 0 0 4px rgba(212, 30, 71, 0.2);
+  }
+  40% {
+    border-color: rgba(212, 30, 71, 0.6);
+    box-shadow: inset 0 0 6px rgba(212, 30, 71, 0.3);
+  }
+  60% {
+    border-color: rgba(255, 126, 95, 0.6);
+    box-shadow: inset 0 0 6px rgba(255, 126, 95, 0.3);
+  }
+  80% {
+    border-color: rgba(212, 30, 71, 0.4);
+    box-shadow: inset 0 0 4px rgba(212, 30, 71, 0.2);
+  }
+  100% {
+    border-color: #ccc;
+    box-shadow: none;
+  }
+`;
 
 const SearchContainer = styled.div`
     display: flex;
     margin: 20px;
-    // width: 130px;
+    width: 275px;
   `;
 
-  const SearchInput = styled.input`
+  const resetCSS = () => {
+  SearchInput = styled.input`
     flex: 1;
     padding: 10px;
-    font-size: 16px;
+    font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px 0 0 4px;
     outline: none;
+    transition: border-color 0.3s ease, background 0.3s ease;
   `;
+  }
+  let SearchInput = ''
+  resetCSS();
 
   const SearchButton = styled.button`
-    padding: 10px;
+    // padding: 10px 20px;
     border: 1px solid #ccc;
     border-left: none;
-    background-color: #007BFF;
+    background-color: var(--logo-red);
     color: white;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
 
     &:hover {
-      background-color: #0056b3;
+      background-color: var(--hover-red);
     }
   `;
 
