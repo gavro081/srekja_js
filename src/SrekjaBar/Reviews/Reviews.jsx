@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Navbar from "../../shumaComponents/Navbar.jsx";
 import Stepper from '@mui/joy/Stepper';
 import Step from '@mui/joy/Step';
@@ -9,21 +9,28 @@ import FoodReview from "./ReviewSubMenus/FoodReview.jsx";
 import GradientText from "./GradientText.jsx";
 import styled from "styled-components";
 import ServiceReview from "./ReviewSubMenus/ServiceReview.jsx";
-
+import Overrall from "./ReviewSubMenus/Overrall.jsx";
+import Confetti from 'react-confetti';
 const steps = ['Храна', 'Услуга', 'Севкупно'];
 
 const Reviews = () => {
     const [activeStep, setActiveStep] = React.useState(0);
+    const [showConfetti, setShowConfetti] = useState(false);
+
 
 
     const handleNext = () => {
-        if (activeStep < steps.length - 1) {
-            setActiveStep(prevStep => prevStep + 1);
+        if (activeStep === steps.length - 1) {
+            setShowConfetti(true);
+            setTimeout(() => setShowConfetti(false), 4000);
+        } else {
+            setActiveStep(prev => prev + 1);
         }
     };
     return (
         <div>
             <Navbar></Navbar>
+            {showConfetti && <Confetti numberOfPieces={300} recycle={false} />}
             <Stepper sx={{ width: '100%' }}>
                 {steps.map((step, index) => (
                     <Step
@@ -48,8 +55,12 @@ const Reviews = () => {
                     >
 
                         <StepButton onClick={() => setActiveStep(index)}>
-                            {activeStep === index ? <GradientText colors={["var(--logo-orange)", "var(--logo-yellow)", "var(--logo-red), var(--logo-green)"]}
-                                                                  animationSpeed={3}>{step}</GradientText> : step}
+                            {activeStep === index ? (
+                                <GradientText colors={["var(--logo-orange)", "var(--logo-yellow)", "var(--logo-red), var(--logo-green)"]}
+                                              animationSpeed={3}>
+                                    {step}
+                                </GradientText>
+                            ) : step}
                         </StepButton>
 
                     </Step>
@@ -57,8 +68,8 @@ const Reviews = () => {
             </Stepper>
             {activeStep === 0 && <FoodReview />}
             {activeStep === 1 && <ServiceReview/>}
-            {activeStep === 2 && <div>Sevkupno...</div>}
-            <NextButton onClick={handleNext} disabled={activeStep === steps.length - 1}>
+            {activeStep === 2 && <Overrall/>}
+            <NextButton onClick={handleNext}>
                 {activeStep === steps.length - 1 ? "Испрати!" : "Понатаму"}
             </NextButton>
         </div>
