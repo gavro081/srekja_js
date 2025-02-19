@@ -1,0 +1,28 @@
+[
+  {
+    "type": "maici",
+    "name": "Маица лого",
+    "img": "../src/E-Shop/sliki/whiteFrontLogo.png"
+  },
+  {
+    "type": "maici",
+    "name": "Маица-темна лого",
+    "img": "../src/E-Shop/sliki/darkLogo.png"
+  },
+  {
+    "type": "dukseri",
+    "name": "Дуксер лого",
+    "img": "../src/E-Shop/sliki/sweatshirtText1.png"
+  },
+  {
+    "type": "maici",
+    "name": "Маица порака",
+    "img": "../src/E-Shop/sliki/white-frontTekst.png",
+    "backImg": "../src/E-Shop/sliki/white-backTekst.png"
+  },
+  {
+    "type": "casi",
+    "name": "Чаша порака",
+    "img": "../src/E-Shop/sliki/mugText2.png"
+  }
+]

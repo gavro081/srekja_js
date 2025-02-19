@@ -1,22 +1,24 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import { useLocation } from 'react-router-dom';
 import mugText2 from './sliki/mugText2.png';
+import { Link, useNavigate } from 'react-router-dom';
 import whiteFrontLogo from './sliki/whiteFrontLogo.png';
 import sweatshirtText1 from './sliki/sweatshirtText1.png';
 import { useEffect, useState, useRef } from 'react';
 import Navbar from '../shumaComponents/Navbar.jsx';
+import Footer from '../shumaComponents/Footer.jsx';
 
 function MainEshopPage() {
   let [displayedText, setDisplayedText] = useState('');
   const fullText = 'Среќа е...да одиш на шопинг!';
   const indexRef = useRef(0); // Store index persistently
-
+  const navigate = useNavigate();
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
       if (index < fullText.length) {
         setDisplayedText((displayedText += fullText[index]));
-        console.log(fullText[index]);
-        console.log(index);
+
         index++;
         if (
           index >= 2 &&
@@ -44,6 +46,10 @@ function MainEshopPage() {
     return () => clearInterval(interval);
   }, []);
 
+  const handleLinkClick = (text) => {
+    console.log(text);
+    navigate('/filtered', { state: { text } });
+  };
   return (
     <>
       <GlobalStyle />
@@ -57,19 +63,33 @@ function MainEshopPage() {
           <ProductCard className="mainTshirtContainer">
             <h3>Маици</h3>
             <img src={whiteFrontLogo} className="maica" />
-            <p>Види ги сите</p>
+            <StyledLink as="div" onClick={() => handleLinkClick('maici')}>
+              {' '}
+              <p>Види ги сите</p>
+            </StyledLink>
           </ProductCard>
           <ProductCard className="mainHoodieContainer">
             <h3>Дуксери</h3> <img src={sweatshirtText1} alt="" />
-            <p>Види ги сите</p>
+            <StyledLink as="div" onClick={() => handleLinkClick('dukseri')}>
+              {' '}
+              <p>Види ги сите</p>
+            </StyledLink>
           </ProductCard>
           <ProductCard className="mainMugContainer">
             <h3>Чаши</h3>
             <img src={mugText2} alt="mug" className="mug" />
-            <p>Види ги сите</p>
+            <StyledLink
+              as="div"
+              className="mugText"
+              onClick={() => handleLinkClick('casi')}
+            >
+              {' '}
+              <p className="mugText">Види ги сите</p>
+            </StyledLink>
           </ProductCard>
         </Wrapper>
       </MainWrapper>
+      <Footer />
     </>
   );
 }
@@ -86,6 +106,7 @@ const Naslovce = styled.div`
   text-align: center;
   margin-top: 5%;
   margin-bottom: 0%;
+  font-size: 21px;
 `;
 
 const MainWrapper = styled.div`
@@ -103,7 +124,19 @@ const Wrapper = styled.div`
   margin-top: 7%;
   justify-content: space-around;
 `;
+const StyledLink = styled(Link)`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 8%;
+  text-decoration: underline;
+  color: grey;
+  cursor: pointer;
 
+  &.mugText {
+    left: 53%;
+  }
+`;
 const ProductCard = styled.div`
   display: flex;
   flex-direction: column;
@@ -117,7 +150,7 @@ const ProductCard = styled.div`
   position: relative;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth zoom */
-
+  ]
   & > h3 {
     position: absolute;
     left: 50%;
@@ -132,29 +165,21 @@ const ProductCard = styled.div`
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 1); /* Enhance shadow on hover */
   }
   & > p {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 8%;
-    text-decoration: underline;
-    color: grey;
-    cursor: pointer;
   }
   &.mainMugContainer > p {
-    left: 52%;
   }
 
   & > img {
     width: 80%;
     height: 60%;
-    margin-top: 25%;
+    margin-top: 15%;
   }
   & > img.mug {
     width: 100%;
   }
   & > img.maica {
-    margin-top: 5%;
-    height: 80%;
+    margin-top: 15%;
+    height: 60%;
   }
 `;
 
