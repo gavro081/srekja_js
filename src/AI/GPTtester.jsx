@@ -252,31 +252,3 @@ const SearchButton = styled.button`
   `;
 
 export default GPTtester;
-
-
-
-// za sekoj slucaj neka stoi tuka
-// useEffect(() => {
-//   const fetchChatCompletion = async () => {
-//     const messages = [
-//       { role: "system", content: "Whatever the user says respond with Quack." },
-//       { role: "user", content: "Hello, how are you? Can you help me with something?" },
-//     ];
-
-//     try {
-//       const res = await fetch('/api/chat', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({ messages }),
-//       });
-//       const data = await res.json();
-//       setResponse(data.choices[0].message.content);
-//     } catch (error) {
-//       console.error("Error fetching OpenAI response:", error);
-//     }
-//   };
-
-//   fetchChatCompletion();
-// }, []);
