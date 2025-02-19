@@ -18,6 +18,8 @@
     "@mui/x-date-pickers": "^7.27.0",
     "dayjs": "^1.11.13",
     "framer-motion": "^11.18.2",
+    "ogl": "^1.0.11",
+    "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.5",
