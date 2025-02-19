@@ -10,7 +10,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "none",
       "customize-options": ["kulen", "bacon", "mushrooms", "mozzarella", "pepper"],
-      "price": 170
+      "price": 170,
+      "image": "./picturesFoods/CustomOmelet.jpg"
     },
     {
       "name": "Bagel with Eggs",
@@ -22,7 +23,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "none",
       "customize-options": [],
-      "price": 160
+      "price": 160,
+      "image": "./picturesFoods/Bagel with Eggs.jpg"
     },
     {
       "name": "Club Sandwich",
@@ -36,8 +38,10 @@ const menu_items = [
         "kulen",
         "lettuce",
         "tomato",
-        "fries"
+        "fries",
+
       ],
+      "image": "./picturesFoods/Club Sandwich.jpg",
       "tags": ["sandwich"],
       "hasSideDish": false,
       "sideDishes": [],
@@ -55,7 +59,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "none",
       "customize-options": [],
-      "price": 200
+      "price": 200,
+      "image": "./picturesFoods/Classic Toast.jpg"
     },
     {
       "name": "Sreḱa Toast",
