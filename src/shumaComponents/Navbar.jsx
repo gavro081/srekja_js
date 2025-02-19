@@ -12,7 +12,7 @@ export default function Navbar() {
                     <NavItem style={{display:'flex', justifyContent:'center', alignItems:'center' ,gap:'2px'}}>Среќа Бар <img src="/assets/images/drop.png" style={{ width: '18px', height: '16px',marginTop:'2px' }}/></NavItem>
                     <Dropdown>
                         <DropdownItem to="https://menu.ebar.mk/language#/place/1623083480963963100/menu" target="_blank" >Мени</DropdownItem>
-                        <DropdownItem to="/srekjaBar">Резервирај</DropdownItem>
+                        <DropdownItem to="/srekjaBar/rezerviraj">Резервирај</DropdownItem>
                         <DropdownItem to="/srekjaBar/option3">Оцена</DropdownItem>
                     </Dropdown>
                 </NavItemContainer>
@@ -39,8 +39,9 @@ const Nav = styled.nav`
     align-items: center;
     padding: 0 30px;
     background-color: white;
-    margin-bottom: 40px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    //margin-bottom: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
 `;
 
 

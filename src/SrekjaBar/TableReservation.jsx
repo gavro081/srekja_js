@@ -6,6 +6,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import {ssrExportAllKey} from "vite/module-runner";
 import {TimePicker} from "@mui/x-date-pickers";
+import Navbar from "../shumaComponents/Navbar.jsx";
+import Footer from "../shumaComponents/Footer.jsx";
 
 export default function TableReservation() {
     const [selectedDate, setSelectedDate] = React.useState(dayjs());
@@ -29,71 +31,74 @@ export default function TableReservation() {
 
     return (
         <Wrapper>
-            <TablesMap>
-                <div>
-                    <Table id={'t1'} className={inactiveTables.includes('t1') ? 'inactive' : ''}>
-                        4-6
-                        {renderTableChairs()}
-                    </Table>
-                    <Table id={'t2'} className={inactiveTables.includes('t2') ? 'inactive' : ''}>
-                        4-6
-                        {renderTableChairs()}
-                    </Table>
-                    <Table id={'t3'} className={inactiveTables.includes('t3') ? 'inactive' : ''}>
-                        4-6
-                        {renderTableChairs()}
-                    </Table>
-                    <Table id={'t4'} className={inactiveTables.includes('t4') ? 'inactive' : ''}>
-                        4-6
-                        {renderTableChairs()}
-                    </Table>
-                </div>
-                <div>
-                    <Table id={'t5'} className={inactiveTables.includes('t5') ? 'inactive' : ''}>
-                        4-6
-                        {renderTableChairs()}
-                    </Table>
-                    <Table id={'t6'} className={inactiveTables.includes('t6') ? 'inactive' : ''}>
-                        2-4
-                        {renderTableChairs()}
-                    </Table>
-                    <Table id={'t7'} className={inactiveTables.includes('t7') ? 'inactive' : ''}>
-                        2-4
-                        {renderTableChairs()}
-                    </Table>
-                    <Table id={'t8'} className={inactiveTables.includes('t8') ? 'inactive' : ''}>
-                        2-4
-                        {renderTableChairs()}
-                    </Table>
-                </div>
-                <div>
-                    <Table id={'t9'} className={inactiveTables.includes('t9') ? 'inactive' : ''}>
-                        4-6
-                        {renderTableChairs()}
-                    </Table>
-                    <Table id={'t10'} className={inactiveTables.includes('t10') ? 'inactive' : ''}>
-                        2-4
-                        {renderTableChairs()}
-                    </Table>
-                    <Table id={'t11'} className={inactiveTables.includes('t11') ? 'inactive' : ''}>
-                        2-4
-                        {renderTableChairs()}
-                    </Table>
-                    <Table id={'t12'} className={inactiveTables.includes('t12') ? 'inactive' : ''}>
-                        4-6
-                        {renderTableChairs()}
-                    </Table>
-                </div>
-            </TablesMap>
+            <Navbar />
 
-            <ResDetails>
-                <h1>Направи Резервација!</h1>
-                <div>
-                    <ResDetailWrapper>
-                        <p>Резервацијата е направена од:</p>
-                        <p>Борјан Ѓорѓиевски</p>
-                    </ResDetailWrapper>
-                    <span style={{ display: "flex", gap: "1rem" }} >
+            <div >
+                <TablesMap>
+                    <div>
+                        <Table id={'t1'} className={inactiveTables.includes('t1') ? 'inactive' : ''}>
+                            4-6
+                            {renderTableChairs()}
+                        </Table>
+                        <Table id={'t2'} className={inactiveTables.includes('t2') ? 'inactive' : ''}>
+                            4-6
+                            {renderTableChairs()}
+                        </Table>
+                        <Table id={'t3'} className={inactiveTables.includes('t3') ? 'inactive' : ''}>
+                            4-6
+                            {renderTableChairs()}
+                        </Table>
+                        <Table id={'t4'} className={inactiveTables.includes('t4') ? 'inactive' : ''}>
+                            4-6
+                            {renderTableChairs()}
+                        </Table>
+                    </div>
+                    <div>
+                        <Table id={'t5'} className={inactiveTables.includes('t5') ? 'inactive' : ''}>
+                            4-6
+                            {renderTableChairs()}
+                        </Table>
+                        <Table id={'t6'} className={inactiveTables.includes('t6') ? 'inactive' : ''}>
+                            2-4
+                            {renderTableChairs()}
+                        </Table>
+                        <Table id={'t7'} className={inactiveTables.includes('t7') ? 'inactive' : ''}>
+                            2-4
+                            {renderTableChairs()}
+                        </Table>
+                        <Table id={'t8'} className={inactiveTables.includes('t8') ? 'inactive' : ''}>
+                            2-4
+                            {renderTableChairs()}
+                        </Table>
+                    </div>
+                    <div>
+                        <Table id={'t9'} className={inactiveTables.includes('t9') ? 'inactive' : ''}>
+                            4-6
+                            {renderTableChairs()}
+                        </Table>
+                        <Table id={'t10'} className={inactiveTables.includes('t10') ? 'inactive' : ''}>
+                            2-4
+                            {renderTableChairs()}
+                        </Table>
+                        <Table id={'t11'} className={inactiveTables.includes('t11') ? 'inactive' : ''}>
+                            2-4
+                            {renderTableChairs()}
+                        </Table>
+                        <Table id={'t12'} className={inactiveTables.includes('t12') ? 'inactive' : ''}>
+                            4-6
+                            {renderTableChairs()}
+                        </Table>
+                    </div>
+                </TablesMap>
+
+                <ResDetails>
+                    <h1>Направи Резервација!</h1>
+                    <div>
+                        <ResDetailWrapper>
+                            <p>Резервацијата е направена од:</p>
+                            <p>Борјан Ѓорѓиевски</p>
+                        </ResDetailWrapper>
+                        <span style={{ display: "flex", gap: "1rem" }} >
                         <ResDetailWrapper>
                             <p>На датум:</p>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -119,50 +124,54 @@ export default function TableReservation() {
                     </span>
 
 
-                    <ResDetailWrapper>
-                        <p>Место во барот:</p>
-                        <ButtonWrapper>
-                            <button
-                                onClick={() => setPlaceIsTerrace(true)}
-                                className={placeIsTerrace ? "activeButton" : ""}
-                            >
-                                Тераса
-                            </button>
-                            <button
-                                onClick={() => setPlaceIsTerrace(false)}
-                                className={!placeIsTerrace ? "activeButton" : ""}
-                            >
-                                Внатре
-                            </button>
-                        </ButtonWrapper>
-                    </ResDetailWrapper>
+                        <ResDetailWrapper>
+                            <p>Место во барот:</p>
+                            <ButtonWrapper>
+                                <button
+                                    onClick={() => setPlaceIsTerrace(true)}
+                                    className={placeIsTerrace ? "activeButton" : ""}
+                                >
+                                    Тераса
+                                </button>
+                                <button
+                                    onClick={() => setPlaceIsTerrace(false)}
+                                    className={!placeIsTerrace ? "activeButton" : ""}
+                                >
+                                    Внатре
+                                </button>
+                            </ButtonWrapper>
+                        </ResDetailWrapper>
 
-                    <ResDetailWrapper>
-                        <p>Времетраење на резервацијата:</p>
-                        <ButtonWrapper>
-                            <button
-                                onClick={() => setHourlyDuration(1)}
-                                className={hourlyDuration === 1 ? "activeButton" : ""}
-                            >
-                                1 час
-                            </button>
-                            <button
-                                onClick={() => setHourlyDuration(2)}
-                                className={hourlyDuration === 2 ? "activeButton" : ""}
-                            >
-                                2 часа
-                            </button>
-                            <button
-                                onClick={() => setHourlyDuration(3)}
-                                className={hourlyDuration === 3 ? "activeButton" : ""}
-                            >
-                                3 часа
-                            </button>
-                        </ButtonWrapper>
-                    </ResDetailWrapper>
-                </div>
-                <ResSubmitBtn>Резервирај</ResSubmitBtn>
-            </ResDetails>
+                        <ResDetailWrapper>
+                            <p>Времетраење на резервацијата:</p>
+                            <ButtonWrapper>
+                                <button
+                                    onClick={() => setHourlyDuration(1)}
+                                    className={hourlyDuration === 1 ? "activeButton" : ""}
+                                >
+                                    1 час
+                                </button>
+                                <button
+                                    onClick={() => setHourlyDuration(2)}
+                                    className={hourlyDuration === 2 ? "activeButton" : ""}
+                                >
+                                    2 часа
+                                </button>
+                                <button
+                                    onClick={() => setHourlyDuration(3)}
+                                    className={hourlyDuration === 3 ? "activeButton" : ""}
+                                >
+                                    3 часа
+                                </button>
+                            </ButtonWrapper>
+                        </ResDetailWrapper>
+                    </div>
+                    <ResSubmitBtn>Резервирај</ResSubmitBtn>
+                </ResDetails>
+            </div>
+
+
+            <Footer />
         </Wrapper>
     );
 }
@@ -170,11 +179,16 @@ export default function TableReservation() {
 
 const Wrapper = styled.div`
     display: flex;
-    flex: 1;
+    flex-direction: column;
+    
+    & > div {
+        display: grid;
+        grid-template-columns: 70% auto;
+        
+    }
 `
 
 const TablesMap = styled.div`
-    width: 70%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -225,6 +239,9 @@ const ResDetails = styled.div`
     padding: 2rem 2rem;
     gap: 2rem;
     width: fit-content;
+    box-shadow: -4px 0 8px rgba(0,0,0,0.2);
+    border-radius: 0;
+    z-index: 2;
     
     & > div {
         display: flex;

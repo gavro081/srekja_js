@@ -60,7 +60,7 @@ const FooterContainer = styled.footer`
     padding: 30px 160px;
     border-radius:0 ;
     background-color: rgba(11, 119, 111, 0.95);
-    margin-top: 70px;
+    //margin-top: 70px;
     color: white;
     position: relative;
     bottom: 0;

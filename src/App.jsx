@@ -3,6 +3,7 @@ import SrekjaBar from "./SrekjaBar/SrekjaBar.jsx";
 import Register from "./Register";
 import GPTtester from "./AI/GPTtester";
 import Home from "./Home/Home.jsx";
+import TableReservation from "./SrekjaBar/TableReservation.jsx";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,12 @@ const router = createBrowserRouter([
 
         path: '/srekjaBar',
         element: <SrekjaBar />
-    },{
+    },
+    {
+        path: '/srekjaBar/rezerviraj',
+        element: <TableReservation />
+    },
+    {
 
          path: '/testAI',
         element: <GPTtester />
