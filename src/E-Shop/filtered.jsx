@@ -141,10 +141,12 @@ function Filtered() {
 const ProductsWrapper = styled.div`
   width: 90%;
   margin-right: 5%;
-  height: 100%;
+  height: 60%;
   display: flex;
+  overflow-y: scroll;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin-bottom: 25%;
 `;
 const ProductCard = styled.div`
   width: 200px;
@@ -152,6 +154,7 @@ const ProductCard = styled.div`
   border: 1px solid black;
   margin: 10px;
   display: flex;
+  margin-bottom: 5%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
