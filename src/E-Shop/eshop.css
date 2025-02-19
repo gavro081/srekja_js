@@ -1,0 +1,10 @@
+.mainProductsContainer {
+  display: flex;
+  padding: 5%;
+}
+
+.mainTshirtContainer,
+.mainHoodieContainer,
+.mainMugContainer {
+  border: 1px solid black;
+}
