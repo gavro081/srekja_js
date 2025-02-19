@@ -8,6 +8,7 @@ import Check from '@mui/icons-material/Check';
 import FoodReview from "./ReviewSubMenus/FoodReview.jsx";
 import GradientText from "./GradientText.jsx";
 import styled from "styled-components";
+import ServiceReview from "./ReviewSubMenus/ServiceReview.jsx";
 
 const steps = ['Храна', 'Услуга', 'Севкупно'];
 
@@ -55,7 +56,7 @@ const Reviews = () => {
                 ))}
             </Stepper>
             {activeStep === 0 && <FoodReview />}
-            {activeStep === 1 && <div>Usluga...</div>}
+            {activeStep === 1 && <ServiceReview/>}
             {activeStep === 2 && <div>Sevkupno...</div>}
             <NextButton onClick={handleNext} disabled={activeStep === steps.length - 1}>
                 {activeStep === steps.length - 1 ? "Испрати!" : "Понатаму"}
