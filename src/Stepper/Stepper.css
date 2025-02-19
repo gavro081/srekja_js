@@ -77,29 +77,7 @@
   justify-content: flex-end;
 }
 
-.back-button {
-  transition: all 350ms;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--logo-red);
-  color: white;
-  font-weight: 500;
-  padding: 0.4rem 1rem;
-  border: 1px solid black;
-  cursor: pointer;
-}
-
-.back-button:hover {
-  color: #060606;
-}
-
-.back-button.inactive {
-  pointer-events: none;
-  opacity: 0.5;
-  color: #dd6a6a;
-}
-
+.back-button,
 .next-button {
   transition: all 350ms;
   display: flex;
@@ -107,10 +85,21 @@
   justify-content: center;
   background-color: var(--logo-red);
   color: white;
+  font-size: 14px;
   font-weight: 500;
-  padding: 0.4rem 1rem;
+  padding: .7rem 1.2rem;
   border: 1px solid black;
   cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: var(--hover-red);
+}
+
+.back-button.inactive {
+  pointer-events: none;
+  opacity: 0.5;
+  color: #dd6a6a;
 }
 
 .next-button:hover {

@@ -19,6 +19,7 @@ export default function Stepper({
   nextButtonText = "Continue",
   disableStepIndicators = false,
   renderStepIndicator,
+  validateStep = () => true, 
   ...rest
 }) {
   const [currentStep, setCurrentStep] = useState(initialStep);
@@ -29,6 +30,7 @@ export default function Stepper({
   const isLastStep = currentStep === totalSteps;
 
   const updateStep = (newStep) => {
+    // if (currentStep === 1) {
     setCurrentStep(newStep);
     if (newStep > totalSteps) {
       onFinalStepCompleted();
@@ -45,7 +47,11 @@ export default function Stepper({
   };
 
   const handleNext = () => {
+    if (currentStep === 1 && !validateStep(currentStep)){
+      return
+    }
     if (!isLastStep) {
+      console.log(currentStep);
       setDirection(1);
       updateStep(currentStep + 1);
     }
@@ -69,20 +75,20 @@ export default function Stepper({
                   renderStepIndicator({
                     step: stepNumber,
                     currentStep,
-                    onStepClick: (clicked) => {
-                      setDirection(clicked > currentStep ? 1 : -1);
-                      updateStep(clicked);
-                    },
+                    // onStepClick: (clicked) => {
+                    //   setDirection(clicked > currentStep ? 1 : -1);
+                    //   updateStep(clicked);
+                    // },
                   })
                 ) : (
                   <StepIndicator
                     step={stepNumber}
                     disableStepIndicators={disableStepIndicators}
                     currentStep={currentStep}
-                    onClickStep={(clicked) => {
-                      setDirection(clicked > currentStep ? 1 : -1);
-                      updateStep(clicked);
-                    }}
+                    // onClickStep={(clicked) => {
+                    //   setDirection(clicked > currentStep ? 1 : -1);
+                    //   updateStep(clicked);
+                    // }}
                   />
                 )}
                 {isNotLastStep && (
@@ -106,14 +112,13 @@ export default function Stepper({
           <div className={`footer-container ${footerClassName}`}>
             <div className={`footer-nav ${currentStep !== 1 ? "spread" : "end"}`}>
               {currentStep !== 1 && (
-                // <button
-                //   onClick={handleBack}
-                //   className={`back-button ${currentStep === 1 ? "inactive" : ""}`}
-                //   {...backButtonProps}
-                // >
-                //   {backButtonText}
-                // </button>
-                <p></p>
+                <button
+                  onClick={handleBack}
+                  className={`back-button ${currentStep === 1 ? "inactive" : ""}`}
+                  {...backButtonProps}
+                >
+                  {backButtonText}
+                </button>
               )}
               <button
                 onClick={isLastStep ? handleComplete : handleNext}
