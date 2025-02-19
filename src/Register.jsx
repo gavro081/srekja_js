@@ -43,7 +43,7 @@ function Register() {
                     alert("Внесете валидна е-пошта");
                     return false;
                 }
-                if (password.length() < 6){
+                if (password.length < 6){
                     alert("Лозинката мора да има барем 6 карактери")
                     return false;
                 }
