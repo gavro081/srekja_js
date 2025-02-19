@@ -11,22 +11,29 @@ import styled from "styled-components";
 import ServiceReview from "./ReviewSubMenus/ServiceReview.jsx";
 import Overrall from "./ReviewSubMenus/Overrall.jsx";
 import Confetti from 'react-confetti';
+import { motion } from "framer-motion";
 const steps = ['Храна', 'Услуга', 'Севкупно'];
 
-const Reviews = () => {
+const Reviews = ({ onClose }) => {
     const [activeStep, setActiveStep] = React.useState(0);
     const [showConfetti, setShowConfetti] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
 
 
     const handleNext = () => {
         if (activeStep === steps.length - 1) {
             setShowConfetti(true);
-            setTimeout(() => setShowConfetti(false), 4000);
+            setIsSubmitted(true);
+            setTimeout(() => {
+                setShowConfetti(false);
+                onClose(); // Close review component after animation
+            }, 4000);
         } else {
-            setActiveStep(prev => prev + 1);
+            setActiveStep((prev) => prev + 1);
         }
     };
+
     return (
         <div>
             <Navbar></Navbar>
@@ -70,7 +77,19 @@ const Reviews = () => {
             {activeStep === 1 && <ServiceReview/>}
             {activeStep === 2 && <Overrall/>}
             <NextButton onClick={handleNext}>
-                {activeStep === steps.length - 1 ? "Испрати!" : "Понатаму"}
+                {isSubmitted ? (
+                    <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        ✅ Поднесено!
+                    </motion.div>
+                ) : activeStep === steps.length - 1 ? (
+                    "Испрати!"
+                ) : (
+                    "Понатаму"
+                )}
             </NextButton>
         </div>
     )

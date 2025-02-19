@@ -10,7 +10,7 @@ const Overall = () => {
     return (
         <Wrapper>
             <h2>Општа оцена</h2>
-            <CustomizedRating value={rating} onChange={(newValue) => setRating(newValue)} />
+            <CustomizedRating value={rating}  onChange={(newValue) => setRating(newValue)} />
 
         </Wrapper>
     );

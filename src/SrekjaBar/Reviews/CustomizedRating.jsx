@@ -20,6 +20,7 @@ export default function CustomizedRating() {
         <Box sx={{ '& > legend': { mt: 2 } }}>
             <StyledRating
                 name="customized-color"
+                size="large"
                 defaultValue={2}
                 getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
                 precision={0.5}
