@@ -32,6 +32,10 @@ const router = createBrowserRouter([
     path: '/mainEshopPage',
     element: <EShop />,
   },
+  {
+    path: '/srekjaBar/rezerviraj',
+    element: <TableReservation />
+  }
   // {
   //  path: '/{ime na komponenta}
   //  element: <Ime na komponentata />
