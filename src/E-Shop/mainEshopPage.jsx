@@ -3,6 +3,8 @@ import mugText2 from './sliki/mugText2.png';
 import whiteFrontLogo from './sliki/whiteFrontLogo.png';
 import sweatshirtText1 from './sliki/sweatshirtText1.png';
 import { useEffect, useState, useRef } from 'react';
+import Navbar from '../shumaComponents/Navbar.jsx';
+
 function MainEshopPage() {
   let [displayedText, setDisplayedText] = useState('');
   const fullText = 'Среќа е...да одиш на шопинг!';
@@ -45,9 +47,7 @@ function MainEshopPage() {
   return (
     <>
       <GlobalStyle />
-      <div>
-        <h1>Добредојдовте на нашата онлајн продавница</h1>
-      </div>
+      <Navbar />
       <Naslovce>
         <h2>{displayedText}</h2>
       </Naslovce>
