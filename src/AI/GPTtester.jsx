@@ -63,7 +63,11 @@ const GPTtester = () => {
           isloading={isLoading}
         />
         <SearchButton onClick={fetchQuery}>
-          <img src="../../public/slikiZaEshop/logo.png" alt="Search" width={50} />
+            <img 
+            src="../../assets/images/logo-2020-white-1.png"
+            alt="Search"
+            width={50}
+            />
         </SearchButton>
       </SearchContainer>
       {isLoading ? (
@@ -81,7 +85,7 @@ const GPTtester = () => {
               <FoodItem key={index}>
                 <GradientHeading4>{item.macedonian_name}</GradientHeading4>
                 <Desc>{item.details}</Desc>
-                <Ingredients>Состојки: {item.ingredients.join(", ")}</Ingredients>
+                <Ingredients>Состојки: {item.ingredients-mk.join(", ")}</Ingredients>
                 <Price>Цена: {item.price} ден</Price>
               </FoodItem >
             ))}
@@ -241,7 +245,7 @@ const SearchButton = styled.button`
     // padding: 10px 20px;
     border: 1px solid #ccc;
     border-left: none;
-    background-color: var(--logo-red);
+    background: linear-gradient(45deg,rgb(222, 57, 96),rgb(251, 114, 79));
     color: white;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
@@ -249,6 +253,16 @@ const SearchButton = styled.button`
     &:hover {
       background-color: var(--hover-red);
     }
+
+    img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        object-position: center;
+        transform: scale(1.8);
+        margin-top: 5px;
+    }
+
   `;
 
 export default GPTtester;
