@@ -1,4 +1,4 @@
-@import url('../../stylesheets/general.css');
+@import url('../../../stylesheets/general.css');
 
 .outer-container {
   display: flex;

@@ -11,7 +11,6 @@ const spin = keyframes`
   }
 `;
 
-// Styled wrapper with spinning animation
 const Wrapper = styled.div`
   width: 200px;
   height: 200px;
@@ -19,7 +18,6 @@ const Wrapper = styled.div`
   animation: ${spin} 4s linear infinite;
 `;
 
-// Styled SVG element that will occupy the full size of the wrapper
 const Svg = styled.svg`
   width: 100%;
   height: 100%;
@@ -27,7 +25,6 @@ const Svg = styled.svg`
   fill: var(--logo-red);
 `;
 
-// Styled text element inside the SVG
 const Text = styled.text`
   font-size: 12.5px;
 `;

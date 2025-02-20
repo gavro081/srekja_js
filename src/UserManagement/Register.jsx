@@ -1,5 +1,5 @@
 import React, { use, useState, useEffect } from 'react'
-import Stepper, { Step } from './Stepper/Stepper'
+import Stepper, {Step} from './Stepper/Stepper';
 import styled from 'styled-components';
 import CustomTextField from './CustomTextField';
 import FormGroup from '@mui/material/FormGroup';
@@ -7,10 +7,11 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { createUserWithEmailAndPassword } from '@firebase/auth';
 import { doc, setDoc } from '@firebase/firestore';
-import { db } from './firebase/firebase';
-import { auth } from './firebase/firebase';
+import { db } from '../firebase/firebase';
+import { auth } from '../firebase/firebase';
 import Spinner from './Spinner';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../firebase/authContext';
 
 
 function Register() {
@@ -21,6 +22,13 @@ function Register() {
     const [interests, setInterests] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false)
+    const navigate = useNavigate()
+
+    // proveri dali korisnik e logiran
+    const { currentUser } = useAuth()
+
+    if (currentUser) console.log("logiran") 
+    else console.log("nelogiran")
 
     const handleInterestChange = (e) => {
         if (e.target.checked) {
@@ -71,6 +79,8 @@ function Register() {
                 interests: interests
             })
             setIsLoading(false)
+            // za sega
+            navigate('/')
             console.log("Signup successful!");
         } catch (err) {
             setIsLoading(false)

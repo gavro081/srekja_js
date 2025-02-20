@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled, { keyframes } from 'styled-components';
-import Spinner from "../Spinner";
+import Spinner from "../UserManagement/Spinner";
 import menu_items from "./menuitems";
 
 

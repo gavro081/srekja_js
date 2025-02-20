@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import CustomTextField from './CustomTextField';
-import { auth } from './firebase/firebase';
+import { auth } from '../firebase/firebase';
 import { signInWithEmailAndPassword } from '@firebase/auth';
 import Spinner from './Spinner';
+import { useAuth } from '../firebase/authContext';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   max-width: 28rem;
@@ -56,6 +58,13 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
+
+    // proveri dali korisnik e logiran
+    // const { currentUser } = useAuth()
+
+    // if (currentUser) console.log("logiran") 
+    // else console.log("nelogiran")
 
     const handleSubmit = async () => {
         setError(null)
@@ -64,12 +73,13 @@ const Login = () => {
             await signInWithEmailAndPassword(auth, email, password);
             console.log("Login Successful!");
             setLoading(false)
+            navigate('/');
         } catch (error) {
             setError(error.message)
             setLoading(false)
         }
     }
-    
+
     return (
         <Container>
             <InputWrapper>
