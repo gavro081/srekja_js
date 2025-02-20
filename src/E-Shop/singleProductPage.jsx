@@ -1,6 +1,6 @@
 import Navbar from '../shumaComponents/Navbar';
 import Footer from '../shumaComponents/Footer';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
@@ -12,7 +12,10 @@ function SingleProductPage() {
   const [fade, setFade] = useState(false);
   const [products, setProducts] = useState([]);
   const [otherImages, setOtherImages] = useState(product.otherImages);
+  const [size, setSize] = useState(product.sizes);
+  const [selecetdSize, setSelectedSize] = useState(null);
 
+  const availableSizes = ['XS', 'S', 'M', 'L', 'XL'];
   const handleImageClick = (img) => {
     setFade(true);
     setTimeout(() => {
@@ -27,6 +30,8 @@ function SingleProductPage() {
       setMainImg(product.img);
       setProduct(product);
       setOtherImages(product.otherImages);
+      setSize(product.sizes);
+      setSelectedSize(null);
       setFade(false);
     }, 300);
   };
@@ -41,6 +46,9 @@ function SingleProductPage() {
         setProducts(sugested);
       });
   }, []);
+  const handleSizeClick = (sizeLabel) => {
+    setSelectedSize(sizeLabel);
+  };
   return (
     <>
       <GlobalStyle />
@@ -79,7 +87,23 @@ function SingleProductPage() {
         </PicturesWrapper>
         <InfoWrapper>
           <h3>{product.name}</h3>
-          <p className="cena">{product.price} ден</p>
+          <p className="cena">
+            <span
+              style={{
+                fontStyle: 'italic',
+                color: 'black',
+                fontSize: '20px',
+              }}
+            >
+              {product.price}{' '}
+            </span>
+            <span
+              style={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }}
+            >
+              {' '}
+              ден.
+            </span>
+          </p>
           <p className="slicni" style={{ marginTop: '5%' }}>
             Слични производи:
           </p>
@@ -106,6 +130,27 @@ function SingleProductPage() {
               </div>
             ))}
           </SuggestedWrapper>
+          <p>Избери големина:</p>
+          <SizesWrapper>
+            {availableSizes.map((sizeLabel) => (
+              <SizeBox
+                key={sizeLabel}
+                title={size.includes(sizeLabel) ? '' : 'Нема на залиха'}
+                isAvailable={size.includes(sizeLabel)}
+                isSelected={selecetdSize === sizeLabel}
+                onClick={() => {
+                  if (size.includes(sizeLabel)) {
+                    handleSizeClick(sizeLabel);
+                  }
+                }}
+              >
+                {sizeLabel}
+              </SizeBox>
+            ))}
+          </SizesWrapper>
+          <CartButton>
+            <button>Додади во кошничка </button>
+          </CartButton>
         </InfoWrapper>
       </MainWrapper>
 
@@ -113,14 +158,31 @@ function SingleProductPage() {
     </>
   );
 }
+
+const CartButton = styled.div`
+  width: 100%;
+  margin-top: 10%;
+  & > button {
+    width: 100%;
+    height: 50px;
+    background-color: rgba(11, 119, 111, 0.95);
+    color: white;
+    border: 0.5px solid rgba(186, 197, 196, 0.95);
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(11, 119, 111, 0.8);
+    }
+  }
+`;
 const SuggestedWrapper = styled.div`
   width: 100%;
   display: flex;
-  height: 60%;
+  height: 20%;
   gap: 5%;
+  margin-bottom: 5%;
   .suggestedProduct {
-    width: 20%;
-    height: 20%;
+    width: 22%;
+    height: 80%;
   }
   .suggestedProduct:hover {
     border: 2px solid rgba(11, 119, 111, 0.95);
@@ -138,6 +200,40 @@ const PicturesWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+const SizesWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+const SizeBox = styled.div`
+  padding: 10px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ${(props) =>
+    props.isAvailable
+      ? css`
+          background-color: ${props.isSelected
+            ? 'rgba(11, 119, 111, 0.95)'
+            : 'white'};
+          color: ${props.isSelected ? 'white' : 'black'};
+          border: 1px solid black;
+          border-radius: 0px !important;
+          cursor: pointer;
+          &:hover {
+            background-color: rgba(11, 119, 111, 0.95);
+            color: white;
+          }
+        `
+      : css`
+          color: grey;
+          border: 1px solid grey;
+          cursor: not-allowed;
+          border-radius: 0px !important;
+        `}
+  border-radius: 5px;
 `;
 const MainPictureWrapper = styled.div`
   width: 100%;
@@ -180,7 +276,7 @@ const OtherPicturesWrapper = styled.div`
   }
   .otherImg > img {
     width: 100%;
-    height: 100%;
+    height: 80%;
     background-color: white;
   }
 `;
@@ -191,10 +287,10 @@ const InfoWrapper = styled.div`
   margin-left: 6%;
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
+
   .cena {
     color: grey;
-    text-decoration: underline;
+
     font-size: 20px;
     font-style: italic;
   }
