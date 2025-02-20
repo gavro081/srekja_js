@@ -21,6 +21,7 @@ export default function Stepper({
   endButtonText = "Заврши",
   disableStepIndicators = false,
   renderStepIndicator,
+  isLogin = false,
   validateStep = () => true,
   ...rest
 }) {
@@ -64,7 +65,7 @@ export default function Stepper({
     updateStep(totalSteps + 1);
   };
   return (
-    <div className="outer-container" {...rest}>
+    <div className={`outer-container ${isLogin ? 'login' : 'register'}`} {...rest} >
       <div className={`step-circle-container ${stepCircleContainerClassName}`} style={{ border: "1px solid #222" }}>
         <div 
         style={{ display: showProgressBar ? 'flex' : 'none' }}

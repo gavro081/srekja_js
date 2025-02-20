@@ -17,14 +17,6 @@ const Container = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   transition: all 350ms;
-
-//   @media (min-width: 640px) {
-//     max-width: 32rem;
-//   }
-
-//   @media (min-width: 768px) {
-//     aspect-ratio: 3/4;
-//   }
 `;
 const InputWrapper = styled.div`
   display: flex;
@@ -113,7 +105,8 @@ const Login = () => {
                         backButtonText="Назад"
                         nextButtonText="Продолжи"
                         endButtonText='Продолжи'
-                        validateStep={() => console.log(1)} // Pass the validation function
+                        validateStep={() => console.log(1)} 
+                        isLogin={true}
                     >
                         <Step>
                             <InputWrapper>
