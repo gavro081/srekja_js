@@ -7,6 +7,7 @@ import { span } from "framer-motion/client";
 export default function Stepper({
   children,
   initialStep = 1,
+  showProgressBar = false,
   onStepChange = () => { },
   onFinalStepCompleted = () => { },
   stepCircleContainerClassName = "",
@@ -17,9 +18,10 @@ export default function Stepper({
   nextButtonProps = {},
   backButtonText = "Back",
   nextButtonText = "Continue",
+  endButtonText = "Заврши",
   disableStepIndicators = false,
   renderStepIndicator,
-  validateStep = () => true, 
+  validateStep = () => true,
   ...rest
 }) {
   const [currentStep, setCurrentStep] = useState(initialStep);
@@ -47,7 +49,7 @@ export default function Stepper({
   };
 
   const handleNext = () => {
-    if (currentStep === 1 && !validateStep(currentStep)){
+    if (currentStep === 1 && !validateStep(currentStep)) {
       return
     }
     if (!isLastStep) {
@@ -61,11 +63,12 @@ export default function Stepper({
     setDirection(1);
     updateStep(totalSteps + 1);
   };
-
   return (
     <div className="outer-container" {...rest}>
       <div className={`step-circle-container ${stepCircleContainerClassName}`} style={{ border: "1px solid #222" }}>
-        <div className={`step-indicator-row ${stepContainerClassName}`}>
+        <div 
+        style={{ display: showProgressBar ? 'flex' : 'none' }}
+        className={`step-indicator-row ${stepContainerClassName}`}>
           {stepsArray.map((_, index) => {
             const stepNumber = index + 1;
             const isNotLastStep = index < totalSteps - 1;
@@ -85,10 +88,10 @@ export default function Stepper({
                     step={stepNumber}
                     disableStepIndicators={disableStepIndicators}
                     currentStep={currentStep}
-                    // onClickStep={(clicked) => {
-                    //   setDirection(clicked > currentStep ? 1 : -1);
-                    //   updateStep(clicked);
-                    // }}
+                  // onClickStep={(clicked) => {
+                  //   setDirection(clicked > currentStep ? 1 : -1);
+                  //   updateStep(clicked);
+                  // }}
                   />
                 )}
                 {isNotLastStep && (
@@ -125,7 +128,7 @@ export default function Stepper({
                 className="next-button"
                 {...nextButtonProps}
               >
-                {isLastStep ? "Заврши" : nextButtonText}
+                {isLastStep ? endButtonText : nextButtonText}
               </button>
             </div>
           </div>
@@ -203,13 +206,13 @@ function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators }
 
   const handleClick = () => {
     if (step !== currentStep && !disableStepIndicators) onClickStep(step);
-  };  function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators }) {
+  }; function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators }) {
     const status = currentStep === step ? "active" : currentStep < step ? "inactive" : "complete";
-  
+
     const handleClick = () => {
       if (step !== currentStep && !disableStepIndicators) onClickStep(step);
     };
-  
+
     return (
       <motion.div onClick={handleClick} className="step-indicator" animate={status} initial={false}>
         <motion.div
