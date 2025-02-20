@@ -1,5 +1,5 @@
 import React, { use, useState, useEffect } from 'react'
-import Stepper, {Step} from './Stepper/Stepper';
+import Stepper, { Step } from './Stepper/Stepper';
 import styled from 'styled-components';
 import CustomTextField from './CustomTextField';
 import FormGroup from '@mui/material/FormGroup';
@@ -12,6 +12,8 @@ import { auth } from '../firebase/firebase';
 import Spinner from './Spinner';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../firebase/authContext';
+import Navbar from '../shumaComponents/Navbar'
+import Footer from '../shumaComponents/Footer'
 
 
 function Register() {
@@ -27,7 +29,7 @@ function Register() {
     // proveri dali korisnik e logiran
     const { currentUser } = useAuth()
 
-    if (currentUser) console.log("logiran") 
+    if (currentUser) console.log("logiran")
     else console.log("nelogiran")
 
     const handleInterestChange = (e) => {
@@ -79,8 +81,8 @@ function Register() {
                 interests: interests
             })
             setIsLoading(false)
-            // za sega
-            navigate('/')
+            // navigate('/')
+            navigate('/wheel');
             console.log("Signup successful!");
         } catch (err) {
             setIsLoading(false)
@@ -91,108 +93,114 @@ function Register() {
 
     return (
         <>
+            <Navbar />
             {isLoading ? (
                 <SpinnerWrapper>
                     <Spinner />
                 </SpinnerWrapper>
-            ) : error ? (
-                <p>{error.message}</p>
-            ) : (
-                <StepperWrapper>
-                    <Stepper
-                        initialStep={1}
-                        onFinalStepCompleted={handleSubmit}
-                        backButtonText="Назад"
-                        nextButtonText="Продолжи"
-                        validateStep={validateStep} // Pass the validation function
-                    >
-                        <Step>
+            ) :
+                error ? (
+                    <p>{error.message}</p>
+                ) : (
+                    <StepperWrapper>
+                        <Stepper
+                            showProgressBar={true}
+                            initialStep={1}
+                            onFinalStepCompleted={handleSubmit}
+                            backButtonText="Назад"
+                            nextButtonText="Продолжи"
+                            validateStep={validateStep} // Pass the validation function
+                        >
+                            <Step>
                                 <StyledHeader>Регистрирај се</StyledHeader>
-                            <InputWrapper>
-                                <CustomTextField
-                                    value={name} // Ensure the input field is controlled
-                                    onChange={(e) => setName(e.target.value)}
-                                    label="Име*"
-                                    type="text"
-                                    placeholder="Петар"
-                                />
-                                <CustomTextField
-                                    value={lastName} // Ensure the input field is controlled
-                                    onChange={(e) => setLastName(e.target.value)}
-                                    label="Презиме*"
-                                    type="text"
-                                    placeholder="Петровски"
-                                />
-                                <CustomTextField
-                                    value={email} // Ensure the input field is controlled
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    label="Е-пошта*"
-                                    type="email"
-                                    placeholder="demo@srekja.mk"
-                                />
-                                <CustomTextField
-                                    value={password} // Ensure the input field is controlled
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    label="Лозинка*"
-                                    type="password"
-                                    placeholder="do2as-asd34-asdnj"
-                                />
-                                <p>Веќе имаш профил? &nbsp;
-                                    <Link to={'/login'}>
-                                        Најави се
-                                    </Link>
-                                </p>
-                            </InputWrapper>
-                        </Step>
-                        <Step>
-                            <StyledHeader>Одбери ги твоите интереси</StyledHeader>
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={<Checkbox onChange={handleInterestChange} value="спорт" />}
-                                    label="Спорт"
-                                />
-                                <FormControlLabel
-                                    control={<Checkbox onChange={handleInterestChange} value="љубов" />}
-                                    label="Љубов"
-                                />
-                                <FormControlLabel
-                                    control={<Checkbox onChange={handleInterestChange} value="технологија" />}
-                                    label="Технологија"
-                                />
-                                <FormControlLabel
-                                    control={<Checkbox onChange={handleInterestChange} value="хумор" />}
-                                    label="Хумор"
-                                />
-                                <FormControlLabel
-                                    control={<Checkbox onChange={handleInterestChange} value="економија" />}
-                                    label="Економија"
-                                />
-                            </FormGroup>
-                        </Step>
-                        <Step>
-                            <ImageWrapper>
-                                <img
-                                    src="../public/slikiZaEshop/logoDark-1.jpg"
-                                    alt="Logo"
-                                    style={{
-                                        maxWidth: '100%',
-                                        objectFit: 'contain',
-                                        maxHeight: '100px',
-                                        height: 'auto'
-                                    }}
-                                />
-                            </ImageWrapper>
-                            <StyledHeader>
-                                Добредојдовте, {name}
-                            </StyledHeader>
-                            <Paragraph>
-                                Твојот профил можеш да го користиш за да добиваш различни награди, да резервираш
-                                маса во Среќа Бар, да ги следиш најновите понуди и многу други активности.
-                            </Paragraph>
-                        </Step>
-                    </Stepper>
-                </StepperWrapper>
-            )}
+                                <InputWrapper>
+                                    <CustomTextField
+                                        value={name} // Ensure the input field is controlled
+                                        onChange={(e) => setName(e.target.value)}
+                                        label="Име*"
+                                        type="text"
+                                        placeholder="Петар"
+                                    />
+                                    <CustomTextField
+                                        value={lastName} // Ensure the input field is controlled
+                                        onChange={(e) => setLastName(e.target.value)}
+                                        label="Презиме*"
+                                        type="text"
+                                        placeholder="Петровски"
+                                    />
+                                    <CustomTextField
+                                        value={email} // Ensure the input field is controlled
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        label="Е-пошта*"
+                                        type="email"
+                                        placeholder="demo@srekja.mk"
+                                    />
+                                    <CustomTextField
+                                        value={password} // Ensure the input field is controlled
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        label="Лозинка*"
+                                        type="password"
+                                        placeholder="do2as-asd34-asdnj"
+                                    />
+                                    <p>Веќе имаш профил? &nbsp;
+                                        <Link to={'/login'}>
+                                            Најави се
+                                        </Link>
+                                    </p>
+                                </InputWrapper>
+                            </Step>
+                            <Step>
+                                <StyledHeader>Одбери ги твоите интереси</StyledHeader>
+                                <FormGroup>
+                                    <FormControlLabel
+                                        control={<Checkbox onChange={handleInterestChange} value="спорт" />}
+                                        label="Спорт"
+                                    />
+                                    <FormControlLabel
+                                        control={<Checkbox onChange={handleInterestChange} value="љубов" />}
+                                        label="Љубов"
+                                    />
+                                    <FormControlLabel
+                                        control={<Checkbox onChange={handleInterestChange} value="технологија" />}
+                                        label="Технологија"
+                                    />
+                                    <FormControlLabel
+                                        control={<Checkbox onChange={handleInterestChange} value="хумор" />}
+                                        label="Хумор"
+                                    />
+                                    <FormControlLabel
+                                        control={<Checkbox onChange={handleInterestChange} value="економија" />}
+                                        label="Економија"
+                                    />
+                                </FormGroup>
+                            </Step>
+                            <Step>
+                                <ImageWrapper>
+                                    <img
+                                        src="../public/slikiZaEshop/logoDark-1.jpg"
+                                        alt="Logo"
+                                        style={{
+                                            maxWidth: '100%',
+                                            objectFit: 'contain',
+                                            maxHeight: '100px',
+                                            height: 'auto'
+                                        }}
+                                    />
+                                </ImageWrapper>
+                                <StyledHeader>
+                                    Добредојдовте, {name}
+                                </StyledHeader>
+                                <Paragraph>
+                                    Твојот профил можеш да го користиш за да добиваш различни награди, да резервираш
+                                    маса во Среќа Бар, да ги следиш најновите понуди и многу други активности.
+                                </Paragraph>
+                            </Step>
+                        </Stepper>
+                    </StepperWrapper>
+                )
+            }
+
+            <Footer />
         </>
     );
 }
@@ -204,7 +212,7 @@ const InputWrapper = styled.div`
 `;
 
 const StepperWrapper = styled.div`
-    margin: 70px auto;
+    margin: 150px auto;
     padding: 20px;
 `;
 
@@ -231,7 +239,7 @@ const SpinnerWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 75px;
+    margin-block: 293px;
 `
 
 export default Register

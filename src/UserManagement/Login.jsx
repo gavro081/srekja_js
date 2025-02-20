@@ -6,18 +6,31 @@ import { signInWithEmailAndPassword } from '@firebase/auth';
 import Spinner from './Spinner';
 import { useAuth } from '../firebase/authContext';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../shumaComponents/Navbar'
+import Footer from '../shumaComponents/Footer'
+import Stepper, { Step } from './Stepper/Stepper';
 
 const Container = styled.div`
   max-width: 28rem;
-  margin: 0 auto;
+  margin: 6rem auto;
   padding: 2rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  transition: all 350ms;
+
+//   @media (min-width: 640px) {
+//     max-width: 32rem;
+//   }
+
+//   @media (min-width: 768px) {
+//     aspect-ratio: 3/4;
+//   }
 `;
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  transition: all 350ms;
 //   padding-block: 40px;
 `;
 
@@ -25,6 +38,7 @@ const InputWrapper = styled.div`
 const StyledHeader = styled.h2`
     color: var(--logo-red);
     // font-size: 1.5em;
+    margin-top: 30px;
     margin-bottom: 10px;
 `;
 
@@ -32,6 +46,8 @@ const SpinnerWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-block: 10rem;
+    transition: all 350ms;
 `
 
 const Button = styled.button`
@@ -39,6 +55,7 @@ const Button = styled.button`
   display: flex;
   align-self: end;
   margin-top: 2.5rem;
+  border-radius: 5px;
   background-color: var(--logo-red);
   color: white;
   font-size: 14px;
@@ -73,7 +90,7 @@ const Login = () => {
             await signInWithEmailAndPassword(auth, email, password);
             console.log("Login Successful!");
             setLoading(false)
-            navigate('/');
+            navigate('/wheel');
         } catch (error) {
             setError(error.message)
             setLoading(false)
@@ -81,39 +98,49 @@ const Login = () => {
     }
 
     return (
-        <Container>
-            <InputWrapper>
-                {loading ?
-                   <SpinnerWrapper>
-                        <Spinner />
-                    </SpinnerWrapper> :
-                    (
-                        <>
-                            <StyledHeader>Добредојде назад</StyledHeader>
-                            {error && <p style={{ color: 'red' }}>Обидете се повторно</p>}
-                            <CustomTextField
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                label="Е-пошта*"
-                                type="email"
-                            // placeholder="demo@srekja.mk"
-                            />
-                            <CustomTextField
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                label="Лозинка*"
-                                type="password"
-                            // placeholder="do2as-asd34-asdnj"
-                            />
-                            <Button
-                                onClick={handleSubmit}
-                            >
-                                Продолжи
-                            </Button>
-                        </>
-                    )}
-            </InputWrapper>
-        </Container>
+        <>
+            <Navbar />
+            {loading ? 
+            <SpinnerWrapper>
+                <Spinner />
+            </SpinnerWrapper>
+                :
+                
+                    <Stepper
+                        showProgressBar={false}
+                        initialStep={1}
+                        onFinalStepCompleted={handleSubmit}
+                        backButtonText="Назад"
+                        nextButtonText="Продолжи"
+                        endButtonText='Продолжи'
+                        validateStep={() => console.log(1)} // Pass the validation function
+                    >
+                        <Step>
+                            <InputWrapper>
+                                <>
+                                    <StyledHeader>Добредојде назад</StyledHeader>
+                                    {error && <p style={{ color: 'red' }}>Обидете се повторно</p>}
+                                    <CustomTextField
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        label="Е-пошта*"
+                                        type="email"
+                                    // placeholder="demo@srekja.mk"
+                                    />
+                                    <CustomTextField
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        label="Лозинка*"
+                                        type="password"
+                                    // placeholder="do2as-asd34-asdnj"
+                                    />
+                                </>
+                            </InputWrapper>
+                        </Step>
+                    </Stepper>
+                }
+            <Footer />
+        </>
     );
 };
 

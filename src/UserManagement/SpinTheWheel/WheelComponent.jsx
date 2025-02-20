@@ -1,4 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
+import styled from 'styled-components';
+import Navbar from '../../shumaComponents/Navbar'
+import Footer from '../../shumaComponents/Footer'
 
 const WheelComponent = ({
   segments,
@@ -13,6 +16,7 @@ const WheelComponent = ({
   fontFamily = 'Arial',
   arrowLocation = 'center',
   showTextOnSpin = true,
+  // fontSize = '800px',
   isSpinSound = true
 }) => {
   // Separate arrays without nullish values
@@ -110,7 +114,7 @@ const WheelComponent = ({
     }
   };
 
-  
+
   const wheelDraw = () => {
     clear()
     drawWheel()
@@ -134,8 +138,8 @@ const WheelComponent = ({
     ctx.rotate((lastAngle + angle) / 2);
     ctx.fillStyle = contrastColor;
     // TUKA se menja dolzina i golemina na tekst
-    ctx.font = 'bold 1.2em ' + fontFamily; 
-    ctx.fillText(value.substring(0, 25), size / 2 + 20, 0);
+    ctx.font = `500 17px ` + fontFamily;
+    ctx.fillText(value.substring(0, 30), size / 2 + 20, 0);
     ctx.restore();
   }
 
@@ -170,7 +174,7 @@ const WheelComponent = ({
     // img.src = '/logo.png'; 
     img.src = "/slikiZaEshop/logo-2020-white-1.png"
     img.onload = () => {
-        ctx.drawImage(img, centerX - 70, centerY - 50, 140, 110); 
+      ctx.drawImage(img, centerX - 70, centerY - 50, 140, 110);
     };
     ctx.stroke()
 
@@ -224,21 +228,43 @@ const WheelComponent = ({
   };
 
   return (
-    <div id='wheel'>
-      <canvas
-        id='canvas'
-        width={size * 2}
-        height={size * 2}
-        style={{
-          pointerEvents: isFinished && isOnlyOnce ? 'none' : 'auto',
-        }}
-      />
-      {showTextOnSpin && isStarted && isFinished &&
-        <div style={{ textAlign: "center", padding: "20px", fontWeight: "bold", fontSize: "1.5em", fontFamily: fontFamily }}>
-          {needleText}
-        </div>}
-    </div>
+    <>
+      <Navbar />
+      <StyledHeader>Тркало на среќата</StyledHeader>
+      <Paragraph>Сврти за шанса да освоиш награди</Paragraph>
+      <div id='wheel' style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '50px'
+      }}>
+        <canvas
+          id='canvas'
+          width={size * 2}
+          height={size * 2}
+          style={{
+            pointerEvents: isFinished && isOnlyOnce ? 'none' : 'auto',
+          }}
+        />
+        {showTextOnSpin && isStarted && isFinished &&
+          <div style={{ textAlign: "center", padding: "20px", fontWeight: "bold", fontSize: "1.5em", fontFamily: fontFamily }}>
+            {needleText}
+          </div>}
+      </div>
+      <Footer />
+    </>
   );
 };
+const StyledHeader = styled.h2`
+  color: var(--logo-red);
+  text-align: center;
+  // font-size: 1.5em;
+  margin-bottom: 10px;
+`
+
+const Paragraph = styled.p`
+  text-align: center;
+`
+
 
 export default WheelComponent;

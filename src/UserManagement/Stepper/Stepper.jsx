@@ -7,6 +7,7 @@ import { span } from "framer-motion/client";
 export default function Stepper({
   children,
   initialStep = 1,
+  showProgressBar = false,
   onStepChange = () => { },
   onFinalStepCompleted = () => { },
   stepCircleContainerClassName = "",
@@ -17,6 +18,7 @@ export default function Stepper({
   nextButtonProps = {},
   backButtonText = "Back",
   nextButtonText = "Continue",
+  endButtonText = "Заврши",
   disableStepIndicators = false,
   renderStepIndicator,
   validateStep = () => true,
@@ -61,11 +63,12 @@ export default function Stepper({
     setDirection(1);
     updateStep(totalSteps + 1);
   };
-
   return (
     <div className="outer-container" {...rest}>
       <div className={`step-circle-container ${stepCircleContainerClassName}`} style={{ border: "1px solid #222" }}>
-        <div className={`step-indicator-row ${stepContainerClassName}`}>
+        <div 
+        style={{ display: showProgressBar ? 'flex' : 'none' }}
+        className={`step-indicator-row ${stepContainerClassName}`}>
           {stepsArray.map((_, index) => {
             const stepNumber = index + 1;
             const isNotLastStep = index < totalSteps - 1;
@@ -125,7 +128,7 @@ export default function Stepper({
                 className="next-button"
                 {...nextButtonProps}
               >
-                {isLastStep ? "Заврши" : nextButtonText}
+                {isLastStep ? endButtonText : nextButtonText}
               </button>
             </div>
           </div>
