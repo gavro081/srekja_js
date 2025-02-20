@@ -63,7 +63,11 @@ function MainEshopPage() {
           <ProductCard className="mainTshirtContainer">
             <h3>Маици</h3>
             <img src={whiteFrontLogo} className="maica" />
-            <StyledLink as="div" onClick={() => handleLinkClick('maici')}>
+            <StyledLink
+              className="maicaText"
+              as="div"
+              onClick={() => handleLinkClick('maici')}
+            >
               {' '}
               <p>Види ги сите</p>
             </StyledLink>
@@ -128,13 +132,16 @@ const StyledLink = styled(Link)`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 8%;
+  bottom: 2%;
   text-decoration: underline;
   color: grey;
   cursor: pointer;
 
   &.mugText {
     left: 53%;
+  }
+  &.maicaText {
+    left: 47.5%;
   }
 `;
 const ProductCard = styled.div`
@@ -146,6 +153,7 @@ const ProductCard = styled.div`
   border-top: 0px;
   border-left: 0px;
   border-radius: 0% !important;
+
   align-items: center;
   position: relative;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);

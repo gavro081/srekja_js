@@ -1,12 +1,13 @@
 import Navbar from '../shumaComponents/Navbar';
 import Footer from '../shumaComponents/Footer';
 import styled, { createGlobalStyle } from 'styled-components';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
 
 function Filtered() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [allProducts, setAllProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const { text } = location.state || {};
@@ -58,6 +59,10 @@ function Filtered() {
       );
       setProducts(filteredItems);
     }
+  };
+
+  const handleProductClick = (product) => {
+    navigate('/singleProductPage', { state: { product } });
   };
 
   return (
@@ -117,19 +122,26 @@ function Filtered() {
           </Filter>
         </FilterWrapper>
         <ProductsWrapper>
-          {products.map((product) => (
-            <ProductCard key={product.name}>
-              <h3>{product.name}</h3>
-              <img
-                src={product.img}
-                alt={product.name}
-                className={product.type == 'casa' ? 'mugPic' : ''}
-              />
-              {product.type == 'casi' && <p>159 ден</p>}
-              {product.type == 'maici' && <p>399 ден</p>}
-              {product.type == 'dukseri' && <p>799 ден</p>}
-            </ProductCard>
-          ))}
+          {products.map((product) => {
+            console.log(product);
+            return (
+              <ProductCard
+                key={product.name}
+                title={product.name}
+                onClick={() => handleProductClick(product)}
+              >
+                <h3>{product.name}</h3>
+                <img
+                  src={product.img}
+                  alt={product.name}
+                  className={product.type == 'casi' ? 'mugPic' : ''}
+                />
+                {product.type == 'casi' && <p>159 ден</p>}
+                {product.type == 'maici' && <p>399 ден</p>}
+                {product.type == 'dukseri' && <p>799 ден</p>}
+              </ProductCard>
+            );
+          })}
         </ProductsWrapper>
       </MainWrapper>
 
@@ -141,12 +153,10 @@ function Filtered() {
 const ProductsWrapper = styled.div`
   width: 90%;
   margin-right: 5%;
-  height: 60%;
+  height: 100%;
   display: flex;
-  overflow-y: scroll;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-bottom: 25%;
 `;
 const ProductCard = styled.div`
   width: 200px;
@@ -169,6 +179,10 @@ const ProductCard = styled.div`
   h3 {
     position: absolute;
     top: 0;
+    max-width: 180px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   img {
     width: 100%;
@@ -276,8 +290,9 @@ const Filter = styled.div`
 const MainWrapper = styled.div`
   width: 100%;
   height: 100%;
-
+  min-height: 100vh;
   display: flex;
+  margin-bottom: 20%;
 `;
 
 export default Filtered;

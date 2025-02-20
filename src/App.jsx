@@ -5,6 +5,7 @@ import GPTtester from './AI/GPTtester';
 import Home from './Home/Home.jsx';
 import EShop from './E-Shop/mainEshopPage.jsx';
 import TableReservation from './SrekjaBar/TableReservation.jsx';
+import SingleProductPage from './E-Shop/singleProductPage.jsx';
 
 import FilteredS from './E-Shop/filtered.jsx';
 
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: '/filtered',
     element: <FilteredS />,
+  },
+  {
+    path: '/singleProductPage',
+    element: <SingleProductPage />,
   },
   // {
   //  path: '/{ime na komponenta}
