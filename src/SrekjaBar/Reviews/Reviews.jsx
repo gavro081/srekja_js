@@ -12,6 +12,7 @@ import ServiceReview from "./ReviewSubMenus/ServiceReview.jsx";
 import Overrall from "./ReviewSubMenus/Overrall.jsx";
 import Confetti from 'react-confetti';
 import { motion } from "framer-motion";
+import Footer from "../../shumaComponents/Footer.jsx";
 const steps = ['Храна', 'Услуга', 'Севкупно'];
 
 const Reviews = ({ onClose }) => {
@@ -35,7 +36,7 @@ const Reviews = ({ onClose }) => {
     };
 
     return (
-        <div>
+        <Container>
             <Navbar></Navbar>
             {showConfetti && <Confetti numberOfPieces={300} recycle={false} />}
             <Stepper sx={{ width: '100%' }}>
@@ -91,15 +92,20 @@ const Reviews = ({ onClose }) => {
                     "Понатаму"
                 )}
             </NextButton>
-        </div>
+
+            <Footer />
+        </Container>
     )
 }
+const Container = styled.div`
+    
+    
+`;
+
 
 const NextButton = styled.button`
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
+    display: block;
+    margin: 2rem auto; /* Centers horizontally */
     background: linear-gradient(45deg, var(--logo-orange), var(--logo-red));
     color: white;
     border: none;
@@ -112,9 +118,10 @@ const NextButton = styled.button`
 
     &:hover {
         background: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
-        transform: translateX(-50%) scale(1.05);
+        transform: scale(1.05);
     }
 `;
+
 
 
 export default Reviews

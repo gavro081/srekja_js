@@ -29,7 +29,7 @@ export default function Footer() {
                     <FooterLink to="/">Почетна</FooterLink>
                     <FooterLink to="/">Мени</FooterLink>
                     <FooterLink to="/srekjaBar">Резервирај</FooterLink>
-                    <FooterLink to="/">Оцена</FooterLink>
+                    <FooterLink to="/srekjaBar/reviews">Оцена</FooterLink>
                     <FooterLink to="/">Среќни Производи</FooterLink>
                     <FooterLink to="/">За Нас</FooterLink>
                 </QuickLinks>
