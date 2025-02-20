@@ -12,7 +12,14 @@ import menu from "../../public/iconsSrekjaBar/restaurant-line.png"
 import reserve from "../../public/iconsSrekjaBar/add-circle-line (1).png"
 import review from "../../public/iconsSrekjaBar/chat-1-line.png"
 import SplitText from "./SplitText.jsx";
-import CustomizedRating from "./Reviews/CustomizedRating.jsx";
+import user1 from "../../public/picturesUsers/user1.jpg"
+import user2 from "../../public/picturesUsers/user2.jpg"
+import user3 from "../../public/picturesUsers/user3.jpg"
+import user4 from "../../public/picturesUsers/user4.jpg"
+import user5 from "../../public/picturesUsers/user5.jpg"
+import user6 from "../../public/picturesUsers/user6.jpg"
+import user7 from "../../public/picturesUsers/user7.jpg"
+import {Link} from "react-router-dom";
 
 export default function MenuPromotion() {
     const handleAnimationComplete = () => {
@@ -31,8 +38,10 @@ export default function MenuPromotion() {
                     <ButtonWrapper>
                         <button><a href="https://menu.ebar.mk/language#/place/1623083480963963100/menu"> <img
                             src={menu}/></a></button>
-                        <button><a><img src={reserve}/></a></button>
-                        <button><a><img src={review}/></a></button>
+                        <button><Link to="/srekjaBar/rezerviraj"><img src={reserve}/></Link></button>
+                        <button><Link to="/srekjaBar/reviews">
+                            <img src={review} alt="Review" />
+                        </Link></button>
                     </ButtonWrapper>
                 </Hero>
                 <HeroImg src={cardImage}/>
@@ -67,7 +76,7 @@ export default function MenuPromotion() {
                             <CardText>
                                 {Array.isArray(item["ingredients-mk"]) ? item["ingredients-mk"].join(", ") : item["ingredients-mk"]}
                             </CardText>
-                            <CardPrice>{item.price}</CardPrice>
+                            <CardPrice>{item.price} ден.</CardPrice>
 
                         </Card>
                     </SwiperSlideStyled>
@@ -103,15 +112,125 @@ export default function MenuPromotion() {
 
             </Feedback>
 
+            <h2><SplitText
+            text="Коментари"
+            className="text-2xl font-semibold text-center"
+            delay={100}
+            animationFrom={{opacity: 0, transform: 'translate3d(0,50px,0)'}}
+            animationTo={{opacity: 1, transform: 'translate3d(0,0,0)'}}
+            easing="easeOutCubic"
+            threshold={0.2}
+            rootMargin="-50px"
+            onLetterAnimationComplete={handleAnimationComplete}
+        /></h2>
+
+            <CommentGrid>
+                <CommentCard>
+                    <UserImage src={user1}/>
+                    <CommentText>
+                        "Не можам да го изоставам овој ресторан! Храната е вкусна, а цените се разумни."
+                    </CommentText>
+                    <Rating>
+                        <Star rating={3} />
+                    </Rating>
+                </CommentCard>
+                <CommentCard>
+                    <UserImage src={user3} />
+                    <CommentText>
+                        "Одлична услуга! Персоналот беше многу пријателски настроен, а храната стигна брзо."
+                    </CommentText>
+                    <Rating>
+                        <Star rating={4} />
+                    </Rating>
+                </CommentCard>
+                <CommentCard>
+                    <UserImage src={user5} />
+                    <CommentText>
+                        "Храната е феноменална! Обавезно ќе се враќам повторно."
+                    </CommentText>
+                    <Rating>
+                        <Star rating={5}></Star>
+                    </Rating>
+                </CommentCard>
+
+                <CommentCard>
+                    <UserImage src={user4} />
+                    <CommentText>
+                        "Амбиентот е прекрасен, а услугата е брза и ефективна. Се чувствувавме како дома!"
+                    </CommentText>
+                    <Rating>
+                        <Star rating={4}></Star>
+                    </Rating>
+                </CommentCard>
+            </CommentGrid>
+
 
         </Wrapper>
     )
 }
+const Star = ({ rating }) => {
+    const totalStars = 5;
+    const filledStars = Math.floor(rating);
+    const halfStar = rating % 1 !== 0;
+
+    return (
+        <div>
+            {Array.from({ length: filledStars }).map((_, index) => (
+                <span key={index}>&#9733;</span>
+                ))}
+            {halfStar && <span>&#9733;&#9734;</span>}
+            {Array.from({ length: totalStars - Math.ceil(rating) }).map((_, index) => (
+                <span key={index + filledStars}>&#9734;</span>
+                ))}
+        </div>
+    );
+};
+const CommentGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+`;
+
+const CommentCard = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+`;
+
+const UserImage = styled.img`
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+`;
+
+const CommentText = styled.p`
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-style: italic;
+`;
+
+const Rating = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+`;
 const RatingItem = styled.div`
     display: flex;
     justify-content: space-between;
     margin: 0.5rem 0;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     gap: 1rem;
 `;
 
