@@ -72,7 +72,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "mild",
       "customize-options": [],
-      "price": 230
+      "price": 230,
+      "image": "../../public/picturesFoods/tost.jpg"
     },
     {
       'id': 6,
@@ -86,7 +87,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "none",
       "customize-options": [],
-      "price": 200
+      "price": 200,
+      "image": "../../public/picturesFoods/vegeTost.jpg"
     },
     {
       'id': 7,
@@ -100,7 +102,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "none",
       "customize-options": [],
-      "price": 210
+      "price": 210,
+      "image": "../../public/picturesFoods/chickenSandwich.jpg"
     },
     {
       'id': 8,
@@ -114,7 +117,8 @@ const menu_items = [
       "sideDishes": ["ribbed fries"],
       "spiceLevel": "none",
       "customize-options": [],
-      "price": 280
+      "price": 280,
+      "image": "../../public/picturesFoods/prsti.jpg"
     },
     {
       'id': 9,
@@ -128,7 +132,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "mild",
       "customize-options": [],
-      "price": 0
+      "price": 0,
+      "image": "../../public/picturesFoods/wings.jpg"
     },
     {
       'id': 10,
@@ -142,7 +147,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "none",
       "customize-options": [],
-      "price": 260
+      "price": 260,
+      "image": "../../public/picturesFoods/fries.jpg"
     },
     {
       'id': 11,
