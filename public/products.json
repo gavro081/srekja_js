@@ -2,27 +2,49 @@
   {
     "type": "maici",
     "name": "Маица лого",
-    "img": "../src/E-Shop/sliki/whiteFrontLogo.png"
+    "img": "../src/E-Shop/sliki/whiteFrontLogo.png",
+    "otherImages": ["../src/E-Shop/sliki/whiteFrontLogo.png"],
+    "quantity": 5,
+    "price": 399,
+    "sizes": ["S", "M", "L", "XL"]
   },
   {
     "type": "maici",
     "name": "Маица-темна лого",
-    "img": "../src/E-Shop/sliki/darkLogo.png"
+    "img": "../src/E-Shop/sliki/darkLogo.png",
+    "otherImages": ["../src/E-Shop/sliki/darkLogo.png"],
+    "quantity": 2,
+    "price": 399,
+    "sizes": ["S", "XL"]
   },
   {
     "type": "dukseri",
     "name": "Дуксер лого",
-    "img": "../src/E-Shop/sliki/sweatshirtText1.png"
+    "img": "../src/E-Shop/sliki/sweatshirtText1.png",
+    "otherImages": ["../src/E-Shop/sliki/sweatshirtText1.png"],
+    "quantity": 10,
+    "price": 799,
+    "sizes": ["M", "L", "XL"]
   },
   {
     "type": "maici",
     "name": "Маица порака",
     "img": "../src/E-Shop/sliki/white-frontTekst.png",
-    "backImg": "../src/E-Shop/sliki/white-backTekst.png"
+    "otherImages": [
+      "../src/E-Shop/sliki/white-frontTekst.png",
+      "../src/E-Shop/sliki/white-backText.png"
+    ],
+    "quantity": 3,
+    "price": 399,
+    "sizes": ["XS", "S", "M", "L", "XL"]
   },
   {
     "type": "casi",
     "name": "Чаша порака",
-    "img": "../src/E-Shop/sliki/mugText2.png"
+    "img": "../src/E-Shop/sliki/mugText2.png",
+    "otherImages": ["../src/E-Shop/sliki/mugText2.png"],
+    "quantity": 1,
+    "price": 159,
+    "sizes": ["250ml"]
   }
 ]

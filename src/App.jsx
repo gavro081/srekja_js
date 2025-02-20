@@ -5,6 +5,11 @@ import GPTtester from './AI/GPTtester';
 import Home from './Home/Home.jsx';
 import EShop from './E-Shop/mainEshopPage.jsx';
 import TableReservation from './SrekjaBar/TableReservation.jsx';
+<<<<<<< HEAD
+=======
+import SingleProductPage from './E-Shop/singleProductPage.jsx';
+
+>>>>>>> EShop
 import FilteredS from './E-Shop/filtered.jsx';
 import Reviews from "./SrekjaBar/Reviews/Reviews.jsx";
 import Login from './UserManagement/Login.jsx';
@@ -57,7 +62,10 @@ const router = createBrowserRouter([
   {
     path: '/wheel',
     element: <Wheel />
-  }
+  },{
+    path: '/singleProductPage',
+    element: <SingleProductPage />,
+  },
   // {
   //  path: '/{ime na komponenta}
   //  element: <Ime na komponentata />
