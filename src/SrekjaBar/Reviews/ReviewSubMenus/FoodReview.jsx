@@ -55,7 +55,7 @@ const Card = styled.div`
     width: 20rem;
     height: 23rem;
     position: relative;
-    background: white; /* Background color of the card */
+    background: white; 
 
     &::before {
         content: '';

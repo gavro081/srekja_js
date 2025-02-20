@@ -12,6 +12,7 @@ import menu from "../../public/iconsSrekjaBar/restaurant-line.png"
 import reserve from "../../public/iconsSrekjaBar/add-circle-line (1).png"
 import review from "../../public/iconsSrekjaBar/chat-1-line.png"
 import SplitText from "./SplitText.jsx";
+import CustomizedRating from "./Reviews/CustomizedRating.jsx";
 
 export default function MenuPromotion() {
     const handleAnimationComplete = () => {
@@ -40,8 +41,8 @@ export default function MenuPromotion() {
                 text="Популарни понуди"
                 className="text-2xl font-semibold text-center"
                 delay={100}
-                animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
-                animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+                animationFrom={{opacity: 0, transform: 'translate3d(0,50px,0)'}}
+                animationTo={{opacity: 1, transform: 'translate3d(0,0,0)'}}
                 easing="easeOutCubic"
                 threshold={0.2}
                 rootMargin="-50px"
@@ -73,15 +74,89 @@ export default function MenuPromotion() {
                 )}
 
             </Swiper>
+            <h2><SplitText
+                text="Нашите корисници не оцениле со"
+                className="text-2xl font-semibold text-center"
+                delay={100}
+                animationFrom={{opacity: 0, transform: 'translate3d(0,50px,0)'}}
+                animationTo={{opacity: 1, transform: 'translate3d(0,0,0)'}}
+                easing="easeOutCubic"
+                threshold={0.2}
+                rootMargin="-50px"
+                onLetterAnimationComplete={handleAnimationComplete}
+            /></h2>
+            <Feedback>
+
+
+                <RatingItem>
+                    <span>Квалитет на храна: </span>
+                    <RatingValue> 4.9/5</RatingValue>
+                </RatingItem>
+                <Overral>
+                    4.8
+                </Overral>
+
+                <RatingItem>
+                    <span>Услуга:</span>
+                    <RatingValue>4.7/5</RatingValue>
+                </RatingItem>
+
+            </Feedback>
 
 
         </Wrapper>
     )
 }
+const RatingItem = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    gap: 1rem;
+`;
+
+const RatingValue = styled.span`
+    font-weight: bold;
+    color: var(--logo-orange);
+`;
+const Overral = styled.div`
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--logo-yellow);
+    text-align: center;
+    padding: 1rem 0;
+    height: auto;
+`;
+
+const Feedback = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-left: 4rem;
+    height: 50%;
+    margin-top: 3rem;
+    margin-bottom: 10rem;
+    position: relative;
+    padding-top: 2rem;
+    border-radius: 50px; 
+    border: 3px solid transparent;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+`;
+
+const FeedbackTitle = styled.h2`
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: -7rem;
+    z-index: 10;
+    padding: 1rem 0;
+    background-color: transparent;
+`;
+
 
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
+
     & > div {
         display: flex;
         justify-content: space-between;
@@ -92,11 +167,12 @@ const Wrapper = styled.div`
     .mySwiper .swiper-button-next, .mySwiper .swiper-button-prev {
         color: var(--logo-green);
     }
-    & > h2{
+
+    & > h2 {
         text-align: center;
         margin: 2rem 0;
-        font-size: 3rem; 
-        
+        font-size: 3rem;
+
     }
 `
 
@@ -122,6 +198,7 @@ const Title = styled.h1`
 const ButtonWrapper = styled.div`
     display: flex;
     gap: 1rem;
+
     & > button {
         border: none;
         padding: 1rem 2rem;
@@ -132,6 +209,7 @@ const ButtonWrapper = styled.div`
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         border-radius: 100px;
     }
+
     & > button {
         background: var(--logo-yellow);
         color: white;
@@ -145,6 +223,7 @@ const ButtonWrapper = styled.div`
     & > button:hover {
         scale: 1.05;
     }
+
     & > button img {
         width: 2rem;
         height: auto;
