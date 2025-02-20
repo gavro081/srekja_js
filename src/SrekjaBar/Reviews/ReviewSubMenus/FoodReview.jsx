@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import styled from "styled-components";
 import GradientText from "../GradientText.jsx";
 import CircularGallery from "../CircularGallery.jsx";
-import menu_items from '../../../../public/menuitems.jsx';
+import menu_items from '../../../AI/menuitems.js';
 import CustomizedRating from "../CustomizedRating.jsx";
 
 
