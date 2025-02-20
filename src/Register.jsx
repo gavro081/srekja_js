@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react'
+import React, { use, useState, useEffect } from 'react'
 import Stepper, { Step } from './Stepper/Stepper'
 import styled from 'styled-components';
 import CustomTextField from './CustomTextField';
@@ -10,6 +10,7 @@ import { doc, setDoc } from '@firebase/firestore';
 import { db } from './firebase/firebase';
 import { auth } from './firebase/firebase';
 import Spinner from './Spinner';
+import { Link } from 'react-router-dom';
 
 
 function Register() {
@@ -43,7 +44,7 @@ function Register() {
                     alert("Внесете валидна е-пошта");
                     return false;
                 }
-                if (password.length < 6){
+                if (password.length < 6) {
                     alert("Лозинката мора да има барем 6 карактери")
                     return false;
                 }
@@ -58,7 +59,7 @@ function Register() {
     const handleSubmit = async () => {
         setError(null);
         setIsLoading(true)
-        try{
+        try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password)
             const user = userCredential.user
             const userID = user.uid
@@ -71,7 +72,7 @@ function Register() {
             })
             setIsLoading(false)
             console.log("Signup successful!");
-        }catch (err){
+        } catch (err) {
             setIsLoading(false)
             setError(err.message)
             console.error("Signup failed:", err)
@@ -96,6 +97,7 @@ function Register() {
                         validateStep={validateStep} // Pass the validation function
                     >
                         <Step>
+                                <StyledHeader>Регистрирај се</StyledHeader>
                             <InputWrapper>
                                 <CustomTextField
                                     value={name} // Ensure the input field is controlled
@@ -114,7 +116,7 @@ function Register() {
                                 <CustomTextField
                                     value={email} // Ensure the input field is controlled
                                     onChange={(e) => setEmail(e.target.value)}
-                                    label="е-пошта*"
+                                    label="Е-пошта*"
                                     type="email"
                                     placeholder="demo@srekja.mk"
                                 />
@@ -125,10 +127,15 @@ function Register() {
                                     type="password"
                                     placeholder="do2as-asd34-asdnj"
                                 />
+                                <p>Веќе имаш профил? &nbsp;
+                                    <Link to={'/login'}>
+                                        Најави се
+                                    </Link>
+                                </p>
                             </InputWrapper>
                         </Step>
                         <Step>
-                            <h2>Одбери ги твоите интереси</h2>
+                            <StyledHeader>Одбери ги твоите интереси</StyledHeader>
                             <FormGroup>
                                 <FormControlLabel
                                     control={<Checkbox onChange={handleInterestChange} value="спорт" />}
@@ -156,8 +163,13 @@ function Register() {
                             <ImageWrapper>
                                 <img
                                     src="../public/slikiZaEshop/logoDark-1.jpg"
-                                    width={100}
                                     alt="Logo"
+                                    style={{
+                                        maxWidth: '100%',
+                                        objectFit: 'contain',
+                                        maxHeight: '100px',
+                                        height: 'auto'
+                                    }}
                                 />
                             </ImageWrapper>
                             <StyledHeader>
@@ -182,13 +194,13 @@ const InputWrapper = styled.div`
 `;
 
 const StepperWrapper = styled.div`
-    margin: 20px auto;
+    margin: 70px auto;
     padding: 20px;
 `;
 
 const StyledHeader = styled.h2`
     color: var(--logo-red);
-    font-size: 1.5em;
+    // font-size: 1.5em;
     margin-bottom: 10px;
 `;
 
@@ -203,7 +215,7 @@ const ImageWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
+    height: 70px
 `
 const SpinnerWrapper = styled.div`
     display: flex;

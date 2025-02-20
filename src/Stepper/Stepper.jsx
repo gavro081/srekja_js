@@ -19,7 +19,7 @@ export default function Stepper({
   nextButtonText = "Continue",
   disableStepIndicators = false,
   renderStepIndicator,
-  validateStep = () => true, 
+  validateStep = () => true,
   ...rest
 }) {
   const [currentStep, setCurrentStep] = useState(initialStep);
@@ -47,7 +47,7 @@ export default function Stepper({
   };
 
   const handleNext = () => {
-    if (currentStep === 1 && !validateStep(currentStep)){
+    if (currentStep === 1 && !validateStep(currentStep)) {
       return
     }
     if (!isLastStep) {
@@ -85,10 +85,10 @@ export default function Stepper({
                     step={stepNumber}
                     disableStepIndicators={disableStepIndicators}
                     currentStep={currentStep}
-                    // onClickStep={(clicked) => {
-                    //   setDirection(clicked > currentStep ? 1 : -1);
-                    //   updateStep(clicked);
-                    // }}
+                  // onClickStep={(clicked) => {
+                  //   setDirection(clicked > currentStep ? 1 : -1);
+                  //   updateStep(clicked);
+                  // }}
                   />
                 )}
                 {isNotLastStep && (
@@ -203,13 +203,13 @@ function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators }
 
   const handleClick = () => {
     if (step !== currentStep && !disableStepIndicators) onClickStep(step);
-  };  function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators }) {
+  }; function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators }) {
     const status = currentStep === step ? "active" : currentStep < step ? "inactive" : "complete";
-  
+
     const handleClick = () => {
       if (step !== currentStep && !disableStepIndicators) onClickStep(step);
     };
-  
+
     return (
       <motion.div onClick={handleClick} className="step-indicator" animate={status} initial={false}>
         <motion.div
