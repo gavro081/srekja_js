@@ -3,7 +3,7 @@ import TableReservation from "./TableReservation.jsx";
 import Navbar from "../shumaComponents/Navbar.jsx";
 import Footer from "../shumaComponents/Footer.jsx";
 import MenuPromotion from "./MenuPromotion.jsx";
-
+import Reviews from "./Reviews/Reviews.jsx";
 export default function SrekjaBar() {
     return (
         <Wrapper >

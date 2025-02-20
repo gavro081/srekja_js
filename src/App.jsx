@@ -5,8 +5,8 @@ import GPTtester from './AI/GPTtester';
 import Home from './Home/Home.jsx';
 import EShop from './E-Shop/mainEshopPage.jsx';
 import TableReservation from './SrekjaBar/TableReservation.jsx';
-
 import FilteredS from './E-Shop/filtered.jsx';
+import Reviews from "./SrekjaBar/Reviews/Reviews.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +41,10 @@ const router = createBrowserRouter([
     path: '/filtered',
     element: <FilteredS />,
   },
+    {
+        path:'/srekjaBar/reviews',
+        element:<Reviews/>
+    },
   // {
   //  path: '/{ime na komponenta}
   //  element: <Ime na komponentata />
@@ -51,4 +55,4 @@ function App() {
   return <RouterProvider router={router} />;
 }
 
-export default App;
+export default App

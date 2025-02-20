@@ -12,7 +12,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "none",
       "customize-options": ["pepperoni", "bacon", "mushrooms", "mozzarella", "pepper"],
-      "price": 170
+      "price": 170,
+        "image": "./picturesFoods/CustomOmelet.jpg"
     },
     {
       'id': 2,
@@ -26,7 +27,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "none",
       "customize-options": [],
-      "price": 160
+      "price": 160,
+        "image": "./picturesFoods/Bagel with Eggs.jpg"
     },
     {
       'id': 3,
@@ -40,7 +42,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "mild",
       "customize-options": [],
-      "price": 230
+      "price": 230,
+        "image": "./picturesFoods/Club Sandwich.jpg"
     },
     {
       'id': 4,
@@ -54,7 +57,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "none",
       "customize-options": [],
-      "price": 200
+      "price": 200,
+        "image": "./picturesFoods/Classic Toast.jpg"
     },
     {
       'id': 5,
