@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -10,47 +10,20 @@ export default function Navbar() {
 
       <NavLinks>
         <NavItem to="/">Почетна</NavItem>
-        <NavItemContainer>
-          <NavItem
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '2px',
-            }}
-            to="/srekjaBar"
-          >
-            Среќа Бар{' '}
-            <img
-              src="/assets/images/drop.png"
-              style={{ width: '18px', height: '16px', marginTop: '2px' }}
-            />
-          </NavItem>
-          <Dropdown>
-            <DropdownItem
-              to="https://menu.ebar.mk/language#/place/1623083480963963100/menu"
-              target="_blank"
-            >
-              Мени
-            </DropdownItem>
-            <DropdownItem to="/srekjaBar/rezerviraj">Резервирај</DropdownItem>
-            <DropdownItem to="/srekjaBar/option3">Оцена</DropdownItem>
-          </Dropdown>
-        </NavItemContainer>
-
+        <NavItem to="/srekjaBar">Среќа Бар</NavItem>
         <NavItem to="/mainEshopPage">Среќни производи</NavItem>
         <NavItem to="/about">За Нас</NavItem>
 
-        <Button to="/register" style={{ marginLeft: '35px' }}>
+        <Button to="/register" style={{ marginLeft: "35px" }}>
           <img
             src="/assets/images/shop2.svg"
-            style={{ width: '18px', height: '18px' }}
+            style={{ width: "18px", height: "18px" }}
           />
         </Button>
         <Button to="/register">
           <img
             src="/assets/images/person2.svg"
-            style={{ width: '20px', height: '22px', marginTop: '-2px' }}
+            style={{ width: "20px", height: "22px", marginTop: "-2px" }}
           />
         </Button>
       </NavLinks>
@@ -59,14 +32,14 @@ export default function Navbar() {
 }
 
 const Nav = styled.nav`
-    display: flex;
-    color: black;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 30px;
-    background-color: white;
-    margin-bottom: 40px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  color: black;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  background-color: white;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 `;
 
 const NavItem = styled(Link)`
@@ -88,6 +61,9 @@ const Button = styled(Link)`
   padding: 10px;
   border: 2px solid white;
   height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     border: 2px solid var(--logo-green);
