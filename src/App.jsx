@@ -11,6 +11,7 @@ import Login from './UserManagement/Login.jsx';
 import { useAuth } from './firebase/authContext.jsx';
 import { useEffect } from 'react';
 import Wheel from './UserManagement/SpinTheWheel/Wheel.jsx';
+import BlogInput from './AI/BlogInput.jsx';
 
 
 const router = createBrowserRouter([
@@ -47,8 +48,8 @@ const router = createBrowserRouter([
     element: <FilteredS />,
   },
   {
-        path:'/srekjaBar/reviews',
-        element:<Reviews/>
+    path:'/srekjaBar/reviews',
+    element:<Reviews/>
   },
   {
     path: '/login',
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
   {
     path: '/wheel',
     element: <Wheel />
+  },
+  {
+    path: '/blogai',
+    element: <BlogInput />
   }
   // {
   //  path: '/{ime na komponenta}

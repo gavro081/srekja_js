@@ -1,7 +1,7 @@
 import express, { request } from 'express';
 import { OpenAI } from 'openai';
 import cors from 'cors';
-import { getMenuItems, foodSystemContent, tags } from './food.js';
+import { getMenuItems, foodSystemContent, tags } from './foodLogic.js';
 
 const app = express();
 app.use(express.json());
@@ -15,7 +15,7 @@ const openai = new OpenAI({
 
 app.post('/api/chat', async (request, res) => {
     // za testiranje na spinner
-    // await new Promise(resolve => setTimeout(resolve, 1000));
+    // await new Promise(resolve => setTimeout(resolve, 3000));
     // return res.json([]);
     console.log(request)
     console.log(request.body)
