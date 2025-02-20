@@ -38,7 +38,10 @@ const GPTtester = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({
+          message: input,
+          type: 'food',
+        }),
       });
       const data = await res.json();
       console.log(data);
@@ -85,7 +88,7 @@ const GPTtester = () => {
               <FoodItem key={index}>
                 <GradientHeading4>{item.macedonian_name}</GradientHeading4>
                 <Desc>{item.details}</Desc>
-                <Ingredients>Состојки: {item.ingredients-mk.join(", ")}</Ingredients>
+                <Ingredients>Состојки: {item['ingredients-mk'].join(", ")}</Ingredients>
                 <Price>Цена: {item.price} ден</Price>
               </FoodItem >
             ))}

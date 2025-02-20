@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SrekjaBar from './SrekjaBar/SrekjaBar.jsx';
 import Register from './UserManagement/Register.jsx';
-import GPTtester from './AI/GPTtester';
+import FoodInput from './AI/FoodInput.jsx';
 import Home from './Home/Home.jsx';
 import EShop from './E-Shop/mainEshopPage.jsx';
 import TableReservation from './SrekjaBar/TableReservation.jsx';
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/testAI',
-    element: <GPTtester />,
+    element: <FoodInput />,
   },
   {
     path: '/mainEshopPage',
