@@ -16,8 +16,10 @@
     /* primer */
     --logo-orange: #e96f23;
     --logo-green: #0B776F;
+    --logo-green-opacity50: rgba(11, 119, 111, 0.5);
     --logo-yellow: #e9ba1d;
     --logo-red: #D41E47;
+    --logo-red-opacity50: rgba(212, 30, 71, 0.5);
 
     --hover-red: #ff0055;
 
