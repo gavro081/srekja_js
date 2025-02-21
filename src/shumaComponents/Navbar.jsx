@@ -43,7 +43,6 @@ const Nav = styled.nav`
   align-items: center;
   padding: 0 30px;
   background-color: white;
-  margin-bottom: 40px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 `;
 
