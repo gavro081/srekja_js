@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../firebase/authContext';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { useAuth } from "../firebase/authContext";
 
 export default function Navbar() {
   const { currentUser } = useAuth();
@@ -12,25 +12,49 @@ export default function Navbar() {
 
       <NavLinks>
         <NavItem to="/">Почетна</NavItem>
-        <NavItem to="/srekjaBar">Среќа Бар</NavItem>
+        <NavItemContainer>
+          <NavItem
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "2px",
+            }}
+          >
+            Среќа Бар{" "}
+            <img
+              src="/assets/images/drop.png"
+              style={{ width: "18px", height: "16px", marginTop: "2px" }}
+            />
+          </NavItem>
+          <Dropdown>
+            <DropdownItem to="https://menu.e-bar.mk/language#/" target="_blank">
+              Мени
+            </DropdownItem>
+            <DropdownItem to="/srekjaBar/reservation">Резервирај</DropdownItem>
+            <DropdownItem to="/srekjaBar/reviews">Оцена</DropdownItem>
+          </Dropdown>
+        </NavItemContainer>
         <NavItem to="/mainEshopPage">Среќни производи</NavItem>
         <NavItem to="/about">За Нас</NavItem>
+        {!currentUser && <Button to="/register">Регистрирај се</Button>}
 
-        <Button
-          to={currentUser ? '/shoppingCart' : '/register'}
-          style={{ marginLeft: '35px' }}
-        >
-          <img
-            src="/assets/images/shop2.svg"
-            style={{ width: '18px', height: '18px' }}
-          />
-        </Button>
-        <Button to="/register">
-          <img
-            src="/assets/images/person2.svg"
-            style={{ width: '20px', height: '22px', marginTop: '-2px' }}
-          />
-        </Button>
+        {currentUser && (
+          <>
+            <Button to="/shoppingCart" style={{ marginLeft: "35px" }}>
+              <img
+                src="/assets/images/shop2.svg"
+                style={{ width: "18px", height: "18px" }}
+              />
+            </Button>
+            <Button to="/register">
+              <img
+                src="/assets/images/person2.svg"
+                style={{ width: "20px", height: "22px", marginTop: "-2px" }}
+              />
+            </Button>
+          </>
+        )}
       </NavLinks>
     </Nav>
   );
@@ -68,7 +92,9 @@ const Button = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
   &:hover {
     border: 2px solid var(--logo-green);
     box-shadow: 2px 2px 10px grey;
@@ -92,7 +118,7 @@ const Dropdown = styled.div`
   left: 0;
   background-color: white;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 5;
 
   ${NavItem}:hover & {
     display: block;

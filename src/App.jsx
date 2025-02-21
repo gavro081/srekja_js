@@ -55,11 +55,6 @@ const router = createBrowserRouter([
     path: '/srekjaBar/reviews',
     element: <Reviews />,
 
-    path: '/srekjaBar/reviews',
-    element: <Reviews />,
-
-    path: '/srekjaBar/reviews',
-    element: <Reviews />,
   },
   {
     path: '/login',
