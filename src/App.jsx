@@ -1,18 +1,22 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SrekjaBar from './SrekjaBar/SrekjaBar.jsx';
 import Register from './UserManagement/Register.jsx';
-import GPTtester from './AI/GPTtester';
+import FoodInput from './AI/FoodInput.jsx';
 import Home from './Home/Home.jsx';
 import EShop from './E-Shop/mainEshopPage.jsx';
 import TableReservation from './SrekjaBar/TableReservation.jsx';
 import SingleProductPage from './E-Shop/singleProductPage.jsx';
+<<<<<<< HEAD
 
+=======
+>>>>>>> f4454db4eaed8959c94253cd9f74556b3747d010
 import FilteredS from './E-Shop/filtered.jsx';
 import Reviews from './SrekjaBar/Reviews/Reviews.jsx';
 import Login from './UserManagement/Login.jsx';
 import { useAuth } from './firebase/authContext.jsx';
 import { useEffect } from 'react';
 import Wheel from './UserManagement/SpinTheWheel/Wheel.jsx';
+import BlogInput from './AI/BlogInput.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +37,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/testAI',
-    element: <GPTtester />,
+    element: <FoodInput />,
   },
   {
     path: '/mainEshopPage',
@@ -48,8 +52,13 @@ const router = createBrowserRouter([
     element: <FilteredS />,
   },
   {
+<<<<<<< HEAD
     path: '/srekjaBar/reviews',
     element: <Reviews />,
+=======
+    path:'/srekjaBar/reviews',
+    element:<Reviews/>
+>>>>>>> f4454db4eaed8959c94253cd9f74556b3747d010
   },
   {
     path: '/login',
@@ -63,6 +72,10 @@ const router = createBrowserRouter([
     path: '/singleProductPage',
     element: <SingleProductPage />,
   },
+  {
+    path: '/blogai',
+    element: <BlogInput />
+  }
   // {
   //  path: '/{ime na komponenta}
   //  element: <Ime na komponentata />

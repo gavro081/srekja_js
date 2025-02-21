@@ -5,6 +5,7 @@ const blogs = [
         "short_desc": "Истражуваме како љубовните односи се менувале низ вековите и што значи љубовта денес.",
         "author": "Ана Петровска",
         "category": "Љубов",
+        "category-en": "Love",
         "image": "https://images.pexels.com/photos/3693907/pexels-photo-3693907.jpeg",
         "color": "#D41E47" // Red for love
     },
@@ -14,6 +15,7 @@ const blogs = [
         "short_desc": "Практични совети за штедење, инвестирање и создавање стабилна финансиска иднина.",
         "author": "Марко Стојанов",
         "category": "Економија",
+        "category-en": "Economics",
         "image": "https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg",
         "color": "#0B776F" // Green for economy
     },
@@ -23,6 +25,7 @@ const blogs = [
         "short_desc": "Како AI ја менува технологијата и кои се предизвиците што нè очекуваат.",
         "author": "Иван Николов",
         "category": "Технологија",
+        "category-en": "Tech",
         "image": "https://images.pexels.com/photos/11035371/pexels-photo-11035371.jpeg",
         "color": "#4682B4" // Blue for technology
     },
@@ -32,6 +35,7 @@ const blogs = [
         "short_desc": "Колекција на смешни приказни кои ќе ви го разубават денот.",
         "author": "Весна Трајковска",
         "category": "Хумор",
+        "category-en": "Humor",
         "image": "https://images.pexels.com/photos/3768131/pexels-photo-3768131.jpeg",
         "color": "#e96f23" // Yellow for humor
     },
@@ -41,6 +45,7 @@ const blogs = [
         "short_desc": "Совети за одржување на здрава и стабилна љубовна врска.",
         "author": "Марија Димитрова",
         "category": "Љубов",
+        "category-en": "Love",
         "image": "https://images.pexels.com/photos/935789/pexels-photo-935789.jpeg",
         "color": "#D41E47" // Red for love
     },
@@ -50,6 +55,7 @@ const blogs = [
         "short_desc": "Разгледување на можностите и ризиците од вложување во криптовалути.",
         "author": "Александар Георгиев",
         "category": "Економија",
+        "category-en": "Economics",
         "image": "https://images.pexels.com/photos/6770775/pexels-photo-6770775.jpeg",
         "color": "#0B776F" // Green for economy
     },
@@ -60,6 +66,7 @@ const blogs = [
         "short_desc": "Истражување на македонската духовитост и најпознатите шеги.",
         "author": "Бојан Јовановски",
         "category": "Хумор",
+        "category-en": "Humor",
         "image": "https://images.pexels.com/photos/3184404/pexels-photo-3184404.jpeg",
         "color": "#e96f23" // Yellow for humor
     },
@@ -70,6 +77,7 @@ const blogs = [
         "short_desc": "Совети за буџетски патувања и паметно трошење додека сте на одмор.",
         "author": "Јован Крстев",
         "category": "Економија",
+        "category-en": "Economics",
         "image": "https://images.pexels.com/photos/3860253/pexels-photo-3860253.jpeg",
         "color": "#0B776F" // Green for economy
     },
@@ -79,6 +87,7 @@ const blogs = [
         "short_desc": "Што значи концептот на паметни градови и како ќе влијае на нашата иднина?",
         "author": "Кристина Петровска",
         "category": "Технологија",
+        "category-en": "Tech",
         "image": "https://images.pexels.com/photos/256150/pexels-photo-256150.jpeg",
         "color": "#4682B4" // Blue for technology
     }
