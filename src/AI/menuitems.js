@@ -13,7 +13,7 @@ const menu_items = [
       "spiceLevel": "none",
       "customize-options": ["pepperoni", "bacon", "mushrooms", "mozzarella", "pepper"],
       "price": 170,
-        "image": "./picturesFoods/CustomOmelet.jpg"
+        "image": "../../public/picturesFoods/CustomOmelet.jpg"
     },
     {
       'id': 2,
@@ -28,7 +28,7 @@ const menu_items = [
       "spiceLevel": "none",
       "customize-options": [],
       "price": 160,
-        "image": "./picturesFoods/Bagel with Eggs.jpg"
+        "image": "../../public/picturesFoods/Bagel with Eggs.jpg"
     },
     {
       'id': 3,
@@ -43,7 +43,7 @@ const menu_items = [
       "spiceLevel": "mild",
       "customize-options": [],
       "price": 230,
-        "image": "./picturesFoods/Club Sandwich.jpg"
+        "image": "../../public/picturesFoods/Club Sandwich.jpg"
     },
     {
       'id': 4,
@@ -58,7 +58,7 @@ const menu_items = [
       "spiceLevel": "none",
       "customize-options": [],
       "price": 200,
-        "image": "./picturesFoods/Classic Toast.jpg"
+        "image": "../../public/picturesFoods/Classic Toast.jpg"
     },
     {
       'id': 5,
@@ -72,7 +72,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "mild",
       "customize-options": [],
-      "price": 230
+      "price": 230,
+      "image": "../../public/picturesFoods/tost.jpg"
     },
     {
       'id': 6,
@@ -86,7 +87,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "none",
       "customize-options": [],
-      "price": 200
+      "price": 200,
+      "image": "../../public/picturesFoods/vegeTost.jpg"
     },
     {
       'id': 7,
@@ -100,7 +102,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "none",
       "customize-options": [],
-      "price": 210
+      "price": 210,
+      "image": "../../public/picturesFoods/chickenSandwich.jpg"
     },
     {
       'id': 8,
@@ -114,7 +117,8 @@ const menu_items = [
       "sideDishes": ["ribbed fries"],
       "spiceLevel": "none",
       "customize-options": [],
-      "price": 280
+      "price": 280,
+      "image": "../../public/picturesFoods/prsti.jpg"
     },
     {
       'id': 9,
@@ -128,7 +132,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "mild",
       "customize-options": [],
-      "price": 0
+      "price": 0,
+      "image": "../../public/picturesFoods/wings.jpg"
     },
     {
       'id': 10,
@@ -142,7 +147,8 @@ const menu_items = [
       "sideDishes": [],
       "spiceLevel": "none",
       "customize-options": [],
-      "price": 260
+      "price": 260,
+      "image": "../../public/picturesFoods/fries.jpg"
     },
     {
       'id': 11,
