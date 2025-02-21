@@ -19,7 +19,14 @@ export default function TableReservation() {
 
     useEffect(() => {
         fetchReservations(selectedDate.format('YYYY-MM-DD'));
-    }, [selectedDate, selectedTime, placeIsTerrace]);
+    }, [selectedDate, selectedTime, placeIsTerrace, hourlyDuration]);
+
+    useEffect(() => {
+        const reservation = inactiveTables.find(table => table.tableId === selectedTableId);
+        if (reservation) {
+            setSelectedTableId('');
+        }
+    }, [hourlyDuration, inactiveTables]);
 
     const fetchReservations = async (date) => {
         const reservations = await getReservations(date);
@@ -28,8 +35,17 @@ export default function TableReservation() {
             const resEndTime = dayjs(`${res.date} ${res.endTime}`);
             const selectedStartTime = dayjs(`${date} ${selectedTime.format('HH:mm')}`);
             const selectedEndTime = selectedStartTime.add(hourlyDuration, 'hour');
-            return selectedStartTime.isBefore(resEndTime) && selectedEndTime.isAfter(resStartTime) && res.placeIsTerrace === placeIsTerrace;
-        }).map(res => res.tableId);
+
+            // Check if there is a gap between the existing reservation and the desired reservation time
+            const isOverlapping = selectedStartTime.isBefore(resEndTime) && selectedEndTime.isAfter(resStartTime);
+            const isGapSufficient = selectedEndTime.isBefore(resStartTime) || selectedEndTime.isSame(resStartTime) || selectedStartTime.isAfter(resEndTime) || selectedStartTime.isSame(resEndTime);
+
+            return isOverlapping && !isGapSufficient && res.placeIsTerrace === placeIsTerrace;
+        }).map(res => ({
+            tableId: res.tableId,
+            startTime: res.startTime,
+            endTime: res.endTime
+        }));
         setInactiveTables(reservedTables);
     };
 
@@ -42,57 +58,45 @@ export default function TableReservation() {
 
     const renderTableChairs = () => (
         <>
-            <div style={{ top: '.4rem', left: '-1rem', transform: 'rotate(-45deg)' }} />
-            <div style={{ top: '.4rem', right: '-1rem', transform: 'rotate(45deg)' }} />
-            <div style={{ bottom: '.4rem', right: '-1rem', transform: 'rotate(-45deg)' }} />
-            <div style={{ bottom: '.4rem', left: '-1rem', transform: 'rotate(45deg)' }} />
+            <div style={{top: '.4rem', left: '-1rem', transform: 'rotate(-45deg)'}}/>
+            <div style={{top: '.4rem', right: '-1rem', transform: 'rotate(45deg)'}}/>
+            <div style={{bottom: '.4rem', right: '-1rem', transform: 'rotate(-45deg)'}}/>
+            <div style={{bottom: '.4rem', left: '-1rem', transform: 'rotate(45deg)'}}/>
         </>
+    );
+
+    const renderTables = (tableIds) => (
+        tableIds.map(id => {
+            const reservation = inactiveTables.find(table => table.tableId === id);
+            return (
+                <Table
+                    key={id}
+                    id={id}
+                    className={`${reservation ? 'inactive' : ''} ${selectedTableId === id ? 'selected' : ''}`}
+                    onClick={() => {
+                        setSelectedTableId(id);
+                    }}
+                >
+                    4-6
+                    {renderTableChairs()}
+                    {reservation && (
+                        <ReservationTime>
+                            {reservation.startTime} - {reservation.endTime}
+                        </ReservationTime>
+                    )}
+                </Table>
+            );
+        })
     );
 
     return (
         <Wrapper>
-            <Navbar />
+            <Navbar/>
             <div>
                 <TablesMap>
-                    <div>
-                        {['t1', 't2', 't3', 't4'].map(id => (
-                            <Table
-                                key={id}
-                                id={id}
-                                className={`${inactiveTables.includes(id) ? 'inactive' : ''} ${selectedTableId === id ? 'selected' : ''}`}
-                                onClick={() => !inactiveTables.includes(id) && setSelectedTableId(id)}
-                            >
-                                4-6
-                                {renderTableChairs()}
-                            </Table>
-                        ))}
-                    </div>
-                    <div>
-                        {['t5', 't6', 't7', 't8'].map(id => (
-                            <Table
-                                key={id}
-                                id={id}
-                                className={`${inactiveTables.includes(id) ? 'inactive' : ''} ${selectedTableId === id ? 'selected' : ''}`}
-                                onClick={() => !inactiveTables.includes(id) && setSelectedTableId(id)}
-                            >
-                                2-4
-                                {renderTableChairs()}
-                            </Table>
-                        ))}
-                    </div>
-                    <div>
-                        {['t9', 't10', 't11', 't12'].map(id => (
-                            <Table
-                                key={id}
-                                id={id}
-                                className={`${inactiveTables.includes(id) ? 'inactive' : ''} ${selectedTableId === id ? 'selected' : ''}`}
-                                onClick={() => !inactiveTables.includes(id) && setSelectedTableId(id)}
-                            >
-                                4-6
-                                {renderTableChairs()}
-                            </Table>
-                        ))}
-                    </div>
+                    <div>{renderTables(['t1', 't2', 't3', 't4'])}</div>
+                    <div>{renderTables(['t5', 't6', 't7', 't8'])}</div>
+                    <div>{renderTables(['t9', 't10', 't11', 't12'])}</div>
                 </TablesMap>
                 <ResDetails>
                     <h1>Направи Резервација!</h1>
@@ -101,31 +105,31 @@ export default function TableReservation() {
                             <p>Резервацијата е направена од:</p>
                             <p>Борјан Ѓорѓиевски</p>
                         </ResDetailWrapper>
-                        <span style={{ display: "flex", gap: "1rem" }}>
-                            <ResDetailWrapper>
-                                <p>На датум:</p>
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <DatePicker
-                                        value={selectedDate}
-                                        onChange={(newDate) => setSelectedDate(newDate)}
-                                        minDate={dayjs()}
-                                    />
-                                </LocalizationProvider>
-                            </ResDetailWrapper>
-                            <ResDetailWrapper>
-                                <p>Време:</p>
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <TimePicker
-                                        value={selectedTime}
-                                        onChange={(newTime) => setSelectedTime(newTime)}
-                                        minutesStep={30}
-                                        ampm={false}
-                                        minTime={dayjs().hour(8).minute(0)}
-                                        maxTime={dayjs().hour(21).minute(0)}
-                                    />
-                                </LocalizationProvider>
-                            </ResDetailWrapper>
-                        </span>
+                        <span style={{display: "flex", gap: "1rem"}}>
+                        <ResDetailWrapper>
+                            <p>На датум:</p>
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <DatePicker
+                                    value={selectedDate}
+                                    onChange={(newDate) => setSelectedDate(newDate)}
+                                    minDate={dayjs()}
+                                />
+                            </LocalizationProvider>
+                        </ResDetailWrapper>
+                        <ResDetailWrapper>
+                            <p>Време:</p>
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <TimePicker
+                                    value={selectedTime}
+                                    onChange={(newTime) => setSelectedTime(newTime)}
+                                    minutesStep={30}
+                                    ampm={false}
+                                    minTime={dayjs().hour(8).minute(0)}
+                                    maxTime={dayjs().hour(21).minute(0)}
+                                />
+                            </LocalizationProvider>
+                        </ResDetailWrapper>
+                    </span>
                         <ResDetailWrapper>
                             <p>Место во барот:</p>
                             <ButtonWrapper>
@@ -170,9 +174,9 @@ export default function TableReservation() {
                     <ResSubmitBtn onClick={handleReservation}>Резервирај</ResSubmitBtn>
                 </ResDetails>
             </div>
-            <Footer />
+            <Footer/>
         </Wrapper>
-    )
+    );
 }
 
 const Wrapper = styled.div`
@@ -181,7 +185,8 @@ const Wrapper = styled.div`
 
     & > div {
         display: grid;
-        grid-template-columns: 70% auto;
+        grid-template-columns: 2fr 1fr;
+        width: 100%;
     }
 `;
 
@@ -207,7 +212,7 @@ const Table = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--logo-green);
+    background: var(--logo-green-opacity50);
     width: fit-content;
     padding: 3rem;
     color: white;
@@ -215,16 +220,14 @@ const Table = styled.button`
     font-size: 1rem;
     cursor: pointer;
     transition: all .2s ease-in-out;
-    opacity: 0.5;
 
     &:hover {
         scale: 1.1;
     }
 
     &.inactive {
-        background: var(--logo-red);
+        background: var(--logo-red-opacity50);
         cursor: auto;
-        opacity: 0.2;
     }
     &.inactive:hover {
         cursor: default;
@@ -232,8 +235,8 @@ const Table = styled.button`
     }
 
     &.selected {
-        opacity: 1;
         scale: 1.1;
+        background: var(--logo-green);
     }
 
     & > div {
@@ -243,6 +246,12 @@ const Table = styled.button`
         background: inherit;
         opacity: .4;
     }
+`;
+
+const ReservationTime = styled.span`
+    position: absolute;
+    bottom: -2.5rem;
+    color: var(--logo-red-opacity50);
 `;
 
 const ResDetails = styled.div`
@@ -280,9 +289,14 @@ const ResDetailWrapper = styled.div`
 const ButtonWrapper = styled.div`
     display: flex;
     gap: 0;
-    border: 2px solid rgba(0,0,0,0.2);
+    border: 2px solid rgba(0, 0, 0, 0.2);
     width: fit-content;
     overflow: hidden;
+    transition: all 200ms ease-in-out;
+    
+    &:hover {
+        scale: 1.05;
+    }
 
     button {
         border: none;
@@ -293,11 +307,22 @@ const ButtonWrapper = styled.div`
         font-weight: 500;
         cursor: pointer;
         width: max-content;
+        transition: scale 200ms ease-in-out;
+    }
+    button:hover {
+        background: rgba(11, 119, 111, 0.4);
+        color: white;
+
     }
 
     .activeButton {
         background: var(--logo-green);
         color: white;
+    }
+    .activeButton:hover {
+        scale: 1;
+        background: var(--logo-green);
+        cursor: default;
     }
 `;
 
@@ -309,4 +334,8 @@ const ResSubmitBtn = styled.button`
     cursor: pointer;
     padding: 1rem;
     font-size: 1.2rem;
+    transition: all 300ms ease-in-out;
+    &:hover {
+        scale: .9;
+    }
 `;

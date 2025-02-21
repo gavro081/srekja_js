@@ -14,12 +14,13 @@ export default function Navbar() {
         <NavItem to="/">Почетна</NavItem>
         <NavItemContainer>
           <NavItem
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "2px",
-            }}
+              to="/srekjaBar"
+              style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "2px",
+              }}
           >
             Среќа Бар{" "}
             <img
@@ -68,6 +69,8 @@ const Nav = styled.nav`
   padding: 0 30px;
   background-color: white;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    
+    z-index: 1000;   //ova e za da raboti box shadow vrz site elementi
 `;
 
 const NavItem = styled(Link)`
