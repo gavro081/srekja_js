@@ -6,9 +6,12 @@ import { db } from '../firebase/firebase';
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 import { FaCheck } from 'react-icons/fa';
+import { useAuth } from '../firebase/authContext';
 
 function SingleProductPage() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
   const [product, setProduct] = useState(location.state.product);
   const [mainImg, setMainImg] = useState(product.img);
   const [fade, setFade] = useState(false);
@@ -56,6 +59,10 @@ function SingleProductPage() {
   };
 
   const handleAddToCart = async () => {
+    if (!currentUser) {
+      navigate('/register');
+      return;
+    }
     if (!selectedSize) {
       alert('Ве молиме изберете големина');
       return;
