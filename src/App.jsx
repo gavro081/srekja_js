@@ -1,18 +1,22 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SrekjaBar from './SrekjaBar/SrekjaBar.jsx';
 import Register from './UserManagement/Register.jsx';
-import GPTtester from './AI/GPTtester';
+import FoodInput from './AI/FoodInput.jsx';
 import Home from './Home/Home.jsx';
 import EShop from './E-Shop/mainEshopPage.jsx';
 import TableReservation from './SrekjaBar/TableReservation.jsx';
 import SingleProductPage from './E-Shop/singleProductPage.jsx';
+
 import ShoppingCart from './E-Shop/shoppingCart.jsx';
+
 import FilteredS from './E-Shop/filtered.jsx';
 import Reviews from './SrekjaBar/Reviews/Reviews.jsx';
 import Login from './UserManagement/Login.jsx';
 import { useAuth } from './firebase/authContext.jsx';
 import { useEffect } from 'react';
 import Wheel from './UserManagement/SpinTheWheel/Wheel.jsx';
+
+import BlogInput from './AI/BlogInput.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +37,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/testAI',
-    element: <GPTtester />,
+    element: <FoodInput />,
   },
   {
     path: '/mainEshopPage',
@@ -48,6 +52,12 @@ const router = createBrowserRouter([
     element: <FilteredS />,
   },
   {
+    path: '/srekjaBar/reviews',
+    element: <Reviews />,
+
+    path: '/srekjaBar/reviews',
+    element: <Reviews />,
+
     path: '/srekjaBar/reviews',
     element: <Reviews />,
   },
@@ -67,6 +77,11 @@ const router = createBrowserRouter([
     path: '/shoppingCart',
     element: <ShoppingCart />,
   },
+  {
+    path: '/blogai',
+    element: <BlogInput />,
+  },
+
   // {
   //  path: '/{ime na komponenta}
   //  element: <Ime na komponentata />
@@ -76,10 +91,10 @@ const router = createBrowserRouter([
 function App() {
   // ova pravi na page refresh da se log outnuva user-ot avtomatski
   // ako se stavi log out kopce moze da se trgne do togas neka sedi
-  // const { logout } = useAuth();
-  // useEffect(() => {
-  //   logout();
-  // }, []);
+  const { logout } = useAuth();
+  useEffect(() => {
+    logout();
+  }, []);
 
   return <RouterProvider router={router} />;
 }

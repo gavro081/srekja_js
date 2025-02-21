@@ -177,7 +177,7 @@ function Register() {
                             <Step>
                                 <ImageWrapper>
                                     <img
-                                        src="../public/slikiZaEshop/logoDark-1.jpg"
+                                        src="/slikiZaEshop/logoDark-1.jpg"
                                         alt="Logo"
                                         style={{
                                             maxWidth: '100%',
@@ -212,7 +212,7 @@ const InputWrapper = styled.div`
 `;
 
 const StepperWrapper = styled.div`
-    margin: 150px auto;
+    margin: 0 auto;
     padding: 20px;
 `;
 
