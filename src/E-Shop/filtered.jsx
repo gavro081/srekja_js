@@ -293,6 +293,7 @@ const MainWrapper = styled.div`
   min-height: 100vh;
   display: flex;
   margin-bottom: 20%;
+  margin-top: 5%;
 `;
 
 export default Filtered;

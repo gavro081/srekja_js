@@ -3,7 +3,14 @@ import Footer from '../shumaComponents/Footer';
 import styled, { createGlobalStyle, css } from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { db } from '../firebase/firebase';
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  query,
+  where,
+} from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { useAuth } from '../firebase/authContext';
@@ -69,11 +76,27 @@ function SingleProductPage() {
     }
 
     try {
-      const docRef = await addDoc(collection(db, 'shoppingCart'), {
-        ...product,
-        selectedSize,
-      });
-      console.log('Document written with ID: ', docRef.id);
+      const cartRref = collection(db, 'shoppingCart');
+      const q = query(
+        cartRref,
+        where('name', '==', product.name),
+        where('selectedSize', '==', selectedSize)
+      );
+      const querySnapshot = await getDocs(q);
+      if (!querySnapshot.empty) {
+        const existingDoc = querySnapshot.docs[0];
+        const existingData = existingDoc.data();
+        await updateDoc(existingDoc.ref, {
+          selected: existingData.selected + 1,
+        });
+      } else {
+        await addDoc(cartRref, {
+          ...product,
+          selectedSize,
+          selected: 1,
+        });
+      }
+
       setFadeText(true);
       setTimeout(() => {
         setButtonText('УСПЕШНО ДОДАДЕНО');
@@ -369,5 +392,6 @@ const MainWrapper = styled.div`
   display: flex;
   margin-bottom: 10%;
   position: relative;
+  margin-top: 5%;
 `;
 export default SingleProductPage;

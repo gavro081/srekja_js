@@ -6,7 +6,8 @@
     "otherImages": ["../src/E-Shop/sliki/whiteFrontLogo.png"],
     "quantity": 5,
     "price": 399,
-    "sizes": ["S", "M", "L", "XL"]
+    "sizes": ["S", "M", "L", "XL"],
+    "selected": 0
   },
   {
     "type": "maici",
@@ -15,7 +16,8 @@
     "otherImages": ["../src/E-Shop/sliki/darkLogo.png"],
     "quantity": 2,
     "price": 399,
-    "sizes": ["S", "XL"]
+    "sizes": ["S", "XL"],
+    "selected": 0
   },
   {
     "type": "dukseri",
@@ -24,7 +26,8 @@
     "otherImages": ["../src/E-Shop/sliki/sweatshirtText1.png"],
     "quantity": 10,
     "price": 799,
-    "sizes": ["M", "L", "XL"]
+    "sizes": ["M", "L", "XL"],
+    "selected": 0
   },
   {
     "type": "maici",
@@ -36,7 +39,8 @@
     ],
     "quantity": 3,
     "price": 399,
-    "sizes": ["XS", "S", "M", "L", "XL"]
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "selected": 0
   },
   {
     "type": "casi",
@@ -45,6 +49,7 @@
     "otherImages": ["../src/E-Shop/sliki/mugText2.png"],
     "quantity": 1,
     "price": 159,
-    "sizes": ["250ml"]
+    "sizes": ["250ml"],
+    "selected": 0
   }
 ]
