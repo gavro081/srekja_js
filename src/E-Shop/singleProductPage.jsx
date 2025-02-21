@@ -2,8 +2,10 @@ import Navbar from '../shumaComponents/Navbar';
 import Footer from '../shumaComponents/Footer';
 import styled, { createGlobalStyle, css } from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import { db } from '../firebase/firebase';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
+import { FaCheck } from 'react-icons/fa';
 
 function SingleProductPage() {
   const location = useLocation();
@@ -13,7 +15,10 @@ function SingleProductPage() {
   const [products, setProducts] = useState([]);
   const [otherImages, setOtherImages] = useState(product.otherImages);
   const [size, setSize] = useState(product.sizes);
-  const [selecetdSize, setSelectedSize] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [showCheckmark, setShowCheckmark] = useState(false);
+  const [buttonText, setButtonText] = useState('ДОДАДИ ВО КОШНИЧКА');
+  const [fadeText, setFadeText] = useState(false);
 
   const availableSizes = ['XS', 'S', 'M', 'L', 'XL'];
   const handleImageClick = (img) => {
@@ -48,6 +53,37 @@ function SingleProductPage() {
   }, []);
   const handleSizeClick = (sizeLabel) => {
     setSelectedSize(sizeLabel);
+  };
+
+  const handleAddToCart = async () => {
+    if (!selectedSize) {
+      alert('Ве молиме изберете големина');
+      return;
+    }
+
+    try {
+      const docRef = await addDoc(collection(db, 'shoppingCart'), {
+        ...product,
+        selectedSize,
+      });
+      console.log('Document written with ID: ', docRef.id);
+      setFadeText(true);
+      setTimeout(() => {
+        setButtonText('УСПЕШНО ДОДАДЕНО');
+        setShowCheckmark(true);
+        setFadeText(false);
+      }, 300);
+      setTimeout(() => {
+        setFadeText(true);
+        setTimeout(() => {
+          setShowCheckmark(false);
+          setButtonText('ДОДАДИ ВО КОШНИЧКА');
+          setFadeText(false);
+        }, 300);
+      }, 3000);
+    } catch (e) {
+      console.error('Error adding document: ', e);
+    }
   };
   return (
     <>
@@ -137,7 +173,7 @@ function SingleProductPage() {
                 key={sizeLabel}
                 title={size.includes(sizeLabel) ? '' : 'Нема на залиха'}
                 isAvailable={size.includes(sizeLabel)}
-                isSelected={selecetdSize === sizeLabel}
+                isSelected={selectedSize === sizeLabel}
                 onClick={() => {
                   if (size.includes(sizeLabel)) {
                     handleSizeClick(sizeLabel);
@@ -149,7 +185,12 @@ function SingleProductPage() {
             ))}
           </SizesWrapper>
           <CartButton>
-            <button>Додади во кошничка </button>
+            <button onClick={handleAddToCart}>
+              <TextWrapper className={fadeText ? 'fade-out' : 'fade-in'}>
+                {buttonText}
+                {showCheckmark ? <FaCheck style={{ marginLeft: '5px' }} /> : ''}
+              </TextWrapper>
+            </button>
           </CartButton>
         </InfoWrapper>
       </MainWrapper>
@@ -158,6 +199,15 @@ function SingleProductPage() {
     </>
   );
 }
+const TextWrapper = styled.div`
+  transition: opacity 0.3s ease-in-out;
+  &.fade-out {
+    opacity: 0;
+  }
+  &.fade-in {
+    opacity: 1;
+  }
+`;
 
 const CartButton = styled.div`
   width: 100%;
@@ -169,6 +219,7 @@ const CartButton = styled.div`
     color: white;
     border: 0.5px solid rgba(186, 197, 196, 0.95);
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s ease-in-out; /* Add transition for smooth effect */
     &:hover {
       background-color: rgba(11, 119, 111, 0.8);
     }
@@ -310,5 +361,6 @@ const MainWrapper = styled.div`
   min-height: 100vh;
   display: flex;
   margin-bottom: 10%;
+  position: relative;
 `;
 export default SingleProductPage;

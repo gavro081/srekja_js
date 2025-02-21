@@ -1,7 +1,9 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../firebase/authContext';
 
 export default function Navbar() {
+  const { currentUser } = useAuth();
   return (
     <Nav>
       <Link to="/">
@@ -14,16 +16,19 @@ export default function Navbar() {
         <NavItem to="/mainEshopPage">Среќни производи</NavItem>
         <NavItem to="/about">За Нас</NavItem>
 
-        <Button to="/register" style={{ marginLeft: "35px" }}>
+        <Button
+          to={currentUser ? '/shoppingCart' : '/register'}
+          style={{ marginLeft: '35px' }}
+        >
           <img
             src="/assets/images/shop2.svg"
-            style={{ width: "18px", height: "18px" }}
+            style={{ width: '18px', height: '18px' }}
           />
         </Button>
         <Button to="/register">
           <img
             src="/assets/images/person2.svg"
-            style={{ width: "20px", height: "22px", marginTop: "-2px" }}
+            style={{ width: '20px', height: '22px', marginTop: '-2px' }}
           />
         </Button>
       </NavLinks>
