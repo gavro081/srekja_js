@@ -41,7 +41,7 @@ const router = createBrowserRouter([
     element: <EShop />,
   },
   {
-    path: '/srekjaBar/rezerviraj',
+    path: '/srekjaBar/reservation',
     element: <TableReservation />,
   },
   {
