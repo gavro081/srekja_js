@@ -41,4 +41,4 @@ app.post('/api/chat', async (request, res) => {
     res.json(items.length > 0 ? items : []);
 });
 
-app.listen(3001, () => console.log('Server running on port 3001'));
+app.listen(3002, () => console.log('Server running on port 3002'));
