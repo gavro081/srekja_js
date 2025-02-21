@@ -91,10 +91,10 @@ const router = createBrowserRouter([
 function App() {
   // ova pravi na page refresh da se log outnuva user-ot avtomatski
   // ako se stavi log out kopce moze da se trgne do togas neka sedi
-  const { logout } = useAuth();
-  useEffect(() => {
-    logout();
-  }, []);
+  // const { logout } = useAuth();
+  // useEffect(() => {
+  //   logout();
+  // }, []);
 
   return <RouterProvider router={router} />;
 }

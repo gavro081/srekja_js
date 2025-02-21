@@ -29,7 +29,7 @@ const Text = styled.text`
   font-size: 12.5px;
 `;
 
-const Spinner = ({ text = "Среќа • Среќа • Среќа • Среќа • Среќа •" }) => {
+const Spinner = ({ text = 'Среќа • Среќа • Среќа • Среќа • Среќа •' }) => {
   return (
     <Wrapper>
       <Svg viewBox="0 0 100 100">
@@ -40,9 +40,7 @@ const Spinner = ({ text = "Среќа • Среќа • Среќа • Среќ
           />
         </defs>
         <Text>
-          <textPath xlinkHref="#circle">
-            {text}
-          </textPath>
+          <textPath xlinkHref="#circle">{text}</textPath>
         </Text>
       </Svg>
     </Wrapper>

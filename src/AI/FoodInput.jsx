@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Spinner from "../UserManagement/Spinner";
-import menu_items from "./menuitems";
-import { 
+import Spinner from '../UserManagement/Spinner';
+import menu_items from './menuitems';
+import {
   SearchInput,
   SearchContainer,
   SearchButton,
@@ -13,12 +13,12 @@ import {
   FoodItem,
   Desc,
   Ingredients,
-  Price
-} from "./inputStyles";
+  Price,
+} from './inputStyles';
 
 const FoodInput = () => {
-  const [input, setInput] = useState("");
-  const [response, setResponse] = useState("");
+  const [input, setInput] = useState('');
+  const [response, setResponse] = useState('');
   const [hasResponse, setHasResponse] = useState(false);
   const [isLoading, setisLoading] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
@@ -27,7 +27,7 @@ const FoodInput = () => {
   // console.log(testData);
 
   const fetchQuery = async () => {
-    console.log(input)
+    console.log(input);
     setisLoading(true);
     setHasResponse(false);
     setIsAnimated(true);
@@ -54,11 +54,11 @@ const FoodInput = () => {
       setisLoading(false);
       setIsAnimated(false);
     } catch (error) {
-      console.error("Error fetching OpenAI response:", error);
+      console.error('Error fetching OpenAI response:', error);
       setisLoading(false);
       setIsAnimated(false);
     }
-  }
+  };
 
   return (
     <div>
@@ -71,34 +71,38 @@ const FoodInput = () => {
           isAnimated={isAnimated}
         />
         <SearchButton onClick={fetchQuery}>
-            <img 
+          <img
             src="../../assets/images/logo-2020-white-1.png"
             alt="Search"
             width={50}
-            />
+          />
         </SearchButton>
       </SearchContainer>
       {isLoading ? (
         <SpinnerWrapper>
           <Spinner />
         </SpinnerWrapper>
-        ) : null}
-      {!hasResponse ? null : (
-        response.length === 0 ? (
-          <h2 style={{ fontFamily: "Arial, sans-serif" }}>Немам производи за вас. Обидете се повторно.</h2>
-        ) : (
-          <FoodResponse>
-            <GradientHeading>Ви препорачувам некој од следниве производи:</GradientHeading>
-            {response.map((item, index) => (
-              <FoodItem key={index}>
-                <GradientHeading4>{item.macedonian_name}</GradientHeading4>
-                <Desc>{item.details}</Desc>
-                <Ingredients>Состојки: {item['ingredients-mk'].join(", ")}</Ingredients>
-                <Price>Цена: {item.price} ден</Price>
-              </FoodItem >
-            ))}
-          </FoodResponse>
-        )
+      ) : null}
+      {!hasResponse ? null : response.length === 0 ? (
+        <h2 style={{ fontFamily: 'Arial, sans-serif' }}>
+          Немам производи за вас. Обидете се повторно.
+        </h2>
+      ) : (
+        <FoodResponse>
+          <GradientHeading>
+            Ви препорачувам некој од следниве производи:
+          </GradientHeading>
+          {response.map((item, index) => (
+            <FoodItem key={index}>
+              <GradientHeading4>{item.macedonian_name}</GradientHeading4>
+              <Desc>{item.details}</Desc>
+              <Ingredients>
+                Состојки: {item['ingredients-mk'].join(', ')}
+              </Ingredients>
+              <Price>Цена: {item.price} ден</Price>
+            </FoodItem>
+          ))}
+        </FoodResponse>
       )}
     </div>
   );

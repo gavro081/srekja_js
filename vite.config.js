@@ -11,7 +11,6 @@ export default defineConfig({
     extensions: ['.js', '.jsx'],
   },
   esbuild: {
-    jsxInject: `import React from 'react'`,
     loader: 'jsx',
     include: /src\/.*\.jsx?$/, // Only include files in the src directory
   },

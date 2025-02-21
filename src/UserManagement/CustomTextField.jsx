@@ -1,6 +1,5 @@
-
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledInput = styled.input`
   width: 100%;
@@ -10,7 +9,7 @@ const StyledInput = styled.input`
   font-size: 16px;
   outline: none;
   transition: all 0.2s ease-in-out;
-  
+
   &:focus {
     border-color: #1976d2; /* MUI Primary Blue */
     box-shadow: 0 0 4px rgba(25, 118, 210, 0.3);
