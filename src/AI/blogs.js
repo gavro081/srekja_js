@@ -1,4 +1,5 @@
-const blogs = [
+
+ const blogs = [
     {
         "id": 1,
         "title": "Љубов низ времето: Како се менува романтиката?",
@@ -90,8 +91,46 @@ const blogs = [
         "category-en": "Tech",
         "image": "https://images.pexels.com/photos/256150/pexels-photo-256150.jpeg",
         "color": "#4682B4" // Blue for technology
-    }
+    },
+{   "title": "Влијанието на технологијата врз нашето здравје",
+    "short_desc": "Како модерната технологија влијае на физичкото и менталното здравје.",
+    "author": "Елена Јованова",
+    "category": "Технологија",
+    "category-en": "Tech",
+    "image": "https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg",
+    "color": "#4682B4" // Blue for technology
+},
+{
+    "id": 15,
+    "title": "Како да го најдете вистинскиот партнер?",
+    "short_desc": "Совети и стратегии за пронаоѓање на идеалниот партнер за вас.",
+    "author": "Софија Петрова",
+    "category": "Љубов",
+    "category-en": "Love",
+    "image": "https://images.pexels.com/photos/3184404/pexels-photo-3184404.jpeg",
+    "color": "#D41E47" // Red for love
+},
+{
+    "id": 16,
+    "title": "Најдобрите инвестиции за 2023 година",
+    "short_desc": "Преглед на најдобрите инвестициони можности за оваа година.",
+    "author": "Горан Стојанов",
+    "category": "Економија",
+    "category-en": "Economics",
+    "image": "https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg",
+    "color": "#0B776F" // Green for economy
+},
+{
+    "id": 17,
+    "title": "Смешни моменти од работното место",
+    "short_desc": "Приказни за најсмешните случки на работното место.",
+    "author": "Весна Трајковска",
+    "category": "Хумор",
+    "category-en": "Humor",
+    "image": "https://images.pexels.com/photos/3184404/pexels-photo-3184404.jpeg",
+    "color": "#e96f23" // Yellow for humor
+}
 ];
 
-export default blogs;
 
+export default blogs;

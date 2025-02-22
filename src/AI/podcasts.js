@@ -4,4 +4,8 @@ const videos = [
     { id: 3, url: "https://www.youtube.com/embed/LUGsxrjcd2I", guest: "Горјан Јовановски", season: "Startup Revolution" },
     { id: 4, url: "https://www.youtube.com/embed/3F0-Yw-dBeo", guest: "Данче Азманова Мирчевска", season: "The Freelancers' Hangout" },
     { id: 5, url: "https://www.youtube.com/embed/NmVjxA0dvy8", guest: "Мирјана Бубевска", season: "The Freelancers' Hangout"},
+    { id: 6, url: "https://www.youtube.com/embed/GnjywBmJDZM", guest: "Маја Атанасоска", season: "The Freelancers' Hangout"},
+
 ];
+
+export default videos;
