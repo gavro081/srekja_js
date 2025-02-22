@@ -17,6 +17,9 @@ import { useEffect } from 'react';
 import Wheel from './UserManagement/SpinTheWheel/Wheel.jsx';
 
 import BlogInput from './AI/BlogInput.jsx';
+import {StartupCreate} from "./StartupCreate/StartupCreate.jsx";
+
+
 
 const router = createBrowserRouter([
   {
@@ -54,12 +57,6 @@ const router = createBrowserRouter([
   {
     path: '/srekjaBar/reviews',
     element: <Reviews />,
-
-    path: '/srekjaBar/reviews',
-    element: <Reviews />,
-
-    path: '/srekjaBar/reviews',
-    element: <Reviews />,
   },
   {
     path: '/login',
@@ -81,6 +78,10 @@ const router = createBrowserRouter([
     path: '/blogai',
     element: <BlogInput />,
   },
+  {
+    path: '/startupCreate',
+    element:<StartupCreate/>
+  }
 
   // {
   //  path: '/{ime na komponenta}
