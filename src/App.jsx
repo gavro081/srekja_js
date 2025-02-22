@@ -21,6 +21,7 @@ import Listings from './Listings.jsx';
 
 import BlogInput from './AI/BlogInput.jsx';
 import Media from './Media/Media.jsx';
+import {StartupCreate} from "./StartupCreate/StartupCreate.jsx";
 
 const router = createBrowserRouter([
   {
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
     path: '/listings',
     element: <Listings />,
   },
+    {
+        path: '/startupCreate',
+        element:<StartupCreate/>
+    }
 
   // {
   //  path: '/{ime na komponenta}
