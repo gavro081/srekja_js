@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import React from "react";
+import { useState } from 'react';
 import Navbar from '../../shumaComponents/Navbar.jsx';
 import Stepper from '@mui/joy/Stepper';
 import Step from '@mui/joy/Step';
