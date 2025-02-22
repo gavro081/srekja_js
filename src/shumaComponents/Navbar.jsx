@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useAuth, logOut } from "../firebase/authContext";
-import { signOut } from "@firebase/auth";
+//import { signOut } from "@firebase/auth";
 
 export default function Navbar() {
   const { currentUser } = useAuth();
@@ -14,7 +14,6 @@ export default function Navbar() {
 
       <NavLinks>
         <NavItem to="/listings">Работа</NavItem>
-        <NavItem to="/">Стартапи</NavItem>
         <NavItemContainer>
           <NavItem
             to="/"
