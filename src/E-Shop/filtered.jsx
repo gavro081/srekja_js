@@ -61,9 +61,9 @@ function Filtered() {
       (key) => selectedFilters[key] && ['XS', 'S', 'M', 'L', 'XL'].includes(key)
     );
 
-    let filteredItems = allProducts;
+    let filteredItems = [...allProducts];
 
-    if (selectedTypes.length > 0 && !selectedTypes.includes('site')) {
+    if (selectedTypes.length > 0) {
       filteredItems = filteredItems.filter((product) =>
         selectedTypes.includes(product.type)
       );
@@ -108,7 +108,13 @@ function Filtered() {
                 <img
                   src={product.img}
                   alt={product.name}
-                  className={product.type == 'casi' ? 'mugPic' : ''}
+                  className={
+                    product.type === 'casi'
+                      ? product.name === 'Чаша порака'
+                        ? 'mugPic'
+                        : 'casa'
+                      : ''
+                  }
                 />
                 {product.type == 'casi' && <p>159 ден</p>}
                 {product.type == 'maici' && <p>399 ден</p>}
@@ -127,10 +133,11 @@ function Filtered() {
 const ProductsWrapper = styled.div`
   width: 90%;
   margin-right: 5%;
-  height: 100%;
+  // height: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  o
   gap: 20px;
 `;
 const ProductCard = styled.div`
@@ -165,7 +172,14 @@ const ProductCard = styled.div`
   }
   & img.mugPic {
     width: 140%;
+
     height: 75%;
+  }
+  & img.casa {
+    width: 80% !important; // Added !important to override base img styles
+    height: 70% !important;
+    margin-left: -10%;
+    object-fit: contain; // This will maintain aspect ratio
   }
 
   p {
@@ -264,7 +278,7 @@ const Filter = styled.div`
 `;
 const MainWrapper = styled.div`
   width: 100%;
-  height: 100%;
+
   min-height: 100vh;
   display: flex;
   margin-bottom: 20%;
