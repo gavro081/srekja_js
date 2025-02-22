@@ -27,12 +27,12 @@ export default function Wordle() {
 
     const handleWordCheck = () => {
         const rowIndex = currentRow.current;
-        console.log(currentRow.current)
         let scoreCount = 0;
         const chars = currentWord.current.toUpperCase().split('');
 
         for (let target of wordle) {
             const targetWord = target.split('');
+            scoreCount = 0;
             let isExactMatch = true;
 
             chars.forEach((ch, index) => {
@@ -61,6 +61,7 @@ export default function Wordle() {
 
         setScore(prevScore => prevScore + scoreCount);
         currentRow.current += 1;
+        currentWord.current = '';
     }
 
     const handleKeyDown = (e) => {
