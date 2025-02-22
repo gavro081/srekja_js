@@ -1,90 +1,95 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import SrekjaBar from "./SrekjaBar/SrekjaBar.jsx";
-import Register from "./UserManagement/Register.jsx";
-import FoodInput from "./AI/FoodInput.jsx";
-import Home from "./Home/Home.jsx";
-import EShop from "./E-Shop/mainEshopPage.jsx";
-import TableReservation from "./SrekjaBar/TableReservation.jsx";
-import SingleProductPage from "./E-Shop/singleProductPage.jsx";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import SrekjaBar from './SrekjaBar/SrekjaBar.jsx';
+import Register from './UserManagement/Register.jsx';
+import FoodInput from './AI/FoodInput.jsx';
+import Home from './Home/Home.jsx';
+import EShop from './E-Shop/mainEshopPage.jsx';
+import TableReservation from './SrekjaBar/TableReservation.jsx';
+import SingleProductPage from './E-Shop/singleProductPage.jsx';
 
-import ShoppingCart from "./E-Shop/shoppingCart.jsx";
+import ShoppingCart from './E-Shop/shoppingCart.jsx';
 
-import FilteredS from "./E-Shop/filtered.jsx";
-import Reviews from "./SrekjaBar/Reviews/Reviews.jsx";
-import Login from "./UserManagement/Login.jsx";
-import { useAuth } from "./firebase/authContext.jsx";
-import { useEffect } from "react";
-import Wheel from "./UserManagement/SpinTheWheel/Wheel.jsx";
+import FilteredS from './E-Shop/filtered.jsx';
+import StartUpsListings from './StartUps1/startUpsListings.jsx';
+import Reviews from './SrekjaBar/Reviews/Reviews.jsx';
+import Login from './UserManagement/Login.jsx';
+import { useAuth } from './firebase/authContext.jsx';
+import { useEffect } from 'react';
+import Wheel from './UserManagement/SpinTheWheel/Wheel.jsx';
 
-import Listings from "./Listings.jsx";
+import Listings from './Listings.jsx';
 
-import BlogInput from "./AI/BlogInput.jsx";
-import Media from "./Media/Media.jsx";
+import BlogInput from './AI/BlogInput.jsx';
+import Media from './Media/Media.jsx';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
   {
-    path: "/placeholder",
+    path: '/placeholder',
     element: <h1>Placeholder</h1>,
   },
   {
-    path: "/register",
+    path: '/register',
     element: <Register />,
   },
   {
-    path: "/srekjaBar",
+    path: '/srekjaBar',
     element: <SrekjaBar />,
   },
   {
-    path: "/testAI",
+    path: '/testAI',
     element: <FoodInput />,
   },
   {
-    path: "/mainEshopPage",
+    path: '/mainEshopPage',
     element: <EShop />,
   },
   {
-    path: "/srekjaBar/reservation",
+    path: '/srekjaBar/reservation',
     element: <TableReservation />,
   },
   {
-    path: "/filtered",
+    path: '/filtered',
     element: <FilteredS />,
   },
   {
-    path: "/srekjaBar/reviews",
+    path: '/srekjaBar/reviews',
     element: <Reviews />,
   },
   {
-    path: "/media",
+    path: '/media',
     element: <Media />,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <Login />,
   },
   {
-    path: "/wheel",
+    path: '/wheel',
     element: <Wheel />,
   },
   {
-    path: "/singleProductPage",
+    path: '/singleProductPage',
     element: <SingleProductPage />,
   },
   {
-    path: "/shoppingCart",
+    path: '/shoppingCart',
     element: <ShoppingCart />,
   },
   {
-    path: "/blogai",
+    path: '/blogai',
     element: <BlogInput />,
   },
   {
-    path: "/listings",
+    path: '/listings',
     element: <Listings />,
+  },
+  {
+    path: '/startUpsListings',
+    element: <StartUpsListings />,
   },
 
   // {
