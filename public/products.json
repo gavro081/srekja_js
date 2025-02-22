@@ -51,5 +51,15 @@
     "price": 159,
     "sizes": ["250ml"],
     "selected": 0
+  },
+  {
+    "type": "maici",
+    "name": "Маица \"Џабе Вежбам\"",
+    "img": "../src/E-Shop/sliki/dzabeVezbam.png",
+    "otherImages": ["../src/E-Shop/sliki/dzabeVezbam.png"],
+    "quantity": 1,
+    "price": 159,
+    "sizes": ["250ml"],
+    "selected": 0
   }
 ]
