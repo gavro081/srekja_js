@@ -22,7 +22,7 @@ const Podcasts = () => {
         marginBottom: "100px",
       }}
     >
-      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>Подкасти</h1>
+      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>Поткасти</h1>
       <Carousel style={{ width: "70%" }}>
         {videos.map((video) => (
           <Carousel.Item key={video.id}>
