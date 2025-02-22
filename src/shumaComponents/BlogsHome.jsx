@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import blogs from "../AI/blogs";
 
-const Blogs = () => {
+const BlogsHome = () => {
   const [selectedCategory, setSelectedCategory] = useState("Сите");
 
   const filteredBlogs =
@@ -17,49 +17,15 @@ const Blogs = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "center",
+        allignItems: "center",
         margin: "100px",
         gap: "20px",
       }}
     >
-      <Categories>
-        <Icon
-          onClick={() => setSelectedCategory("Сите")}
-          isSelected={selectedCategory === "Сите"}
-        >
-          <img src="../../assets/images/all.svg" alt="All Blogs" />
-          <p>Сите</p>
-        </Icon>
-        <Icon
-          onClick={() => setSelectedCategory("Хумор")}
-          isSelected={selectedCategory === "Хумор"}
-        >
-          <img src="../../assets/images/smiley.svg" alt="Humor Blogs" />
-          <p>Хумор</p>
-        </Icon>
-        <Icon
-          onClick={() => setSelectedCategory("Љубов")}
-          isSelected={selectedCategory === "Љубов"}
-        >
-          <img src="../../assets/images/heart.svg" alt="Love Blogs" />
-          <p>Љубов</p>
-        </Icon>
-        <Icon
-          onClick={() => setSelectedCategory("Економија")}
-          isSelected={selectedCategory === "Економија"}
-        >
-          <img src="../../assets/images/eco.svg" alt="Economy Blogs" />
-          <p>Економија</p>
-        </Icon>
-        <Icon
-          onClick={() => setSelectedCategory("Технологија")}
-          isSelected={selectedCategory === "Технологија"}
-        >
-          <img src="../../assets/images/tech.svg" alt="Tech Blogs" />
-          <p>Технологија</p>
-        </Icon>
-      </Categories>
+      <h1>Блогови</h1>
       <BlogContainer>
-        {filteredBlogs.map((blog, index) => (
+        {blogs.slice(0, 3).map((blog, index) => (
           <div
             key={index}
             style={{
@@ -102,6 +68,7 @@ const Blogs = () => {
           </div>
         ))}
       </BlogContainer>
+      <SeeMoreButton to="/media">Види ги сите</SeeMoreButton>
     </div>
   );
 };
@@ -113,26 +80,22 @@ const BlogContainer = styled.div`
   margin: 20px;
   color: white;
 `;
-const Categories = styled.div`
-  display: flex;
-  justify-content: center;
+
+const SeeMoreButton = styled(Link)`
+  background-color: var(--logo-green);
+  color: white;
+  padding: 10px 20px;
+  font-size: 17px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
   margin-bottom: 20px;
-  flex-direction: row;
-  gap: 20px;
-  margin-top: 20px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #555;
+    cursor: pointer;
+  }
 `;
 
-const Icon = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-  cursor: pointer;
-  padding: 15px;
-  border-radius: 50px;
-  width: 120px;
-  border: 3px solid #e96f23;
-  background-color: ${(props) =>
-    props.isSelected ? "#f5dd7a" : "transparent"};
-`;
-export default Blogs;
+export default BlogsHome;
