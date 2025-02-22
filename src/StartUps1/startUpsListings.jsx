@@ -48,7 +48,7 @@ function StartUpsListings() {
   useEffect(() => {
     fetch('/startUpsListing.json')
       .then((response) => response.json())
-      .then((data) => setStartUps(data))
+      .then((data) => setStartUps(data.slice(0, 3)))
       .catch((error) => console.error('Error fetching the JSON data:', error));
   }, []);
   useEffect(() => {
@@ -61,11 +61,8 @@ function StartUpsListings() {
   return (
     <>
       <GlobalStyle />
-      <Navbar />
+
       <MainWrapper>
-        <h2 style={{ marginLeft: '2%', marginBottom: '5%' }}>
-          {displayedText}
-        </h2>
         <h2 style={{ textAlign: 'center', marginBottom: '5%' }}>
           Најнови настани
         </h2>
@@ -87,9 +84,28 @@ function StartUpsListings() {
             </Post>
           ))}
         </Events>
+        <StyledButton className="vidigisite">ВИДИ ГИ СИТЕ </StyledButton>
+        <h2
+          style={{ textAlign: 'center', marginBottom: '5%', marginTop: '10%' }}
+        >
+          Успешни Приказни
+        </h2>
+        <Events>
+          {startUps.map((item, index) => (
+            <Post key={index}>
+              <Overlay style={{ backgroundImage: `url(${item.img})` }} />
+              <Content>
+                <Title>{item.title}</Title>
+                <ShortDescription>{item.short_description}</ShortDescription>
+              </Content>
+              <DescriptionOverlay>
+                <Description1>{item.description}</Description1>
+              </DescriptionOverlay>
+            </Post>
+          ))}
+        </Events>
+        <StyledButton className="vidigisite">ВИДИ ГИ СИТЕ </StyledButton>
       </MainWrapper>
-
-      <Footer />
     </>
   );
 }
@@ -188,9 +204,7 @@ const Post = styled.div`
   &:hover ${DescriptionOverlay} {
     opacity: 0.3;
   }
-  &:hover ${DescriptionOverlay} {
-    opacity: 1;
-  }
+
   &:hover ${Title}, &:hover ${ShortDescription} {
     opacity: 0;
   }
@@ -202,7 +216,8 @@ const Description1 = styled.p`
 const MainWrapper = styled.div`
   width: 100%;
   height: 100%;
-
+  display: flex;
+  flex-direction: column;
   margin-top: 5%;
   margin-bottom: 45%;
 `;
@@ -214,5 +229,20 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+`;
+const StyledButton = styled.button`
+  background-color: var(--logo-green);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-bottom: 50px;
+  cursor: pointer;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
 `;
 export default StartUpsListings;
