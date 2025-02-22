@@ -86,7 +86,7 @@ export const StartupCreate = () => {
                     </GradientText>
                 </GradientTextWrapper>
 
-                <CircularWithValueLabel />
+                <CircularWithValueLabel activeStep={activeStep} totalSteps={steps.length}/>
             </Header>
 
             <Question>{questions[activeStep]}</Question>
