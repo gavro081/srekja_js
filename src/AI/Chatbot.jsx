@@ -115,7 +115,7 @@ const Input = styled.input`
   outline: none;
 
   &:focus {
-    border-color: #3b82f6;
+    border-color: var(--logo-red);
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
   }
 
@@ -141,7 +141,7 @@ const SendButton = styled.button`
   }
 
   &:disabled {
-    background-color: #93c5fd;
+    background-color: var(--hover-red);
     cursor: not-allowed;
   }
 
@@ -171,7 +171,7 @@ const ChatBot = () => {
 
     setIsLoading(true);
     try{
-      const res = await fetch('http://localhost:3002/api/chat', {
+      const res = await fetch('http://localhost:3004/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

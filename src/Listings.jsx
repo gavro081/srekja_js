@@ -17,8 +17,8 @@ import CheckboxesGroup from './filters2.jsx';
 import { createGlobalStyle } from 'styled-components';
 
 const Card = styled.div`
-  background: white;
-  border-radius: 8px;
+  background: var(--body-white);
+  border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 24px;
   padding-bottom: 40px;
@@ -232,6 +232,7 @@ const Listings = () => {
 
   return (
     <>
+      <Navbar></Navbar>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 3fr' }}>
         <CheckboxesGroup onFiltersChange={handleFiltersChange} />
 
@@ -244,6 +245,7 @@ const Listings = () => {
           </JobsContainer>
         </PageContainer>
       </div>
+      <Footer></Footer>
     </>
   );
 };

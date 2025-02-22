@@ -40,7 +40,20 @@ export default function CheckboxesGroup({ onFiltersChange }) {
     ...new Set(listings.flatMap((item) => item.experienceLevel)),
   ];
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
+    <Box sx={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      ml: 3, 
+      backgroundColor: 'var(--body-white)',
+      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+      // paddingBlock: '24px',
+      marginBlock: '24px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignSelf: 'start',
+      paddingBottom: '4rem',
+
+      }}>
       <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
         <FormLabel component="legend">Поле</FormLabel>
         <FormGroup>
@@ -103,11 +116,14 @@ export default function CheckboxesGroup({ onFiltersChange }) {
           color: 'white',
           padding: '8px 16px',
           marginTop: '16px',
+          marginLeft: '16px',
           cursor: 'pointer',
           fontSize: '16px',
           fontWeight: 'bold',
           borderRadius: '8px',
-          width: '100%',
+          width: '50%',
+          alignSelf: 'start',
+          textAlign: 'center',
         }}
       >
         Пребарај
