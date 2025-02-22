@@ -22,7 +22,7 @@
     --logo-red-opacity50: rgba(212, 30, 71, 0.5);
 
     --hover-red: #ff0055;
-
+    --body-white:#faf5f6;
     --silver-text: #aaa;
 }
 
@@ -43,4 +43,6 @@ a {
     font-family: "Lobster", sans-serif;
     font-weight: bold;
 }
+
+
 

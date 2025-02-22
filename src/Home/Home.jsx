@@ -9,7 +9,7 @@ import ChatBot from "../AI/Chatbot.jsx";
 
 export default function Home() {
   return (
-    <div>
+    <div style={{ backgroundColor: "var(--body-white)" }}>
       <Navbar />
       <Hero />
       <StartUpsListings />

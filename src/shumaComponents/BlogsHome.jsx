@@ -23,7 +23,7 @@ const BlogsHome = () => {
         gap: "20px",
       }}
     >
-      <h1>Блогови</h1>
+      <h1 style={{ fontSize: "3rem" }}>Блогови</h1>
       <BlogContainer>
         {blogs.slice(0, 3).map((blog, index) => (
           <div
@@ -68,7 +68,16 @@ const BlogsHome = () => {
           </div>
         ))}
       </BlogContainer>
-      <SeeMoreButton to="/media">Види ги сите</SeeMoreButton>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "40px",
+        }}
+      >
+        <NextButton className="vidigisite">ВИДИ ГИ СИТЕ </NextButton>
+      </div>
     </div>
   );
 };
@@ -97,5 +106,22 @@ const SeeMoreButton = styled(Link)`
     cursor: pointer;
   }
 `;
+const NextButton = styled.button`
+  background: linear-gradient(45deg, var(--logo-orange), var(--logo-red));
+  color: white;
+  border: none;
+  width: 300px;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 
+  &:hover {
+    background: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
+    transform: scale(1.05);
+  }
+`;
 export default BlogsHome;
