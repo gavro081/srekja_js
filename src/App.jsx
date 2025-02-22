@@ -21,6 +21,7 @@ import Listings from './Listings.jsx';
 
 import BlogInput from './AI/BlogInput.jsx';
 import Media from './Media/Media.jsx';
+import AIinput from './AI/AIinput.jsx';
 
 const router = createBrowserRouter([
   {
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
   {
     path: '/blogai',
     element: <BlogInput />,
+  },
+  {
+    path: '/ai',
+    element: <AIinput />,
   },
   {
     path: '/listings',

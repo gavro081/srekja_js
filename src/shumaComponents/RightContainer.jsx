@@ -46,6 +46,7 @@ const srekaArray = [
   " да почувствуваш љубов ",
 ];
 
+
 export default function RightContainer() {
   const [randomElement, setRandomElement] = useState("");
   const [randomColor, setRandomColor] = useState("");
@@ -61,7 +62,6 @@ export default function RightContainer() {
           Math.floor(Math.random() * Object.values(colors).length)
         ];
 
-      setRandomElement(newRandomElement);
       setRandomColor(newRandomColor);
       setDisplayedText(""); // Reset text for new animation
 
@@ -73,14 +73,15 @@ export default function RightContainer() {
         } else {
           clearInterval(typingInterval); // Stop when finished
         }
-      }, 150); // Typing speed
+      }, 15); // Typing speed
+      // setRandomElement(newRandomElement);
     };
 
     if (isFirstRun) {
       setIsFirstRun(false);
     } else {
       updateRandomValues();
-      const intervalId = setInterval(updateRandomValues, 4000); // Change text every 5s
+      const intervalId = setInterval(updateRandomValues, 400); // Change text every 5s
 
       return () => clearInterval(intervalId);
     }
