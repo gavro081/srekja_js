@@ -174,7 +174,7 @@ const Star = ({ rating }) => {
     const halfStar = rating % 1 !== 0;
 
     return (
-        <div>
+        <div style={{ fontSize: "1.5rem" }}>
             {Array.from({ length: filledStars }).map((_, index) => (
                 <span key={index}>&#9733;</span>
                 ))}
@@ -200,7 +200,7 @@ const CommentCard = styled.div`
     justify-content: center;
     background: #f9f9f9;
     border-radius: 15px;
-    padding: 1.5rem;
+    padding: 2.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 `;
