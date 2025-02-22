@@ -71,17 +71,16 @@ export default function RightContainer() {
           setDisplayedText((prev) => prev + newRandomElement.charAt(index));
           index++;
         } else {
-          clearInterval(typingInterval); // Stop when finished
+          clearInterval(typingInterval); 
         }
-      }, 15); // Typing speed
-      // setRandomElement(newRandomElement);
+      }, 150); 
     };
 
     if (isFirstRun) {
       setIsFirstRun(false);
     } else {
       updateRandomValues();
-      const intervalId = setInterval(updateRandomValues, 400); // Change text every 5s
+      const intervalId = setInterval(updateRandomValues, 4000); // Change text every 5s
 
       return () => clearInterval(intervalId);
     }
