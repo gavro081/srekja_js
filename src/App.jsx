@@ -79,6 +79,10 @@ const router = createBrowserRouter([
     path: '/shoppingCart',
     element: <ShoppingCart />,
   },
+  {
+    path: '/startUpsListings',
+    element: <StartUpsListings />,
+  },
   // {
   //   path: '/blogai',
   //   element: <BlogInput />,
