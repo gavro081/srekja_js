@@ -17,6 +17,7 @@ import { useEffect } from 'react';
 import Wheel from './UserManagement/SpinTheWheel/Wheel.jsx';
 
 import BlogInput from './AI/BlogInput.jsx';
+import Listings from './Listings.jsx';
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
   {
     path: '/blogai',
     element: <BlogInput />,
+  },
+  {
+    path: '/listings',
+    element: <Listings />,
   },
 
   // {
