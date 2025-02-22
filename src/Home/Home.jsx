@@ -5,6 +5,7 @@ import Podcasts from "../shumaComponents/Podcasts.jsx";
 import Blogs from "../shumaComponents/Blogs.jsx";
 import BlogsHome from "../shumaComponents/BlogsHome.jsx";
 import StartUpsListings from "../StartUps1/startUpsListings.jsx";
+import ChatBot from "../AI/Chatbot.jsx";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <StartUpsListings />
       <BlogsHome />
+      <ChatBot />
       <Podcasts />
       <Footer />
     </div>
