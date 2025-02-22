@@ -105,7 +105,7 @@ function StartUpsListings() {
             fontSize: "3rem",
           }}
         >
-          Успешни Приказни
+          Успешни приказни
         </h2>
         <Events>
           {startUps.map((item, index) => (
