@@ -9,6 +9,7 @@ import GradientText from "../SrekjaBar/Reviews/GradientText.jsx";
 import { motion } from "framer-motion";
 import Navbar from "../shumaComponents/Navbar.jsx";
 import CircularWithValueLabel from "./CircularProgressWithLabel.jsx";
+import Confetti from 'react-confetti';
 
 const steps = ['Област', 'Основни информации', 'Тим и основачи', 'Идеја и мисија','Насловна фотографија','Поднеси'];
 const questions = [
@@ -77,16 +78,42 @@ export const StartupCreate = () => {
         <Wrapper>
             <Navbar />
             <Header>
-                <GradientTextWrapper>
-                    <GradientText
-                        colors={["var(--logo-orange)", "var(--logo-yellow)", "var(--logo-red)", "var(--logo-green)"]}
-                        animationSpeed={3}
-                    >
-                        {steps[activeStep]}
-                    </GradientText>
-                </GradientTextWrapper>
+                <Stepper sx={{ width: '100%' }}>
+                    {steps.map((step, index) => (
+                        <Step
+                            key={{step}}
+                            orientation="vertical"
+                            indicator={
+                                <StepIndicator
+                                    variant={activeStep <= index ? 'soft' : 'filled'}
+                                    sx={{
+                                        // Apply custom colors based on the active step
+                                        color: activeStep < index ? 'var(--logo-orange)' : 'var(--logo-orange)',
+                                        borderColor: activeStep === index ? 'var(--logo-orange)' : 'var(--logo-orange)',
+                                    }}
+                                >
+                                    {activeStep <= index ? index + 1 : <Check />}
+                                </StepIndicator>
+                            }
+                            sx={[
+                                activeStep > index &&
+                                index !== 2 && { '&::after': { bgcolor: 'var(--logo-red)' } },
+                            ]}
+                        >
 
-                <CircularWithValueLabel activeStep={activeStep} totalSteps={steps.length}/>
+                            <StepButton onClick={() => setActiveStep(index)}>
+                                {activeStep === index ? (
+                                    <GradientText colors={["var(--logo-orange)", "var(--logo-yellow)", "var(--logo-red), var(--logo-green)"]}
+                                                  animationSpeed={3}>
+                                        {step}
+                                    </GradientText>
+                                ) : step}
+                            </StepButton>
+
+                        </Step>
+                    ))}
+                </Stepper>
+
             </Header>
 
             <Question>{questions[activeStep]}</Question>
@@ -174,9 +201,12 @@ export const StartupCreate = () => {
                     "Понатаму"
                 )}
             </NextButton>
+            {isSubmitted && <Confetti  numberOfPieces={300} recycle={false}/>}
+
         </Wrapper>
     );
 };
+
 
 const ImageUploadWrapper = styled.div`
     display: flex;
