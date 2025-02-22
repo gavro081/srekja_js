@@ -301,7 +301,7 @@ const NextButton = styled.button`
 
   &:hover {
     background-color: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
-    transform: scale(1.55);
+    transform: scale(1.05);
   }
     
 `;

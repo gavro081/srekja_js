@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import RightContainer from "./RightContainer";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -25,8 +26,12 @@ export default function Hero() {
               alignItems: "center",
             }}
           >
-            <NextButton>Стартап настани</NextButton>
-            <NextButton>Вработи се</NextButton>
+            <StyledLink >
+              <NextButton>Стартап настани</NextButton>
+            </StyledLink>
+            <StyledLink to={'/listings'}>
+              <NextButton>Вработи се</NextButton>
+            </StyledLink>
           </div>
         </CallToAction>
       </HeroContent>
@@ -50,7 +55,6 @@ const HeroContent = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-
   align-items: center;
   box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.5);
   padding: 0 20px;
@@ -119,4 +123,12 @@ const NextButton = styled.button`
     background: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
     transform: scale(1.05);
   }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
 `;

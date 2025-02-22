@@ -40,22 +40,24 @@ export default function CheckboxesGroup({ onFiltersChange }) {
     ...new Set(listings.flatMap((item) => item.experienceLevel)),
   ];
   return (
-    <Box sx={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      ml: 3, 
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      ml: 3,
       backgroundColor: 'var(--body-white)',
       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-      // paddingBlock: '24px',
       marginBlock: '24px',
       display: 'flex',
       flexDirection: 'column',
       alignSelf: 'start',
       paddingBottom: '4rem',
-
-      }}>
+    }}>
       <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-        <FormLabel component="legend">Поле</FormLabel>
+        <FormLabel component="legend" sx={{
+          '&.Mui-focused': {
+            color: 'var(--logo-red)' 
+          }
+        }}>Поле</FormLabel>
         <FormGroup>
           {tags.map((tag, index) => (
             <FormControlLabel
@@ -65,6 +67,12 @@ export default function CheckboxesGroup({ onFiltersChange }) {
                   checked={!!state.tags[tag]}
                   onChange={handleChange('tags')}
                   name={tag}
+                  sx={{
+                    color: 'var(--logo-red)',
+                    '&.Mui-checked': {
+                      color: 'var(--logo-red)',
+                    },
+                  }}
                 />
               }
               label={tag}
@@ -73,7 +81,11 @@ export default function CheckboxesGroup({ onFiltersChange }) {
         </FormGroup>
       </FormControl>
       <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-        <FormLabel component="legend">Работно време</FormLabel>
+        <FormLabel component="legend" sx={{
+          '&.Mui-focused': {
+            color: 'var(--logo-red)' 
+          }
+        }}>Работно време</FormLabel>
         <FormGroup>
           {employmentTypes.map((tag, index) => (
             <FormControlLabel
@@ -83,6 +95,12 @@ export default function CheckboxesGroup({ onFiltersChange }) {
                   checked={!!state.employmentTypes[tag]}
                   onChange={handleChange('employmentTypes')}
                   name={tag}
+                  sx={{
+                    color: 'var(--logo-red)',
+                    '&.Mui-checked': {
+                      color: 'var(--logo-red)',
+                    },
+                  }}
                 />
               }
               label={tag}
@@ -91,7 +109,11 @@ export default function CheckboxesGroup({ onFiltersChange }) {
         </FormGroup>
       </FormControl>
       <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-        <FormLabel component="legend">Ниво на искуство</FormLabel>
+        <FormLabel component="legend" sx={{
+          '&.Mui-focused': {
+            color: 'var(--logo-red)' 
+          }
+        }}>Ниво на искуство</FormLabel>
         <FormGroup>
           {experienceLevels.map((level, index) => (
             <FormControlLabel
@@ -101,6 +123,12 @@ export default function CheckboxesGroup({ onFiltersChange }) {
                   checked={!!state.experienceLevels[level]}
                   onChange={handleChange('experienceLevels')}
                   name={level}
+                  sx={{
+                    color: 'var(--logo-red)',
+                    '&.Mui-checked': {
+                      color: 'var(--logo-red)',
+                    },
+                  }}
                 />
               }
               label={level}

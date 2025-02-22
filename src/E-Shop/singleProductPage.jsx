@@ -30,7 +30,10 @@ function SingleProductPage() {
   const [buttonText, setButtonText] = useState('Додади во кошничка');
   const [fadeText, setFadeText] = useState(false);
 
+  let currentProduct = ''
+
   const availableSizes = ['XS', 'S', 'M', 'L', 'XL'];
+  const mlSizes = ['125ml', '250ml', '350ml'];
   const handleImageClick = (img) => {
     setFade(true);
     setTimeout(() => {
@@ -193,26 +196,47 @@ function SingleProductPage() {
                 onClick={() => handleChangeImageClick(suggestedProduct)}
               >
                 <img src={suggestedProduct.img} alt="suggestedProduct" />
+                {currentProduct = suggestedProduct.type}
+                {console.log(currentProduct)}
               </div>
             ))}
           </SuggestedWrapper>
           <p>Избери големина:</p>
           <SizesWrapper>
-            {availableSizes.map((sizeLabel) => (
-              <SizeBox
-                key={sizeLabel}
-                title={size.includes(sizeLabel) ? '' : 'Нема на залиха'}
-                isAvailable={size.includes(sizeLabel)}
-                isSelected={selectedSize === sizeLabel}
-                onClick={() => {
-                  if (size.includes(sizeLabel)) {
-                    handleSizeClick(sizeLabel);
-                  }
-                }}
-              >
-                {sizeLabel}
-              </SizeBox>
-            ))}
+            {currentProduct === 'casi' ? (
+              mlSizes.map((sizeLabel) => (
+                <SizeBox
+                  style={{width: '55px'}}
+                  key={sizeLabel}
+                  title={size.includes(sizeLabel) ? '' : 'Нема на залиха'}
+                  isAvailable={size.includes(sizeLabel)}
+                  isSelected={selectedSize === sizeLabel}
+                  onClick={() => {
+                    if (size.includes(sizeLabel)) {
+                      handleSizeClick(sizeLabel);
+                    }
+                  }}
+                >
+                  {sizeLabel}
+                </SizeBox>
+              ))
+            ) : (
+              availableSizes.map((sizeLabel) => (
+                <SizeBox
+                  key={sizeLabel}
+                  title={size.includes(sizeLabel) ? '' : 'Нема на залиха'}
+                  isAvailable={size.includes(sizeLabel)}
+                  isSelected={selectedSize === sizeLabel}
+                  onClick={() => {
+                    if (size.includes(sizeLabel)) {
+                      handleSizeClick(sizeLabel);
+                    }
+                  }}
+                >
+                  {sizeLabel}
+                </SizeBox>
+              ))
+            )}
           </SizesWrapper>
           <CartButton>
             <button onClick={handleAddToCart}>
@@ -301,8 +325,8 @@ const SizeBox = styled.div`
     props.isAvailable
       ? css`
           background-color: ${props.isSelected
-            ? ' var(--section-white)'
-            : 'white'};
+          ? ' var(--section-white)'
+          : 'white'};
           color: ${props.isSelected ? 'white' : 'black'};
           border: 1px solid black;
           border-radius: 0px !important;

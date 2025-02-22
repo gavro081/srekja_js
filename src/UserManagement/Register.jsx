@@ -5,7 +5,7 @@ import CustomTextField from './CustomTextField';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { createUserWithEmailAndPassword } from '@firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from '@firebase/auth';
 import { doc, setDoc } from '@firebase/firestore';
 import { db } from '../firebase/firebase';
 import { auth } from '../firebase/firebase';
@@ -73,6 +73,10 @@ function Register() {
       );
       const user = userCredential.user;
       const userID = user.uid;
+
+      await updateProfile(user, {
+        displayName: name + " " + lastName,
+      })
 
       await setDoc(doc(db, 'users', userID), {
         name: name,

@@ -39,7 +39,7 @@ export default function CheckboxesGroup({
         ml: 5, // Smaller top margin
         border: '1px solid black', // Black border
         backgroundColor: 'grey.200', // Grey background
-        p: 2, // Padding for better spacing
+        p: 4, // Padding for better spacing
         borderRadius: 1,
         height: '99%',
       }}
@@ -52,7 +52,11 @@ export default function CheckboxesGroup({
         component="fieldset"
         variant="standard"
       >
-        <FormLabel component="legend">Продукт</FormLabel>
+        <FormLabel component="legend" sx={{
+          '&.Mui-focused': {
+            color: 'var(--logo-red)' 
+          }
+        }}>Продукт</FormLabel>
         <FormGroup>
           <FormControlLabel
             control={
@@ -60,6 +64,12 @@ export default function CheckboxesGroup({
                 checked={selectedFilters.maici}
                 onChange={handleFilterChange}
                 name="maici"
+                sx={{
+                  color: 'var(--logo-red)',
+                  '&.Mui-checked': {
+                    color: 'var(--logo-red)',
+                  },
+                }}
               />
             }
             label="Маици"
@@ -70,6 +80,12 @@ export default function CheckboxesGroup({
                 checked={selectedFilters.dukseri}
                 onChange={handleFilterChange}
                 name="dukseri"
+                sx={{
+                  color: 'var(--logo-red)',
+                  '&.Mui-checked': {
+                    color: 'var(--logo-red)',
+                  },
+                }}
               />
             }
             label="Дуксери"
@@ -80,6 +96,12 @@ export default function CheckboxesGroup({
                 checked={selectedFilters.casi}
                 onChange={handleFilterChange}
                 name="casi"
+                sx={{
+                  color: 'var(--logo-red)',
+                  '&.Mui-checked': {
+                    color: 'var(--logo-red)',
+                  },
+                }}
               />
             }
             label="Чаши"
@@ -92,7 +114,11 @@ export default function CheckboxesGroup({
         sx={{ m: 3, mt: 0, flexGrow: 1 }}
         variant="standard"
       >
-        <FormLabel component="legend">Големина</FormLabel>
+        <FormLabel component="legend" sx={{
+          '&.Mui-focused': {
+            color: 'var(--logo-red)' 
+          }
+        }}>Големина</FormLabel>
         <FormGroup>
           <FormControlLabel
             control={
@@ -100,6 +126,12 @@ export default function CheckboxesGroup({
                 checked={selectedFilters.XS}
                 onChange={handleFilterChange}
                 name="XS"
+                sx={{
+                  color: 'var(--logo-red)',
+                  '&.Mui-checked': {
+                    color: 'var(--logo-red)',
+                  },
+                }}
               />
             }
             label="XS"
@@ -110,6 +142,12 @@ export default function CheckboxesGroup({
                 checked={selectedFilters.S}
                 onChange={handleFilterChange}
                 name="S"
+                sx={{
+                  color: 'var(--logo-red)',
+                  '&.Mui-checked': {
+                    color: 'var(--logo-red)',
+                  },
+                }}
               />
             }
             label="S"
@@ -120,6 +158,12 @@ export default function CheckboxesGroup({
                 checked={selectedFilters.M}
                 onChange={handleFilterChange}
                 name="M"
+                sx={{
+                  color: 'var(--logo-red)',
+                  '&.Mui-checked': {
+                    color: 'var(--logo-red)',
+                  },
+                }}
               />
             }
             label="M"
@@ -130,6 +174,12 @@ export default function CheckboxesGroup({
                 checked={selectedFilters.L}
                 onChange={handleFilterChange}
                 name="L"
+                sx={{
+                  color: 'var(--logo-red)',
+                  '&.Mui-checked': {
+                    color: 'var(--logo-red)',
+                  },
+                }}
               />
             }
             label="L"
@@ -140,6 +190,12 @@ export default function CheckboxesGroup({
                 checked={selectedFilters.XL}
                 onChange={handleFilterChange}
                 name="XL"
+                sx={{
+                  color: 'var(--logo-red)',
+                  '&.Mui-checked': {
+                    color: 'var(--logo-red)',
+                  },
+                }}
               />
             }
             label="XL"
@@ -153,9 +209,11 @@ export default function CheckboxesGroup({
           alignSelf: 'center',
           width: '122%',
           height: '50px',
-          backgroundColor: 'var(--logo-green)',
+          background: 'var(--gradient)',
+          textTransform: 'none',
           '&:hover': {
-            backgroundColor: 'rgb(9, 94, 88)',
+            background: 'var(--gradient-hover)',
+            scale: '1.05',
           },
         }}
         onClick={filterItems}

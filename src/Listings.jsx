@@ -170,7 +170,7 @@ const JobPostingCard = ({
         </MetadataItem>
         <MetadataItem>
           <h3>{experienceLevel}</h3>
-          <p>Experience level</p>
+          <p>Ниво на искуство</p>
           {/* македонски */}
         </MetadataItem>
       </MetadataGrid>

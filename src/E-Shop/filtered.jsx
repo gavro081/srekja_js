@@ -141,7 +141,7 @@ const ProductsWrapper = styled.div`
   gap: 20px;
 `;
 const ProductCard = styled.div`
-  width: 200px;
+  width: 255px;
   height: 300px;
   border: 1px solid black;
   margin: 10px;

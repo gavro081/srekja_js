@@ -8,6 +8,8 @@ import { TimePicker } from "@mui/x-date-pickers";
 import Navbar from "../shumaComponents/Navbar.jsx";
 import Footer from "../shumaComponents/Footer.jsx";
 import { addReservation, getReservations } from "../firebase/tableReservationService.js";
+import Confetti from 'react-confetti';
+import { useAuth } from "../firebase/authContext.jsx";
 
 export default function TableReservation() {
     const [selectedDate, setSelectedDate] = useState(dayjs());
@@ -16,6 +18,9 @@ export default function TableReservation() {
     const [hourlyDuration, setHourlyDuration] = useState(1);
     const [inactiveTables, setInactiveTables] = useState([]);
     const [selectedTableId, setSelectedTableId] = useState('');
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const { currentUser } = useAuth() 
 
     useEffect(() => {
         fetchReservations(selectedDate.format('YYYY-MM-DD'));
@@ -27,7 +32,7 @@ export default function TableReservation() {
             setSelectedTableId('');
         }
     }, [hourlyDuration, inactiveTables]);
-
+    console.log(isSubmitted)
     const fetchReservations = async (date) => {
         const reservations = await getReservations(date);
         const reservedTables = reservations.filter(res => {
@@ -53,6 +58,7 @@ export default function TableReservation() {
         const endTime = selectedTime.add(hourlyDuration, 'hour');
         await addReservation(selectedTableId, selectedDate.format('YYYY-MM-DD'), selectedTime.format('HH:mm'), endTime.format('HH:mm'), placeIsTerrace);
         setSelectedTableId(''); // Reset selected table
+        setIsSubmitted(true);
         fetchReservations(selectedDate.format('YYYY-MM-DD'));
     };
 
@@ -75,6 +81,7 @@ export default function TableReservation() {
                     className={`${reservation ? 'inactive' : ''} ${selectedTableId === id ? 'selected' : ''}`}
                     onClick={() => {
                         setSelectedTableId(id);
+                        setIsSubmitted(false)
                     }}
                 >
                     4-6
@@ -99,11 +106,11 @@ export default function TableReservation() {
                     <div>{renderTables(['t9', 't10', 't11', 't12'])}</div>
                 </TablesMap>
                 <ResDetails>
-                    <h1>Направи Резервација!</h1>
+                    <h1>Направи резервација!</h1>
                     <div>
                         <ResDetailWrapper>
                             <p>Резервацијата е направена од:</p>
-                            <p>Борјан Ѓорѓиевски</p>
+                            <p>{currentUser?.displayName ?? "Борјан Ѓорѓиевски"}</p>
                         </ResDetailWrapper>
                         <span style={{display: "flex", gap: "1rem"}}>
                         <ResDetailWrapper>
@@ -171,7 +178,13 @@ export default function TableReservation() {
                             </ButtonWrapper>
                         </ResDetailWrapper>
                     </div>
-                    <ResSubmitBtn onClick={handleReservation}>Резервирај</ResSubmitBtn>
+                    {!isSubmitted ? (
+                        <ResSubmitBtn onClick={handleReservation}>Резервирај</ResSubmitBtn>
+                    ) : (
+                        <ResSubmittedBtn>Резервирано</ResSubmittedBtn>
+                    )} 
+                    
+                    {isSubmitted && <Confetti  numberOfPieces={300} recycle={false}/>}
                 </ResDetails>
             </div>
             <Footer/>
@@ -187,7 +200,7 @@ const Wrapper = styled.div`
         display: grid;
         grid-template-columns: 2fr 1fr;
         width: 100%;
-        height: 90vh;
+        height: 95vh;
         // margin-bottom: 5rem;
     }
 `;
@@ -237,7 +250,7 @@ const Table = styled.button`
     }
 
     &.selected {
-        scale: 1.1;
+        scale: 1.05;
         background: var(--logo-green);
     }
 
@@ -341,3 +354,19 @@ const ResSubmitBtn = styled.button`
         scale: 1.05;
     }
 `;
+const ResSubmittedBtn = styled.button`
+    margin-top: auto;
+    border: none;
+    background: var(--gradient-hover);
+    color: white;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    opacity: .9;
+    transition: all 300ms ease-in-out;
+    &:hover {
+        background: var(--gradient-hover);
+        scale: 1.05;
+    }
+`

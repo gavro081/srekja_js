@@ -11,12 +11,12 @@ import Navbar from "../shumaComponents/Navbar.jsx";
 import CircularWithValueLabel from "./CircularProgressWithLabel.jsx";
 import Confetti from 'react-confetti';
 
-const steps = ['Област', 'Основни информации', 'Тим и основачи', 'Идеја и мисија','Насловна фотографија'];
+const steps = ['Област', 'Основни информации', 'Тим и основачи', 'Визија и идеја','Насловна фотографија'];
 const questions = [
     'Во која индустрија или област припаѓа вашиот стартап?',
-    'Какви се основните информации за вашиот стартап?',
+    'Накратко претставете го вашиот стартап',
     'Кој е вашиот тим и кои се нивните улоги?',
-    'Каква е вашата идеја и мисија?',
+    'Која е вашата визија и идеја?',
     'Објавете ја вашата насловна фотографија',
 ];
 
@@ -165,7 +165,7 @@ export const StartupCreate = () => {
                     type="text"
                     value={startupInfo2}
                     onChange={(e) => setStartupInfo2(e.target.value)}
-                    placeholder="Објаснете ја вашата идеја и мисија"
+                    placeholder="Нашата визија е ..."
                 />
 
             ) : activeStep === 4 ? (
@@ -199,7 +199,7 @@ export const StartupCreate = () => {
                 ) : activeStep === steps.length - 1 ? (
                     "Испрати!"
                 ) : (
-                    "Понатаму"
+                    "Продолжи"
                 )}
             </NextButton>
             {isSubmitted && <Confetti  numberOfPieces={300} recycle={false}/>}
