@@ -256,14 +256,14 @@ const CartButton = styled.div`
   }
 `;
 const SuggestedWrapper = styled.div`
-  width: 100%;
   display: flex;
   height: 20%;
   gap: 5%;
+
   margin-bottom: 5%;
   .suggestedProduct {
-    width: 22%;
-    height: 80%;
+    width: 200px;
+    height: 60%;
   }
   .suggestedProduct:hover {
     border: 2px solid rgba(11, 119, 111, 0.95);
