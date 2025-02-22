@@ -121,7 +121,19 @@ const FoodResponse = styled.div`
         animation: ${gradientAnimation2} 3s ease-out infinite;
       `}
   `;
-
+export const AIResponse = styled.div`
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    margin: 20px;
+    padding: 20px;
+    max-width: 400px;
+    border: 1px solid black
+    transition: border-color 0.3s ease, background 0.3s ease;
+    ${css`
+        animation: ${gradientAnimation2} 3s ease-out infinite;
+      `}
+`
 const SpinnerWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -195,7 +207,7 @@ img {
 `;
 
 export {
-    SearchInput, SearchButton, FoodItem, Price, Ingredients,
-    SpinnerWrapper, FoodResponse, Desc, SearchContainer, GradientHeading,
-    GradientHeading4, gradientAnimation, gradientAnimation2
+  SearchInput, SearchButton, FoodItem, Price, Ingredients,
+  SpinnerWrapper, FoodResponse, Desc, SearchContainer, GradientHeading,
+  GradientHeading4, gradientAnimation, gradientAnimation2
 }

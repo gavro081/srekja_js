@@ -1,8 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { listings } from './listings';
+import Box from '@mui/material/Box';
+import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormHelperText from '@mui/material/FormHelperText';
+import Checkbox from '@mui/material/Checkbox';
+import Button from '@mui/material/Button';
+import Navbar from './shumaComponents/Navbar';
+import Footer from './shumaComponents/Footer';
 
-// Styled Components
+
+
 const Card = styled.div`
   background: white;
   border-radius: 8px;
@@ -163,6 +174,9 @@ const JobPostingCard = ({
 // Job Postings Page Component
 const Listings = () => {
     return (
+        <>
+        <Navbar></Navbar>
+        {/* dime stavi tuka filter*/}
         <PageContainer>
             {/* <PageTitle>Available Positions</PageTitle> */}
             <JobsContainer>
@@ -171,6 +185,8 @@ const Listings = () => {
                 ))}
             </JobsContainer>
         </PageContainer>
+        <Footer></Footer>
+        </>
     );
 };
 
