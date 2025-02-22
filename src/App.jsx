@@ -16,11 +16,11 @@ import { useAuth } from "./firebase/authContext.jsx";
 import { useEffect } from "react";
 import Wheel from "./UserManagement/SpinTheWheel/Wheel.jsx";
 
-import BlogInput from "./AI/BlogInput.jsx";
 import Listings from "./Listings.jsx";
 
 import BlogInput from "./AI/BlogInput.jsx";
 import Media from "./Media/Media.jsx";
+import Wordle from "./UserManagement/Wordle/Wordle.jsx";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +70,10 @@ const router = createBrowserRouter([
   {
     path: "/wheel",
     element: <Wheel />,
+  },
+  {
+    path: '/wordle',
+    element: <Wordle />
   },
   {
     path: "/singleProductPage",
