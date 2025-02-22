@@ -10,17 +10,13 @@ import { motion } from "framer-motion";
 import Navbar from "../shumaComponents/Navbar.jsx";
 import CircularWithValueLabel from "./CircularProgressWithLabel.jsx";
 
-const steps = ['Област', 'Основни информации', 'Тим и основачи', 'Идеја и мисија', 'Бизнис модел', 'Производ', 'Пазар и конкуреницја', 'План за развој', 'Поднеси'];
+const steps = ['Област', 'Основни информации', 'Тим и основачи', 'Идеја и мисија','Насловна фотографија','Поднеси'];
 const questions = [
     'Во која индустрија или област припаѓа вашиот стартап?',
     'Какви се основните информации за вашиот стартап?',
     'Кој е вашиот тим и кои се основачите?',
     'Каква е вашата идеја и мисија?',
-    'Каков е вашиот бизнис модел?',
-    'Каков е вашиот производ?',
-    'Каков е вашиот пазар и конкуренција?',
-    'Каков е вашиот план за развој?',
-    'Поднесете ја вашата апликација!',
+    'Објавете ја вашата насловна фотографија',
 ];
 
 const choices = [
@@ -65,6 +61,17 @@ export const StartupCreate = () => {
     const removeTeamMember = (index) => {
         setInputArr(inputarr.filter((_, i) => i !== index));
     };
+
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const handleImageUpload = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const imageUrl = URL.createObjectURL(file);
+            setSelectedImage(imageUrl);
+        }
+    };
+
 
     return (
         <Wrapper>
@@ -125,6 +132,19 @@ export const StartupCreate = () => {
                         ))}
                     </TableElement>
                 </TeamMembersSection>
+            ) : activeStep === 3 ? (
+                <TextInput
+                    type="text"
+                    value={startupInfo}
+                    onChange={(e) => setStartupInfo(e.target.value)}
+                    placeholder="Објаснете ја вашата идеја и мисија"
+                />
+
+            ) : activeStep === 4 ? (
+                <ImageUploadWrapper>
+                    <input type="file" accept="image/*" onChange={handleImageUpload} />
+                    {selectedImage && <PreviewImage src={selectedImage} alt="Преглед на сликата" />}
+                </ImageUploadWrapper>
             ) : (
                 <ChoicesWrapper>
                     {choices[activeStep]?.map((choice, index) => (
@@ -157,6 +177,22 @@ export const StartupCreate = () => {
         </Wrapper>
     );
 };
+
+const ImageUploadWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+`;
+
+const PreviewImage = styled.img`
+    width: 200px;
+    height: 200px;
+    margin-top: 1rem;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+`;
 
 const RemoveButton = styled.button`
     background: var(--logo-red);
