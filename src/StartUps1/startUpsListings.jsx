@@ -48,13 +48,13 @@ function StartUpsListings() {
   useEffect(() => {
     fetch("/startUpsListing.json")
       .then((response) => response.json())
-      .then((data) => setStartUps(data.slice(0, 4)))
+      .then((data) => setStartUps(data.slice(0, 3)))
       .catch((error) => console.error("Error fetching the JSON data:", error));
   }, []);
   useEffect(() => {
     fetch("/nastani.json")
       .then((response) => response.json())
-      .then((data) => setEvents(data.slice(0, 4)))
+      .then((data) => setEvents(data.slice(0, 3)))
       .catch((error) => console.error("Error fetching the JSON data:", error));
   }, []);
 
@@ -62,8 +62,9 @@ function StartUpsListings() {
     <>
       <GlobalStyle />
       <MainWrapper>
+        <EventWrapper>
         <h2
-          style={{ textAlign: "center", marginBottom: "5%", fontSize: "3em" }}
+            style={{ textAlign: "center", marginBottom: "5%", fontSize: "3em" }}
         >
           Најнови настани
         </h2>
@@ -95,11 +96,12 @@ function StartUpsListings() {
         >
           <NextButton className="vidigisite">ВИДИ ГИ СИТЕ </NextButton>
         </div>
+        </EventWrapper>
+        <EventWrapper>
         <h2
           style={{
             textAlign: "center",
             marginBottom: "5%",
-            marginTop: "10%",
             fontSize: "3rem",
           }}
         >
@@ -129,6 +131,7 @@ function StartUpsListings() {
         >
           <NextButton className="vidigisite">ВИДИ ГИ СИТЕ </NextButton>
         </div>
+          </EventWrapper>
       </MainWrapper>
     </>
   );
@@ -189,11 +192,30 @@ const Overlay = styled.div`
 const Events = styled.div`
   display: flex;
   flex-wrap: wrap;
-
+  //background-color: #fcf0f0;
+  //width: 80%;
+  //box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  //padding-top: 50px;
+  //padding-bottom: 50px;
   justify-content: center;
   gap: 20px;
-  width: 100%;
+  margin: 0 auto; /* Center the component horizontally */
+  border-radius: 20px;
 `;
+
+const EventWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto; /* Center the component horizontally */
+  background-color: #fcf0f0;
+  width: 80%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  justify-content: center;
+  margin-top: 2rem;
+  border-radius: 20px;
+`
 const Title = styled.h3`
   margin: 0;
   position: absolute;
@@ -236,6 +258,7 @@ const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 5%;
+
 `;
 
 const GlobalStyle = createGlobalStyle`
