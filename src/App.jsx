@@ -20,6 +20,7 @@ import Listings from "./Listings.jsx";
 
 import BlogInput from "./AI/BlogInput.jsx";
 import Media from "./Media/Media.jsx";
+import AIinput from './AI/AIinput.jsx';
 
 const router = createBrowserRouter([
   {
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
     path: "/shoppingCart",
     element: <ShoppingCart />,
   },
+  // {
+  //   path: '/blogai',
+  //   element: <BlogInput />,
+  // },
   {
     path: "/blogai",
     element: <BlogInput />,
@@ -86,7 +91,11 @@ const router = createBrowserRouter([
     path: "/listings",
     element: <Listings />,
   },
+  {
+    path: 'ai-test',
+    element: <AIinput />
 
+  }
   // {
   //  path: '/{ime na komponenta}
   //  element: <Ime na komponentata />
