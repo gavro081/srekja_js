@@ -19,12 +19,9 @@ export const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  const logout = () => {
-    signOut(auth);
-  };
 
   return (
-    <AuthContext.Provider value={{ currentUser, logout }}>
+    <AuthContext.Provider value={{ currentUser, logOut }}>
       {children}
     </AuthContext.Provider>
   );
@@ -32,4 +29,9 @@ export const AuthProvider = ({ children }) => {
 
 export const useAuth = () => {
   return useContext(AuthContext);
+};
+
+export const logOut = () => {
+  signOut(auth);
+  console.log("logged out!")
 };

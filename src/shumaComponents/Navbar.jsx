@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useAuth } from "../firebase/authContext";
+import { useAuth, logOut } from "../firebase/authContext";
+import { signOut } from "@firebase/auth";
 
 export default function Navbar() {
   const { currentUser } = useAuth();
+
   return (
     <Nav>
       <Link to="/">
@@ -48,7 +50,7 @@ export default function Navbar() {
                 style={{ width: "18px", height: "18px" }}
               />
             </Button>
-            <Button to="/register">
+            <Button onClick={logOut}>
               <img
                 src="/assets/images/person2.svg"
                 style={{ width: "20px", height: "22px", marginTop: "-2px" }}

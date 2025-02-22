@@ -61,11 +61,7 @@ function StartUpsListings() {
   return (
     <>
       <GlobalStyle />
-      <Navbar />
       <MainWrapper>
-        <h2 style={{ marginLeft: '2%', marginBottom: '5%' }}>
-          {displayedText}
-        </h2>
         <h2 style={{ textAlign: 'center', marginBottom: '5%' }}>
           Најнови настани
         </h2>
@@ -88,8 +84,6 @@ function StartUpsListings() {
           ))}
         </Events>
       </MainWrapper>
-
-      <Footer />
     </>
   );
 }
