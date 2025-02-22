@@ -2,7 +2,7 @@ import Navbar from '../shumaComponents/Navbar';
 import Footer from '../shumaComponents/Footer';
 import styled, { createGlobalStyle } from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import CheckboxesGroup from './filters';
 import { useState, useEffect } from 'react';
 
 function Filtered() {
@@ -16,6 +16,11 @@ function Filtered() {
     maici: false,
     dukseri: false,
     casi: false,
+    Xs: false,
+    S: false,
+    M: false,
+    L: false,
+    XL: false,
   });
   useEffect(() => {
     if (text) {
@@ -26,10 +31,10 @@ function Filtered() {
     }
   }, [text]);
   const handleFilterChange = (e) => {
-    const { id, checked } = e.target;
+    const { name, checked } = e.target;
     setSelectedFilters({
       ...selectedFilters,
-      [id]: checked,
+      [name]: checked,
     });
   };
 
@@ -48,17 +53,29 @@ function Filtered() {
   }, []);
 
   const filterItems = () => {
-    const selectedTupes = Object.keys(selectedFilters).filter(
-      (key) => selectedFilters[key]
+    const selectedTypes = Object.keys(selectedFilters).filter(
+      (key) =>
+        selectedFilters[key] && ['maici', 'dukseri', 'casi'].includes(key)
     );
-    if (selectedTupes.length === 0 || selectedTupes.includes('site')) {
-      setProducts(allProducts);
-    } else {
-      const filteredItems = allProducts.filter((product) =>
-        selectedTupes.includes(product.type)
+    const selectedSizes = Object.keys(selectedFilters).filter(
+      (key) => selectedFilters[key] && ['XS', 'S', 'M', 'L', 'XL'].includes(key)
+    );
+
+    let filteredItems = allProducts;
+
+    if (selectedTypes.length > 0 && !selectedTypes.includes('site')) {
+      filteredItems = filteredItems.filter((product) =>
+        selectedTypes.includes(product.type)
       );
-      setProducts(filteredItems);
     }
+
+    if (selectedSizes.length > 0) {
+      filteredItems = filteredItems.filter((product) =>
+        product.sizes.some((size) => selectedSizes.includes(size))
+      );
+    }
+
+    setProducts(filteredItems);
   };
 
   const handleProductClick = (product) => {
@@ -72,54 +89,11 @@ function Filtered() {
 
       <MainWrapper>
         <FilterWrapper>
-          <Filter>
-            <p>Одбери</p>
-            <FilterContainer>
-              <FilterCheckbox>
-                <label>
-                  <input
-                    type="checkbox"
-                    id="site"
-                    value="site"
-                    checked={selectedFilters.site}
-                    onChange={handleFilterChange}
-                  />
-                  <span>Сите</span>
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    id="maici"
-                    value="maici"
-                    checked={selectedFilters.maici}
-                    onChange={handleFilterChange}
-                  />
-                  <span>Маици</span>
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    id="dukseri"
-                    value="dukseri"
-                    checked={selectedFilters.dukseri}
-                    onChange={handleFilterChange}
-                  />
-                  <span>Дуксери</span>
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    id="casi"
-                    value="casi"
-                    checked={selectedFilters.casi}
-                    onChange={handleFilterChange}
-                  />
-                  <span>Чаши</span>
-                </label>
-              </FilterCheckbox>
-            </FilterContainer>
-            <FilterButton onClick={filterItems}>Филтрирај</FilterButton>
-          </Filter>
+          <CheckboxesGroup
+            selectedFilters={selectedFilters}
+            handleFilterChange={handleFilterChange}
+            filterItems={filterItems}
+          />
         </FilterWrapper>
         <ProductsWrapper>
           {products.map((product) => {
@@ -157,6 +131,7 @@ const ProductsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  gap: 20px;
 `;
 const ProductCard = styled.div`
   width: 200px;
