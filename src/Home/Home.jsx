@@ -8,7 +8,7 @@ import StartUpsListings from "../StartUps1/startUpsListings.jsx";
 
 export default function Home() {
   return (
-    <div>
+    <div style={{ backgroundColor: "var(--body-white)" }}>
       <Navbar />
       <Hero />
       <StartUpsListings />

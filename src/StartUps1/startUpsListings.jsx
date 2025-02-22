@@ -1,17 +1,17 @@
-import styled, { createGlobalStyle } from 'styled-components';
-import { useLocation } from 'react-router-dom';
+import styled, { createGlobalStyle } from "styled-components";
+import { useLocation } from "react-router-dom";
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 
-import { useEffect, useState, useRef } from 'react';
-import Navbar from '../shumaComponents/Navbar.jsx';
-import Footer from '../shumaComponents/Footer.jsx';
+import { useEffect, useState, useRef } from "react";
+import Navbar from "../shumaComponents/Navbar.jsx";
+import Footer from "../shumaComponents/Footer.jsx";
 
 function StartUpsListings() {
   const [startUps, setStartUps] = useState([]);
   const [events, setEvents] = useState([]);
-  let [displayedText, setDisplayedText] = useState('');
-  const fullText = 'Среќа е...да се биде иновативен!';
+  let [displayedText, setDisplayedText] = useState("");
+  const fullText = "Среќа е...да се биде иновативен!";
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
@@ -21,9 +21,9 @@ function StartUpsListings() {
         index++;
         if (
           index >= 2 &&
-          fullText[index] === '.' &&
-          fullText[index - 1] === '.' &&
-          fullText[index - 2] === '.'
+          fullText[index] === "." &&
+          fullText[index - 1] === "." &&
+          fullText[index - 2] === "."
         ) {
           clearInterval(interval);
           setTimeout(() => {
@@ -46,23 +46,25 @@ function StartUpsListings() {
   }, []);
 
   useEffect(() => {
-    fetch('/startUpsListing.json')
+    fetch("/startUpsListing.json")
       .then((response) => response.json())
-      .then((data) => setStartUps(data.slice(0, 3)))
-      .catch((error) => console.error('Error fetching the JSON data:', error));
+      .then((data) => setStartUps(data.slice(0, 4)))
+      .catch((error) => console.error("Error fetching the JSON data:", error));
   }, []);
   useEffect(() => {
-    fetch('/nastani.json')
+    fetch("/nastani.json")
       .then((response) => response.json())
-      .then((data) => setEvents(data.slice(0, 3)))
-      .catch((error) => console.error('Error fetching the JSON data:', error));
+      .then((data) => setEvents(data.slice(0, 4)))
+      .catch((error) => console.error("Error fetching the JSON data:", error));
   }, []);
 
   return (
     <>
       <GlobalStyle />
       <MainWrapper>
-        <h2 style={{ textAlign: 'center', marginBottom: '5%' }}>
+        <h2
+          style={{ textAlign: "center", marginBottom: "5%", fontSize: "3em" }}
+        >
           Најнови настани
         </h2>
         <Events>
@@ -83,9 +85,23 @@ function StartUpsListings() {
             </Post>
           ))}
         </Events>
-        <StyledButton className="vidigisite">ВИДИ ГИ СИТЕ </StyledButton>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "40px",
+          }}
+        >
+          <NextButton className="vidigisite">ВИДИ ГИ СИТЕ </NextButton>
+        </div>
         <h2
-          style={{ textAlign: 'center', marginBottom: '5%', marginTop: '10%' }}
+          style={{
+            textAlign: "center",
+            marginBottom: "5%",
+            marginTop: "10%",
+            fontSize: "3rem",
+          }}
         >
           Успешни Приказни
         </h2>
@@ -103,7 +119,16 @@ function StartUpsListings() {
             </Post>
           ))}
         </Events>
-        <StyledButton className="vidigisite">ВИДИ ГИ СИТЕ </StyledButton>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "40px",
+          }}
+        >
+          <NextButton className="vidigisite">ВИДИ ГИ СИТЕ </NextButton>
+        </div>
       </MainWrapper>
     </>
   );
@@ -151,15 +176,14 @@ const Overlay = styled.div`
   background-size: cover;
   background-position: center;
   opacity: 0.7; /* Adjust the opacity as needed */
-  z-index: -1;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+    background-color: rgba(0, 0, 0, 0.3); /* Dark overlay */
   }
 `;
 const Events = styled.div`
@@ -196,16 +220,10 @@ const Post = styled.div`
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
-  }
-  &:hover ${DescriptionOverlay} {
-    opacity: 0.3;
-  }
-
-  &:hover ${Title}, &:hover ${ShortDescription} {
-    opacity: 0;
   }
 `;
 
@@ -218,7 +236,6 @@ const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 5%;
-  margin-bottom: 45%;
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -244,4 +261,24 @@ const StyledButton = styled.button`
   border-radius: 5px;
   transition: background-color 0.3s ease-in-out;
 `;
+
+const NextButton = styled.button`
+  background: linear-gradient(45deg, var(--logo-orange), var(--logo-red));
+  color: white;
+  border: none;
+  width: 300px;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
+    transform: scale(1.05);
+  }
+`;
+
 export default StartUpsListings;

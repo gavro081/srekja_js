@@ -13,16 +13,38 @@ export default function Navbar() {
       </Link>
 
       <NavLinks>
-        <NavItem to="/">Почетна</NavItem>
+        <NavItem to="/listings">Работа</NavItem>
+        <NavItem to="/">Стартапи</NavItem>
         <NavItemContainer>
           <NavItem
-              to="/srekjaBar"
-              style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: "2px",
-              }}
+            to="/"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "2px",
+            }}
+          >
+            Стартапи{" "}
+            <img
+              src="/assets/images/drop.png"
+              style={{ width: "18px", height: "16px", marginTop: "2px" }}
+            />
+          </NavItem>
+          <Dropdown>
+            <DropdownItem to="/startupCreate">Внеси</DropdownItem>
+          </Dropdown>
+        </NavItemContainer>
+        <NavItem to="/">Настани</NavItem>
+        <NavItemContainer>
+          <NavItem
+            to="/srekjaBar"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "2px",
+            }}
           >
             Среќа Бар{" "}
             <img
@@ -71,8 +93,8 @@ const Nav = styled.nav`
   padding: 0 30px;
   background-color: white;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    
-    z-index: 1000;   //ova e za da raboti box shadow vrz site elementi
+
+  z-index: 1000; //ova e za da raboti box shadow vrz site elementi
 `;
 
 const NavItem = styled(Link)`
@@ -85,12 +107,12 @@ const NavItem = styled(Link)`
   align-items: center;
   height: 40px;
   &:hover {
-    color: var(--logo-green);
+    color: var(--logo-orange);
   }
 `;
 
 const Button = styled(Link)`
-  background-color: #0b776f;
+  background-color: var(--logo-orange);
   padding: 10px;
   border: 2px solid white;
   height: 40px;
@@ -101,7 +123,7 @@ const Button = styled(Link)`
   text-decoration: none;
   border-radius: 5px;
   &:hover {
-    border: 2px solid var(--logo-green);
+    border: 2px solid var(--logo-orange);
     box-shadow: 2px 2px 10px grey;
   }
 `;
