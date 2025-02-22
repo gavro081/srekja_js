@@ -94,7 +94,7 @@ function StartUpsListings() {
             marginTop: "40px",
           }}
         >
-          <NextButton className="vidigisite">ВИДИ ГИ СИТЕ </NextButton>
+          <NextButton className="vidigisite">Види ги сите</NextButton>
         </div>
         </EventWrapper>
         <EventWrapper>
@@ -129,7 +129,7 @@ function StartUpsListings() {
             marginTop: "40px",
           }}
         >
-          <NextButton className="vidigisite">ВИДИ ГИ СИТЕ </NextButton>
+          <NextButton className="vidigisite">Види ги сите</NextButton>
         </div>
           </EventWrapper>
       </MainWrapper>
@@ -148,7 +148,6 @@ const DescriptionOverlay = styled.div`
   height: 100%;
   opacity: 0;
   background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 0px !important;
   color: black;
   display: flex;
   align-items: center;
@@ -176,6 +175,7 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   background-size: cover;
   background-position: center;
   opacity: 0.7; /* Adjust the opacity as needed */
@@ -192,7 +192,8 @@ const Overlay = styled.div`
 const Events = styled.div`
   display: flex;
   flex-wrap: wrap;
-  //background-color: #fcf0f0;
+  // background-color:rgb(255, 234, 234);
+  // background-color:whitesmoke;
   //width: 80%;
   //box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   //padding-top: 50px;
@@ -200,21 +201,21 @@ const Events = styled.div`
   justify-content: center;
   gap: 20px;
   margin: 0 auto; /* Center the component horizontally */
-  border-radius: 20px;
+  border-radius: 10px;
 `;
 
 const EventWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto; /* Center the component horizontally */
-  background-color: #fcf0f0;
+  background-color: #fff9f9;
   width: 80%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   padding-top: 30px;
   padding-bottom: 30px;
   justify-content: center;
   margin-top: 2rem;
-  border-radius: 20px;
+  border-radius: 10px;
 `
 const Title = styled.h3`
   margin: 0;
@@ -291,17 +292,18 @@ const NextButton = styled.button`
   border: none;
   width: 300px;
   padding: 0.7rem 2rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   letter-spacing: 1px;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
-    transform: scale(1.05);
+    background-color: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
+    transform: scale(1.55);
   }
+    
 `;
 
 export default StartUpsListings;

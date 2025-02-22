@@ -10,77 +10,77 @@ import blogs from "../AI/blogs";
 
 
 export default function BlogsHome2() {
-    const [selectedCategory, setSelectedCategory] = useState("Сите");
-    const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState("Сите");
+  const navigate = useNavigate();
 
-    const filteredBlogs =
-        selectedCategory === "Сите"
-            ? blogs
-            : blogs.filter((blog) => blog.category === selectedCategory);
+  const filteredBlogs =
+    selectedCategory === "Сите"
+      ? blogs
+      : blogs.filter((blog) => blog.category === selectedCategory);
 
 
-    // Move the settings for the slider outside of the handleBack function
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        centerMode: true,
-        centerPadding: '0',
-        cssEase: 'cubic-bezier(0.4, 0, 0.2, 1)',
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    initialSlide: 1
-                }
-            }
-        ]
-    };
+  // Move the settings for the slider outside of the handleBack function
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: '0',
+    cssEase: 'cubic-bezier(0.4, 0, 0.2, 1)',
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1
+        }
+      }
+    ]
+  };
 
-    return (
-        <HeroSection>
-            <HeroTitle>
-                Блогови
-            </HeroTitle>
-            <CarouselContainer>
-                <Slider {...settings}>
-                    {filteredBlogs.map((item) => (
-                        <div key={item}>
-                            <GridCard>
-                                <div className="image-container">
-                                    <FaqBadge>Види повеќе</FaqBadge>
-                                    <img src={item.image} alt="Blog" />
-                                </div>
-                                <div className="card-content">
-                                    <GridCardTitle>{item.title}</GridCardTitle>
-                                    <div className="card-bottom">
-                                        <div className="info-container">
-                                            <GridCardInfo>{item.short_desc}</GridCardInfo>
-                                            <GridCardInfo style={{marginTop: '.8rem',fontWeight: '600', fontStyle: 'italic'}}>{item.author}</GridCardInfo>
-                                        </div>
-                                    </div>
-                                </div>
-                            </GridCard>
-                        </div>
-                    ))}
-                </Slider>
-            </CarouselContainer>
-            <NextButton className="vidigisite">ВИДИ ГИ СИТЕ </NextButton>
-        </HeroSection>
-    );
+  return (
+    <HeroSection>
+      <HeroTitle>
+        Блогови
+      </HeroTitle>
+      <CarouselContainer>
+        <Slider {...settings}>
+          {filteredBlogs.map((item) => (
+            <div key={item}>
+              <GridCard>
+                <div className="image-container">
+                  <FaqBadge>Види повеќе</FaqBadge>
+                  <img src={item.image} alt="Blog" />
+                </div>
+                <div className="card-content">
+                  <GridCardTitle>{item.title}</GridCardTitle>
+                  <div className="card-bottom">
+                    <div className="info-container">
+                      <GridCardInfo>{item.short_desc}</GridCardInfo>
+                      <GridCardInfo style={{ marginTop: '.8rem', fontWeight: '600', fontStyle: 'italic' }}>{item.author}</GridCardInfo>
+                    </div>
+                  </div>
+                </div>
+              </GridCard>
+            </div>
+          ))}
+        </Slider>
+      </CarouselContainer>
+      <NextButton className="vidigisite">Види ги сите</NextButton>
+    </HeroSection>
+  );
 };
 
 
@@ -256,19 +256,18 @@ const FaqBadge = styled.div`
   position: absolute;
   top: 1rem;
   right: 1rem;
-    background: linear-gradient(45deg, var(--logo-orange), var(--logo-red));
+    background: rgba(255, 255,255, 0.7);
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-size: 0.8rem;
-  color: white;
+  color: #111;
   backdrop-filter: blur(5px);
   letter-spacing: 1px;
-    transition: 0.3s ease-in-out;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-    border: rgba(255,255,255,0.4) solid 1px;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 
     &:hover {
-        background: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
+        background: rgba(255, 255,255, 0.9);
         transform: scale(1.05);
     }
 `;

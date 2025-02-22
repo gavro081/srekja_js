@@ -23,6 +23,13 @@
 
     --hover-red: #ff0055;
     --body-white:#faf5f6;
+    --black: #111;
+
+    --gradient: linear-gradient(45deg, var(--logo-orange), var(--logo-red));
+    --gradient-hover: linear-gradient(45deg,var(--logo-red), var(--logo-orange));
+
+    /* --body-white:#fcfbfa; */
+    --section-white: rgb(255, 234, 234);
     --silver-text: #aaa;
 }
 

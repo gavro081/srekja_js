@@ -51,7 +51,7 @@ function ShoppingCart() {
           {vkupnoProizvodi > 0 ? (
             <>
               имате{' '}
-              <span style={{ color: 'rgba(11, 119, 111, 0.95)' }}>
+              <span style={{ color: 'var(--logo-red)' }}>
                 {vkupnoProizvodi}
               </span>{' '}
               {vkupnoProizvodi === 1 ? 'производ' : 'производи'}
@@ -104,9 +104,9 @@ function ShoppingCart() {
               onClick={() => navigate('/mainEshopPage')}
               style={{ marginLeft: 0, marginRight: 'auto', width: '20%' }}
             >
-              НАЗАД
+              Назад
             </button>{' '}
-            <button>ПОТВРДИ ЈА НАРАЧКАТА</button>
+            <button>Потврди ја нарачката</button>
           </ShopInfo>
         </MainCartWrapper>
       </MainWrapper>
@@ -127,14 +127,17 @@ const ShopInfo = styled.div`
     height: 30%;
     margin-bottom: 0;
     margin-top: auto;
-    background-color: rgba(11, 119, 111, 0.95);
+    background: var(--gradient);
     color: white;
-    border: 1px solid black;
+    border: none;
     margin-bottom: 30px;
     text-align: center;
     cursor: pointer;
+    border-radius: 5px;
+    transition: all 300ms;
     &:hover {
-      background-color: rgba(11, 119, 111, 0.8);
+      background: var(--gradient-hover);
+      scale: 1.05;
     }
   }
 `;

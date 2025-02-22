@@ -27,7 +27,7 @@ function SingleProductPage() {
   const [size, setSize] = useState(product.sizes);
   const [selectedSize, setSelectedSize] = useState(null);
   const [showCheckmark, setShowCheckmark] = useState(false);
-  const [buttonText, setButtonText] = useState('ДОДАДИ ВО КОШНИЧКА');
+  const [buttonText, setButtonText] = useState('Додади во кошничка');
   const [fadeText, setFadeText] = useState(false);
 
   const availableSizes = ['XS', 'S', 'M', 'L', 'XL'];
@@ -99,7 +99,7 @@ function SingleProductPage() {
 
       setFadeText(true);
       setTimeout(() => {
-        setButtonText('УСПЕШНО ДОДАДЕНО');
+        setButtonText('Успешно додадено');
         setShowCheckmark(true);
         setFadeText(false);
       }, 300);
@@ -107,7 +107,7 @@ function SingleProductPage() {
         setFadeText(true);
         setTimeout(() => {
           setShowCheckmark(false);
-          setButtonText('ДОДАДИ ВО КОШНИЧКА');
+          setButtonText('Додади во кошничка');
           setFadeText(false);
         }, 300);
       }, 3000);
@@ -136,7 +136,7 @@ function SingleProductPage() {
                   style={{
                     border:
                       img === mainImg
-                        ? '2px solid rgba(11, 119, 111, 0.95)'
+                        ? '2px solid  var(--section-white)'
                         : '1px solid black',
                     boxShadow:
                       img === mainImg
@@ -184,7 +184,7 @@ function SingleProductPage() {
                   padding: '1%',
                   borderBottom:
                     suggestedProduct.img === mainImg
-                      ? '2px solid rgba(11, 119, 111, 0.95)'
+                      ? '2px solid  var(--section-white)'
                       : '',
 
                   borderRadius: '0% !important',
@@ -245,13 +245,15 @@ const CartButton = styled.div`
   & > button {
     width: 100%;
     height: 50px;
-    background-color: rgba(11, 119, 111, 0.95);
+    background: var(--gradient);
     color: white;
-    border: 0.5px solid rgba(186, 197, 196, 0.95);
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s ease-in-out; /* Add transition for smooth effect */
     &:hover {
-      background-color: rgba(11, 119, 111, 0.8);
+      background: var(--gradient-hover);
+      scale: 1.05;
     }
   }
 `;
@@ -266,7 +268,7 @@ const SuggestedWrapper = styled.div`
     height: 60%;
   }
   .suggestedProduct:hover {
-    border: 2px solid rgba(11, 119, 111, 0.95);
+    border: 2px solid var(--section-white);
   }
   .suggestedProduct > img {
     width: 100%;
@@ -277,7 +279,9 @@ const PicturesWrapper = styled.div`
   width: 40%;
   height: 80%;
   margin-left: 9%;
-  border: 1px solid rgba(186, 197, 196, 0.95);
+  border: 1px solid var(--section-white);
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -297,14 +301,14 @@ const SizeBox = styled.div`
     props.isAvailable
       ? css`
           background-color: ${props.isSelected
-            ? 'rgba(11, 119, 111, 0.95)'
+            ? ' var(--section-white)'
             : 'white'};
           color: ${props.isSelected ? 'white' : 'black'};
           border: 1px solid black;
           border-radius: 0px !important;
           cursor: pointer;
           &:hover {
-            background-color: rgba(11, 119, 111, 0.95);
+            background-color:  var(--section-white);
             color: white;
           }
         `

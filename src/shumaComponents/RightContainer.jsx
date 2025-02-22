@@ -8,6 +8,28 @@ const colors = {
   logoRed: "#D41E47",
 };
 
+const generatedPhrases = [
+  " да гледаш ѕвезди ",
+  " да слушаш музика ",
+  " да те разберат ",
+  " да чуеш убав збор ",
+  " да дишеш слободно ",
+  " да направиш добро ",
+  " да се смееш гласно ",
+  " да читаш книги ",
+  " да готвиш вкусно ",
+  // " да шеташ во природа ",
+  " да се инспирираш ",
+  " да си благодарен ",
+  " да имаш пријатели ",
+  " да имаш семејство ",
+  // " да шеташ во природа ",
+  " да добиеш прегратка ",
+  // " да гледаш изгрејсонце ",
+  // " да создадеш спомени ",
+  " да почувствуваш љубов ",
+];
+
 const srekaArray = [
   " да создаваш ",
   " да даваш ",
@@ -25,25 +47,25 @@ const srekaArray = [
   " да си дома ",
   " да се дружиш ",
   " да си слободен ",
-  " да се инспирираш ",
-  " да си благодарен ",
+  // " да се инспирираш ",
+  // " да си благодарен ",
   " да имаш време ",
-  " да имаш пријатели ",
-  " да имаш семејство ",
+  // " да имаш пријатели ",
+  // " да имаш семејство ",
   " да имаш надеж ",
   " да пиеш кафе ",
   " да гледаш ѕвезди ",
   " да слушаш музика ",
-  " да шеташ во природа ",
+  // " да шеташ во природа ",
   " да те разберат ",
-  " да добиеш прегратка ",
+  // " да добиеш прегратка ",
   " да чуеш убав збор ",
   " да дишеш слободно ",
-  " да гледаш изгрејсонце ",
+  // " да гледаш изгрејсонце ",
   " да направиш добро ",
-  " да создадеш спомени ",
+  // " да создадеш спомени ",
   " да слушнеш смеа ",
-  " да почувствуваш љубов ",
+  // " да почувствуваш љубов ",
 ];
 
 
@@ -56,10 +78,10 @@ export default function RightContainer() {
   useEffect(() => {
     const updateRandomValues = () => {
       const newRandomElement =
-        srekaArray[Math.floor(Math.random() * srekaArray.length)];
+        generatedPhrases[Math.floor(Math.random() * generatedPhrases.length)];
       const newRandomColor =
         Object.values(colors)[
-          Math.floor(Math.random() * Object.values(colors).length)
+        Math.floor(Math.random() * Object.values(colors).length)
         ];
 
       setRandomColor(newRandomColor);
@@ -71,9 +93,9 @@ export default function RightContainer() {
           setDisplayedText((prev) => prev + newRandomElement.charAt(index));
           index++;
         } else {
-          clearInterval(typingInterval); 
+          clearInterval(typingInterval);
         }
-      }, 150); 
+      }, 150);
     };
 
     if (isFirstRun) {

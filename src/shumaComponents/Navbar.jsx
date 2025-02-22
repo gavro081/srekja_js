@@ -31,10 +31,11 @@ export default function Navbar() {
             />
           </NavItem>
           <Dropdown>
+            <DropdownItem to="/">Настани</DropdownItem>
+            <DropdownItem to="/">Истражи</DropdownItem>
             <DropdownItem to="/startupCreate">Внеси</DropdownItem>
           </Dropdown>
         </NavItemContainer>
-        <NavItem to="/">Настани</NavItem>
         <NavItemContainer>
           <NavItem
             to="/srekjaBar"
@@ -111,9 +112,9 @@ const NavItem = styled(Link)`
 `;
 
 const Button = styled(Link)`
-  background-color: var(--logo-orange);
-  padding: 10px;
-  border: 2px solid white;
+  background: linear-gradient(45deg, var(--logo-orange), var(--logo-red));
+  padding: 15px 10px;
+  // border: 2px solid white;
   height: 40px;
   display: flex;
   justify-content: center;
@@ -121,9 +122,10 @@ const Button = styled(Link)`
   color: white;
   text-decoration: none;
   border-radius: 5px;
+  transition: all 300ms ease-in-out;
   &:hover {
-    border: 2px solid var(--logo-orange);
-    box-shadow: 2px 2px 10px grey;
+    background: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
+    transform: scale(1.05);
   }
 `;
 
@@ -158,8 +160,8 @@ const DropdownItem = styled(Link)`
   color: black;
 
   &:hover {
-    background-color: var(--logo-green);
-    color: white;
+    // background-color: ;
+    color: var(--logo-orange);
   }
 `;
 

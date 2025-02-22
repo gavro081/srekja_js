@@ -73,9 +73,6 @@ export default function MenuPromotion() {
                         <Card>
                             <CardImage src={item.image} width={150}/>
                             <CardHeader>{item.macedonian_name}</CardHeader>
-                            <CardText>
-                                {Array.isArray(item["ingredients-mk"]) ? item["ingredients-mk"].join(", ") : item["ingredients-mk"]}
-                            </CardText>
                             <CardPrice>{item.price} ден.</CardPrice>
 
                         </Card>
@@ -189,8 +186,8 @@ const CommentGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    margin-top: 2rem;
     width: 100%;
+    margin-bottom: 40px;
 `;
 
 const CommentCard = styled.div`
@@ -254,7 +251,7 @@ const Feedback = styled.div`
     margin-left: 4rem;
     height: 50%;
     margin-top: 3rem;
-    margin-bottom: 10rem;
+    // margin-bottom: 7rem;
     position: relative;
     padding-top: 2rem;
     border-radius: 50px; 
@@ -284,7 +281,7 @@ const Wrapper = styled.div`
     }
 
     .mySwiper .swiper-button-next, .mySwiper .swiper-button-prev {
-        color: var(--logo-green);
+        color: var(--black);
     }
 
     & > h2 {
@@ -327,6 +324,7 @@ const ButtonWrapper = styled.div`
         width: max-content;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         border-radius: 100px;
+
     }
 
     & > button {
@@ -346,7 +344,6 @@ const ButtonWrapper = styled.div`
     & > button img {
         width: 2rem;
         height: auto;
-        margin-right: 0.5rem;
         color: white;
     }
 
@@ -418,7 +415,7 @@ const CardText = styled.p`
 const CardPrice = styled.p`
     font-size: 1.2rem;
     font-weight: bold;
-    color: var(--logo-green);
+    color: var(--black);
     word-wrap: break-word;
     text-align: center;
     max-width: 100%;

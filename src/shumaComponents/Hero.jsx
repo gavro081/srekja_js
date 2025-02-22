@@ -25,8 +25,8 @@ export default function Hero() {
               alignItems: "center",
             }}
           >
-            <NextButton>Стартап Настани</NextButton>
-            <NextButton>Вработи Сé</NextButton>
+            <NextButton>Стартап настани</NextButton>
+            <NextButton>Вработи се</NextButton>
           </div>
         </CallToAction>
       </HeroContent>

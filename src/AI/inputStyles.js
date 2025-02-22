@@ -161,10 +161,10 @@ const SearchInput = styled.input`
 `;
 
 const SearchButton = styled.button`
+
 // padding: 10px 20px;
 border: 1px solid #ccc;
 border-left: none;
-background: linear-gradient(45deg,rgb(222, 57, 96),rgb(251, 114, 79));
 color: white;
 border-radius: 0 4px 4px 0;
 cursor: pointer;

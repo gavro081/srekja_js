@@ -45,7 +45,7 @@ export default function CheckboxesGroup({ onFiltersChange }) {
       flexDirection: 'column', 
       ml: 3, 
       backgroundColor: 'var(--body-white)',
-      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
       // paddingBlock: '24px',
       marginBlock: '24px',
       display: 'flex',
@@ -111,7 +111,7 @@ export default function CheckboxesGroup({ onFiltersChange }) {
       <button
         onClick={handleSearch}
         style={{
-          backgroundColor: 'var(--logo-green)',
+          background: 'linear-gradient(45deg, var(--logo-orange), var(--logo-red))',
           border: 'none',
           color: 'white',
           padding: '8px 16px',

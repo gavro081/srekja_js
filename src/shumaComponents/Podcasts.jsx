@@ -46,7 +46,7 @@ const Podcasts = () => {
           marginTop: "40px",
         }}
       >
-        <NextButton className="vidigisite">ВИДИ ГИ СИТЕ </NextButton>
+        <NextButton className="vidigisite">Види ги сите </NextButton>
       </div>
     </div>
   );

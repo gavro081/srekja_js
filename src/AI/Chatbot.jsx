@@ -11,14 +11,14 @@ const Container = styled.div`
 `;
 
 const CircleButton = styled.button`
-  width: 4rem;
-  height: 4rem;
-  background: linear-gradient(45deg,rgb(222, 57, 96),rgb(251, 114, 79));
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--body-white);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -27,12 +27,12 @@ const CircleButton = styled.button`
     background-color: var(--hover-red);
   }
     img {
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
     object-fit: cover;
     object-position: center;
-    transform: scale(1.8);
-    margin-top: 5px;
+    transform: scale(1.7);
+    margin-top: 7px;
     }
 
 `;

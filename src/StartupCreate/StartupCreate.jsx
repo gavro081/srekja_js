@@ -11,17 +11,17 @@ import Navbar from "../shumaComponents/Navbar.jsx";
 import CircularWithValueLabel from "./CircularProgressWithLabel.jsx";
 import Confetti from 'react-confetti';
 
-const steps = ['Област', 'Основни информации', 'Тим и основачи', 'Идеја и мисија','Насловна фотографија','Поднеси'];
+const steps = ['Област', 'Основни информации', 'Тим и основачи', 'Идеја и мисија','Насловна фотографија'];
 const questions = [
     'Во која индустрија или област припаѓа вашиот стартап?',
     'Какви се основните информации за вашиот стартап?',
-    'Кој е вашиот тим и кои се основачите?',
+    'Кој е вашиот тим и кои се нивните улоги?',
     'Каква е вашата идеја и мисија?',
     'Објавете ја вашата насловна фотографија',
 ];
 
 const choices = [
-    ['ИТ', 'Екологија', 'Образование', 'Здравство'],
+    ['ИТ', 'Екологија', 'Образование', 'Здравство', 'Друго'],
 ];
 
 export const StartupCreate = () => {
@@ -29,6 +29,7 @@ export const StartupCreate = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [selectedChoice, setSelectedChoice] = useState(null);
     const [startupInfo, setStartupInfo] = useState('');
+    const [startupInfo2, setStartupInfo2] = useState('');
     const [teamMembers, setTeamMembers] = useState(['']);
     const [inputData,SetInputData] = useState({
         name: '',
@@ -140,15 +141,15 @@ export const StartupCreate = () => {
                             name="uloga"
                             value={inputData.uloga}
                             onChange={handleTeamMemberChange}
-                            placeholder={`Основач?`}
+                            placeholder={`Улога`}
                         />
 
                         <AddMemberButton onClick={addTeamMember}>Додади член</AddMemberButton>
                     </TeamMembersForm>
                     <TableElement border={1} cellPadding={10}>
                         <tr>
-                            <td>Име: </td>
-                            <td>Улога: </td>
+                            <td>Име </td>
+                            <td>Улога </td>
                         </tr>
                         {inputarr.map((member, index) => (
                             <tr key={index}>
@@ -162,8 +163,8 @@ export const StartupCreate = () => {
             ) : activeStep === 3 ? (
                 <TextInput
                     type="text"
-                    value={startupInfo}
-                    onChange={(e) => setStartupInfo(e.target.value)}
+                    value={startupInfo2}
+                    onChange={(e) => setStartupInfo2(e.target.value)}
                     placeholder="Објаснете ја вашата идеја и мисија"
                 />
 
@@ -387,6 +388,11 @@ const TextInput = styled.textarea`
     resize: none; /* Prevent resizing */
     overflow-wrap: break-word; /* Ensure text wraps */
     margin-top: 1rem;
+    &:focus {
+        border-color: var(--logo-orange);
+        box-shadow: 0px 4px 10px rgba(233, 111, 35, 0.5);
+        outline: none;
+    }
 `;
 
 const TeamMembersForm = styled.div`
@@ -398,7 +404,7 @@ const TeamMembersForm = styled.div`
 `;
 
 const AddMemberButton = styled.button`
-    background: linear-gradient(45deg, var(--logo-green), var(--logo-green));
+    background: linear-gradient(45deg, var(--logo-orange), var(--logo-red));
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -410,7 +416,7 @@ const AddMemberButton = styled.button`
     margin-top: 1rem;
 
     &:hover {
-        background: linear-gradient(45deg, var(--logo-green), var(--logo-green));
+        background: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
         transform: scale(1.05);
     }
 `;

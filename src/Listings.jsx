@@ -19,7 +19,7 @@ import { createGlobalStyle } from 'styled-components';
 const Card = styled.div`
   background: var(--body-white);
   border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 24px;
   padding-bottom: 40px;
   max-width: 40rem;
@@ -91,7 +91,7 @@ const SkillsContainer = styled.div`
 `;
 
 const SkillBadge = styled.span`
-  background: #f3f4f6;
+  background: #eee;
   color: #374151;
   padding: 6px 12px;
   border-radius: 16px;
@@ -99,19 +99,23 @@ const SkillBadge = styled.span`
 `;
 
 const SeeMoreButton = styled.button`
-  background: #059669;
+  background: linear-gradient(45deg, var(--logo-orange), var(--logo-red));
   color: white;
   padding: 8px 16px;
   border-radius: 6px;
   border: none;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s;
   position: absolute;
   bottom: 24px;
   left: 24px; // For left alignment
   /* right: 24px; */ // Uncomment this and comment out left: 24px for right alignment
-`;
+  &:hover {
+    background: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
+    scale: 1.05;
+  }
+  `;
 
 const PageContainer = styled.div`
   padding: 24px;
@@ -179,7 +183,7 @@ const JobPostingCard = ({
         ))}
       </SkillsContainer>
 
-      <SeeMoreButton>See more</SeeMoreButton>
+      <SeeMoreButton>Погледни повеќе</SeeMoreButton>
     </Card>
   );
 };
