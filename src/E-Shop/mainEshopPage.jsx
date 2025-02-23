@@ -55,7 +55,7 @@ function MainEshopPage() {
       <GlobalStyle />
       <Navbar />
       <Naslovce>
-        <h2>{displayedText}</h2>
+        <h2 style={{fontSize:'45px'}}>{displayedText}</h2>
       </Naslovce>
 
       <MainWrapper>
@@ -111,6 +111,7 @@ const Naslovce = styled.div`
   margin-top: 5%;
   margin-bottom: 0%;
   font-size: 21px;
+
 `;
 
 const MainWrapper = styled.div`
@@ -148,15 +149,15 @@ const ProductCard = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid black;
+  padding-block: 1rem;
   width: 25%;
   height: 80%;
   border-top: 0px;
-  border-left: 0px;
-  border-radius: 0% !important;
-
+  border: 0px;
+  border-radius: 10px;
   align-items: center;
   position: relative;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
+  box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth zoom */
   ]
   & > h3 {
@@ -170,7 +171,7 @@ const ProductCard = styled.div`
     border-top: 1px;
     border-left: 1px;
     transform: scale(1.05); /* Make the card larger on hover */
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 1); /* Enhance shadow on hover */
+    box-shadow:0px 6px 10px rgba(0, 0, 0, 0.4);
   }
   & > p {
   }

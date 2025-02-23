@@ -38,7 +38,10 @@ const Reviews = ({ onClose }) => {
         <div>
             <Navbar></Navbar>
             {showConfetti && <Confetti numberOfPieces={300} recycle={false} />}
-            <Stepper sx={{ width: '100%' }}>
+            <Stepper sx={{ 
+                width: '100%',
+                marginTop: '3rem',
+                }}>
                 {steps.map((step, index) => (
                     <Step
                         key={{step}}

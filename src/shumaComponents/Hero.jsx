@@ -25,8 +25,8 @@ export default function Hero() {
               alignItems: "center",
             }}
           >
-            <NextButton>Стартап Настани</NextButton>
-            <NextButton>Вработи Сé</NextButton>
+            <NextButton>Стартап настани</NextButton>
+            <NextButton>Вработи се</NextButton>
           </div>
         </CallToAction>
       </HeroContent>
@@ -39,7 +39,7 @@ const HeroContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 75vh;
-  background-image: url("../../assets/images/heroBackGround.jpg");
+  background-image: url("../../assets/images/ovaa.jpg");
   background-size: cover;
   background-position: center;
 `;
@@ -54,11 +54,11 @@ const HeroContent = styled.div`
   align-items: center;
   box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.5);
   padding: 0 20px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.88);
 `;
 
 const LeftContainer = styled.div`
-  width: 45%;
+  width: 35%;
   height: 100%;
   padding-left: 50px;
   display: flex;

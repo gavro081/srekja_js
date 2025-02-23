@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { listings } from './listings';
+
 import Box from '@mui/material/Box';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
@@ -12,12 +13,13 @@ import Button from '@mui/material/Button';
 import Navbar from './shumaComponents/Navbar';
 import Footer from './shumaComponents/Footer';
 
-
+import CheckboxesGroup from './filters2.jsx';
+import { createGlobalStyle } from 'styled-components';
 
 const Card = styled.div`
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: var(--body-white);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 24px;
   padding-bottom: 40px;
   max-width: 40rem;
@@ -32,9 +34,9 @@ const CardHeader = styled.div`
 `;
 
 const CompanyName = styled.h1`
-font-size: 28px;
-font-weight: bold;
-margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 0 8px 0;
 `;
 
 const Title = styled.h2`
@@ -89,7 +91,7 @@ const SkillsContainer = styled.div`
 `;
 
 const SkillBadge = styled.span`
-  background: #f3f4f6;
+  background: #eee;
   color: #374151;
   padding: 6px 12px;
   border-radius: 16px;
@@ -97,22 +99,27 @@ const SkillBadge = styled.span`
 `;
 
 const SeeMoreButton = styled.button`
-  background: #059669;
+  background: linear-gradient(45deg, var(--logo-orange), var(--logo-red));
   color: white;
   padding: 8px 16px;
   border-radius: 6px;
   border: none;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s;
   position: absolute;
   bottom: 24px;
   left: 24px; // For left alignment
   /* right: 24px; */ // Uncomment this and comment out left: 24px for right alignment
-`;
+  &:hover {
+    background: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
+    scale: 1.05;
+  }
+  `;
 
 const PageContainer = styled.div`
   padding: 24px;
+  width: 100%;
 `;
 
 const PageTitle = styled.h1`
@@ -125,69 +132,126 @@ const JobsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
+  width: 700px;
+  margin-left: 10%;
+`;
+const GlobalStyle = createGlobalStyle`
+  html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 // Job Posting Card Component
 const JobPostingCard = ({
-    company,
-    title,
-    postedDate,
-    hours,
-    experienceLevel,
-    description,
-    skills = [],
-    skills_mk = [],
-    type,
+  company,
+  title,
+  postedDate,
+  hours,
+  experienceLevel,
+  description,
+  skills = [],
+  skills_mk = [],
+  type,
 }) => {
-    return (
-        <Card>
-            <CardHeader>
-                <CompanyName>{company}</CompanyName>
-                <Title>{title}</Title>
-                <PostDate>Постирано {postedDate}</PostDate>
-            </CardHeader>
+  return (
+    <Card>
+      <CardHeader>
+        <CompanyName>{company}</CompanyName>
+        <Title>{title}</Title>
+        <PostDate>Постирано {postedDate}</PostDate>
+      </CardHeader>
 
-            <MetadataGrid>
-                <MetadataItem>
-                    <h3>{hours} часа неделно</h3>
-                </MetadataItem>
-                <MetadataItem>
-                    <h3>{experienceLevel}</h3>
-                    <p>Experience level</p>
-                    {/* македонски */}
-                </MetadataItem>
-            </MetadataGrid>
+      <MetadataGrid>
+        <MetadataItem>
+          <h3>{hours} часа неделно</h3>
+        </MetadataItem>
+        <MetadataItem>
+          <h3>{experienceLevel}</h3>
+          <p>Experience level</p>
+          {/* македонски */}
+        </MetadataItem>
+      </MetadataGrid>
 
-            <Description>{description}</Description>
+      <Description>{description}</Description>
 
-            <SkillsContainer>
-                {skills_mk.map((skill, index) => (
-                    <SkillBadge key={index}>{skill}</SkillBadge>
-                ))}
-            </SkillsContainer>
+      <SkillsContainer>
+        {skills_mk.map((skill, index) => (
+          <SkillBadge key={index}>{skill}</SkillBadge>
+        ))}
+      </SkillsContainer>
 
-            <SeeMoreButton>See more</SeeMoreButton>
-        </Card>
-    );
+      <SeeMoreButton>Погледни повеќе</SeeMoreButton>
+    </Card>
+  );
 };
 
-// Job Postings Page Component
 const Listings = () => {
-    return (
-        <>
-        <Navbar></Navbar>
-        {/* dime stavi tuka filter*/}
-        <PageContainer>
-            {/* <PageTitle>Available Positions</PageTitle> */}
-            <JobsContainer>
-                {listings.map((job, index) => (
-                    <JobPostingCard key={index} {...job} />
-                ))}
-            </JobsContainer>
-        </PageContainer>
-        <Footer></Footer>
-        </>
+  const [filteredListings, setFilteredListings] = React.useState(listings);
+
+  const handleFiltersChange = (filters) => {
+    // Check if any filters are actually selected
+    const hasActiveFilters = Object.values(filters).some((category) =>
+      Object.values(category).some((isChecked) => isChecked)
     );
+
+    if (!hasActiveFilters) {
+      setFilteredListings(listings);
+      return;
+    }
+
+    const filtered = listings.filter((job) => {
+      // Only check tags if there are active tag filters
+      const activeTags = Object.entries(filters.tags)
+        .filter(([_, isChecked]) => isChecked)
+        .map(([tag]) => tag);
+
+      const matchesTags =
+        activeTags.length === 0 ||
+        activeTags.some((tag) => job.tag.includes(tag));
+
+      // Only check employment types if there are active type filters
+      const activeTypes = Object.entries(filters.employmentTypes)
+        .filter(([_, isChecked]) => isChecked)
+        .map(([type]) => type);
+
+      const matchesType =
+        activeTypes.length === 0 || activeTypes.includes(job.employmentType);
+
+      // Only check experience levels if there are active level filters
+      const activeLevels = Object.entries(filters.experienceLevels)
+        .filter(([_, isChecked]) => isChecked)
+        .map(([level]) => level);
+
+      const matchesLevel =
+        activeLevels.length === 0 || activeLevels.includes(job.experienceLevel);
+
+      return matchesTags && matchesType && matchesLevel;
+    });
+
+    setFilteredListings(filtered);
+  };
+
+  return (
+    <>
+      <Navbar></Navbar>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 3fr' }}>
+        <CheckboxesGroup onFiltersChange={handleFiltersChange} />
+
+        <PageContainer>
+          {/* <PageTitle>Available Positions</PageTitle> */}
+          <JobsContainer>
+            {filteredListings.map((job, index) => (
+              <JobPostingCard key={`job-${index}`} {...job} />
+            ))}
+          </JobsContainer>
+        </PageContainer>
+      </div>
+      <Footer></Footer>
+    </>
+  );
 };
 
 export default Listings;

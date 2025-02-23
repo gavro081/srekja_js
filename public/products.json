@@ -51,5 +51,55 @@
     "price": 159,
     "sizes": ["250ml"],
     "selected": 0
+  },
+  {
+    "type": "maici",
+    "name": "Маица \"Џабе Вежбам\"",
+    "img": "../src/E-Shop/sliki/dzabeVezbam.png",
+    "otherImages": ["../src/E-Shop/sliki/dzabeVezbam.png"],
+    "quantity": 5,
+    "price": 399,
+    "sizes": ["S", "M", "XL"],
+    "selected": 0
+  },
+  {
+    "type": "maici",
+    "name": "Маица \"Не лај\"",
+    "img": "../src/E-Shop/sliki/neLaj.png",
+    "otherImages": ["../src/E-Shop/sliki/neLaj.png"],
+    "quantity": 5,
+    "price": 399,
+    "sizes": ["S", "XL"],
+    "selected": 0
+  },
+  {
+    "type": "maici",
+    "name": "Маица \"Позитива\"",
+    "img": "../src/E-Shop/sliki/pozitiva.png",
+    "otherImages": ["../src/E-Shop/sliki/pozitiva.png"],
+    "quantity": 5,
+    "price": 399,
+    "sizes": ["S", "L", "XL"],
+    "selected": 0
+  },
+  {
+    "type": "casi",
+    "name": "Чаша порака-диета",
+    "img": "../src/E-Shop/sliki/slika2.png",
+    "otherImages": ["../src/E-Shop/sliki/slika2.png"],
+    "quantity": 1,
+    "price": 159,
+    "sizes": ["125ml", "250ml", "330ml"],
+    "selected": 0
+  },
+  {
+    "type": "casi",
+    "name": "Чаша порака-љубов",
+    "img": "../src/E-Shop/sliki/slika3.png",
+    "otherImages": ["../src/E-Shop/sliki/slika3.png"],
+    "quantity": 1,
+    "price": 159,
+    "sizes": ["125ml", "330ml"],
+    "selected": 0
   }
 ]

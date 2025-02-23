@@ -47,4 +47,4 @@ app.post('/api/chat', async (request, res) => {
     res.json(completion.choices[0].message.content)
 });
 
-app.listen(3002, () => console.log('Server running on port 3002'));
+app.listen(3004, () => console.log('Server running on port 3004'));

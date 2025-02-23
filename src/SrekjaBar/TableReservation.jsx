@@ -187,6 +187,8 @@ const Wrapper = styled.div`
         display: grid;
         grid-template-columns: 2fr 1fr;
         width: 100%;
+        height: 90vh;
+        // margin-bottom: 5rem;
     }
 `;
 
@@ -310,32 +312,32 @@ const ButtonWrapper = styled.div`
         transition: scale 200ms ease-in-out;
     }
     button:hover {
-        background: rgba(11, 119, 111, 0.4);
-        color: white;
+        background: #eee;
 
     }
 
     .activeButton {
-        background: var(--logo-green);
+        background: var(--gradient);
         color: white;
     }
     .activeButton:hover {
-        scale: 1;
-        background: var(--logo-green);
-        cursor: default;
+        scale: 1.05;
+        background: var(--gradient-hover);
     }
 `;
 
 const ResSubmitBtn = styled.button`
     margin-top: auto;
     border: none;
-    background: var(--logo-green);
+    background: var(--gradient);
     color: white;
     cursor: pointer;
     padding: 1rem;
+    border-radius: 5px;
     font-size: 1.2rem;
     transition: all 300ms ease-in-out;
     &:hover {
-        scale: .9;
+        background: var(--gradient-hover);
+        scale: 1.05;
     }
 `;

@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useAuth } from "../firebase/authContext";
+import { useAuth, logOut } from "../firebase/authContext";
+//import { signOut } from "@firebase/auth";
 
 export default function Navbar() {
   const { currentUser } = useAuth();
+
   return (
     <Nav>
       <Link to="/">
@@ -11,16 +13,38 @@ export default function Navbar() {
       </Link>
 
       <NavLinks>
-        <NavItem to="/">Почетна</NavItem>
+        <NavItem to="/listings">Работа</NavItem>
         <NavItemContainer>
           <NavItem
-              to="/srekjaBar"
-              style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: "2px",
-              }}
+            to="/"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "2px",
+            }}
+          >
+            Стартапи{" "}
+            <img
+              src="/assets/images/drop.png"
+              style={{ width: "18px", height: "16px", marginTop: "2px" }}
+            />
+          </NavItem>
+          <Dropdown>
+            <DropdownItem to="/">Настани</DropdownItem>
+            <DropdownItem to="/">Истражи</DropdownItem>
+            <DropdownItem to="/startupCreate">Внеси</DropdownItem>
+          </Dropdown>
+        </NavItemContainer>
+        <NavItemContainer>
+          <NavItem
+            to="/srekjaBar"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "2px",
+            }}
           >
             Среќа Бар{" "}
             <img
@@ -48,7 +72,7 @@ export default function Navbar() {
                 style={{ width: "18px", height: "18px" }}
               />
             </Button>
-            <Button to="/register">
+            <Button onClick={logOut}>
               <img
                 src="/assets/images/person2.svg"
                 style={{ width: "20px", height: "22px", marginTop: "-2px" }}
@@ -69,8 +93,8 @@ const Nav = styled.nav`
   padding: 0 30px;
   background-color: white;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    
-    z-index: 1000;   //ova e za da raboti box shadow vrz site elementi
+
+  z-index: 1000; //ova e za da raboti box shadow vrz site elementi
 `;
 
 const NavItem = styled(Link)`
@@ -83,14 +107,14 @@ const NavItem = styled(Link)`
   align-items: center;
   height: 40px;
   &:hover {
-    color: var(--logo-green);
+    color: var(--logo-orange);
   }
 `;
 
 const Button = styled(Link)`
-  background-color: #0b776f;
-  padding: 10px;
-  border: 2px solid white;
+  background: linear-gradient(45deg, var(--logo-orange), var(--logo-red));
+  padding: 15px 10px;
+  // border: 2px solid white;
   height: 40px;
   display: flex;
   justify-content: center;
@@ -98,9 +122,10 @@ const Button = styled(Link)`
   color: white;
   text-decoration: none;
   border-radius: 5px;
+  transition: all 300ms ease-in-out;
   &:hover {
-    border: 2px solid var(--logo-green);
-    box-shadow: 2px 2px 10px grey;
+    background: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
+    transform: scale(1.05);
   }
 `;
 
@@ -135,8 +160,8 @@ const DropdownItem = styled(Link)`
   color: black;
 
   &:hover {
-    background-color: var(--logo-green);
-    color: white;
+    // background-color: ;
+    color: var(--logo-orange);
   }
 `;
 

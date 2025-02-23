@@ -19,9 +19,10 @@ const Podcasts = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        marginBottom: "100px",
       }}
     >
-      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>Подкасти</h1>
+      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>Поткасти</h1>
       <Carousel style={{ width: "70%" }}>
         {videos.map((video) => (
           <Carousel.Item key={video.id}>
@@ -37,7 +38,16 @@ const Podcasts = () => {
           </Carousel.Item>
         ))}
       </Carousel>
-      <SeeMoreButton to="/media">Види ги сите</SeeMoreButton>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "40px",
+        }}
+      >
+        <NextButton className="vidigisite">Види ги сите </NextButton>
+      </div>
     </div>
   );
 };
@@ -56,6 +66,25 @@ const SeeMoreButton = styled(Link)`
   &:hover {
     background-color: #555;
     cursor: pointer;
+  }
+`;
+
+const NextButton = styled.button`
+  background: linear-gradient(45deg, var(--logo-orange), var(--logo-red));
+  color: white;
+  border: none;
+  width: 300px;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background: linear-gradient(45deg, var(--logo-red), var(--logo-orange));
+    transform: scale(1.05);
   }
 `;
 export default Podcasts;

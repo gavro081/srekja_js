@@ -26,7 +26,7 @@ const FoodReview = () => {
                     <img src={item.image} alt={item.text} width='200rem'/>
                     <div >
                         <h2>{item.text}</h2>
-                        <p style={{marginTop: '1rem', color:'var(--logo-green)',fontWeight:'bold'} }>{item.price} ден.</p>
+                        <p style={{marginTop: '1rem', color:'var(--black)',fontWeight:'bold'} }>{item.price} ден.</p>
                     </div>
                     <RatingWrapper>
                         <CustomizedRating />
