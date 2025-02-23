@@ -92,10 +92,10 @@ const FoodInput = () => {
           <GradientHeading>
             Ви препорачувам некој од следниве производи:
           </GradientHeading>
-          {response.map((item, index) => (
+          {response.slice(0, 3).map((item, index) => (
             <FoodItem key={index}>
               <GradientHeading4>{item.macedonian_name}</GradientHeading4>
-              <Desc>{item.details}</Desc>
+              <Desc>{item.macedonian_details}</Desc>
               <Ingredients>
                 Состојки: {item['ingredients-mk'].join(', ')}
               </Ingredients>

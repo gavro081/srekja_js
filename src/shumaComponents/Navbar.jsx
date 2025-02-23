@@ -53,6 +53,7 @@ export default function Navbar() {
             />
           </NavItem>
           <Dropdown>
+            <DropdownItem to={'/srekjaBar'}>Почетна</DropdownItem>
             <DropdownItem to="https://menu.e-bar.mk/language#/" target="_blank">
               Мени
             </DropdownItem>

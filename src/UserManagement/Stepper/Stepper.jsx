@@ -127,6 +127,11 @@ export default function Stepper({
               {currentStep !== 1 && (
                 <button
                   onClick={handleBack}
+                  style={{
+                    borderRadius: '5px',
+                    background: 'var(--gradient)',
+                    border: 'none',
+                  }}
                   className={`back-button ${
                     currentStep === 1 ? 'inactive' : ''
                   }`}
@@ -136,6 +141,11 @@ export default function Stepper({
                 </button>
               )}
               <button
+              style={{
+                borderRadius: '5px',
+                background: 'var(--gradient)',
+                border: 'none',
+              }}
                 onClick={isLastStep ? handleComplete : handleNext}
                 className="next-button"
                 {...nextButtonProps}

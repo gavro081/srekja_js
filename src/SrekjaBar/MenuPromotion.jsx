@@ -20,6 +20,7 @@ import user5 from "../../public/picturesUsers/user5.jpg"
 import user6 from "../../public/picturesUsers/user6.jpg"
 import user7 from "../../public/picturesUsers/user7.jpg"
 import {Link} from "react-router-dom";
+import FoodInput from "../AI/FoodInput.jsx";
 
 export default function MenuPromotion() {
     const handleAnimationComplete = () => {
@@ -49,7 +50,7 @@ export default function MenuPromotion() {
             <h2><SplitText
                 text="Популарни понуди"
                 className="text-2xl font-semibold text-center"
-                delay={100}
+                delay={70}
                 animationFrom={{opacity: 0, transform: 'translate3d(0,50px,0)'}}
                 animationTo={{opacity: 1, transform: 'translate3d(0,0,0)'}}
                 easing="easeOutCubic"
@@ -81,9 +82,23 @@ export default function MenuPromotion() {
 
             </Swiper>
             <h2><SplitText
+                text="AI пребарување"
+                className="text-2xl font-semibold text-center"
+                delay={70}
+                animationFrom={{opacity: 0, transform: 'translate3d(0,50px,0)'}}
+                animationTo={{opacity: 1, transform: 'translate3d(0,0,0)'}}
+                easing="easeOutCubic"
+                threshold={0.2}
+                rootMargin="-50px"
+                onLetterAnimationComplete={handleAnimationComplete}
+            /></h2>
+            <StyledWrapper>
+                <FoodInput />
+            </StyledWrapper>
+            <h2><SplitText
                 text="Нашите корисници не оцениле со"
                 className="text-2xl font-semibold text-center"
-                delay={100}
+                delay={70}
                 animationFrom={{opacity: 0, transform: 'translate3d(0,50px,0)'}}
                 animationTo={{opacity: 1, transform: 'translate3d(0,0,0)'}}
                 easing="easeOutCubic"
@@ -202,6 +217,12 @@ const CommentCard = styled.div`
     text-align: center;
 `;
 
+const StyledWrapper = styled.div`
+& > *{
+    flex-direction: column;
+}
+`
+
 const UserImage = styled.img`
     width: 80px;
     height: 80px;
@@ -225,7 +246,7 @@ const Rating = styled.div`
 `;
 const RatingItem = styled.div`
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     margin: 0.5rem 0;
     font-size: 1.5rem;
     gap: 1rem;
@@ -247,6 +268,7 @@ const Overral = styled.div`
 const Feedback = styled.div`
     display: flex;
     flex-direction: row;
+    gap: 4rem;
     width: 90%;
     margin-left: 4rem;
     height: 50%;
@@ -275,9 +297,9 @@ const Wrapper = styled.div`
 
     & > div {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        padding: 2rem 12%;
+        12%;
     }
 
     .mySwiper .swiper-button-next, .mySwiper .swiper-button-prev {

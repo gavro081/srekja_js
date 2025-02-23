@@ -16,7 +16,7 @@ const openai = new OpenAI({
 
 app.post('/api/chat', async (request, res) => {
     // za testiranje na spinner
-    // await new Promise(resolve => setTimeout(resolve, 3000));
+    // await new Promise(resolve => setTimeout(resolve, 10000));
     // return res.json([]);
     console.log(request)
     console.log(request.body)
@@ -24,6 +24,7 @@ app.post('/api/chat', async (request, res) => {
     let systemContent = ''
     if (type === 'food') systemContent = foodSystemContent
     else if (type === 'user_help') systemContent = AdviceSystemContent
+    console.log(systemContent)
     // else if (type === 'blog') systemContent = null;
     console.log(message);
     const query = [
@@ -39,12 +40,13 @@ app.post('/api/chat', async (request, res) => {
         max_tokens: 300,
         temperature: 0, 
     });
-    console.log(completion.choices[0])
-    console.log(completion.choices[0].message)
-    console.log(completion.choices[0].message.content)
-    // const items = getMenuItems(completion.choices[0].message.content);
-    // res.json(items.length > 0 ? items : []);
-    res.json(completion.choices[0].message.content)
+    if (type === 'food') {
+        const items = getMenuItems(completion.choices[0].message.content);
+        res.json(items.length > 0 ? items : []);
+    }
+    else if (type ==='user_help'){
+        res.json(completion.choices[0].message.content)
+    }
 });
 
 app.listen(3004, () => console.log('Server running on port 3004'));

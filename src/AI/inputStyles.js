@@ -77,18 +77,18 @@ const GradientHeading = styled.h2`
 const GradientHeading4 = styled.h4`
     // background: linear-gradient(45deg, #d41e47, #ff7e5f);
     // color: var(--logo-orange);
-    background: var(--logo-orange);
+    background: var(--black);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; 
     font-size: 1.1em;
   `;
 
 const Desc = styled.p`
-  color: var(--logo-yellow);
+  color: var(--black);
 `;
 
 const Ingredients = styled.p`
-  color: var(--logo-orange);
+  color: var(--black);
 `;
 
 const Price = styled.p`
@@ -98,7 +98,10 @@ const Price = styled.p`
 const SearchContainer = styled.div`
     display: flex;
     margin: 20px;
-    width: 275px;
+    width: 500px;
+    justify-self: center;
+    box-shadow: 0 0 10px rgb(217, 133, 44)
+
   `;
 
 const FoodItem = styled.div`
@@ -110,10 +113,12 @@ const FoodItem = styled.div`
   `;
 
 const FoodResponse = styled.div`
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // margin: 20px;
+    width: 1100px;
+    // width: 100%;
     padding: 20px;
     border: 1px solid black
     transition: border-color 0.3s ease, background 0.3s ease;
@@ -139,12 +144,14 @@ const SpinnerWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 20px;
+    // margin: 20px;
+    width: 1100px;
+    width: 100%;
     padding: 20px;
-    border: 1px solid black
-    transition: border-color 0.3s ease, background 0.3s ease;
+    // border: 1px solid black
+    // transition: border-color 0.3s ease, background 0.3s ease;
     ${css`
-        animation: ${gradientAnimation2} 3s ease-out infinite;
+        // animation: ${gradientAnimation2} 3s ease-out infinite;
     `}
   `
 const SearchInput = styled.input`
@@ -168,9 +175,9 @@ border-left: none;
 color: white;
 border-radius: 0 4px 4px 0;
 cursor: pointer;
-
+transition: all 300ms;
 &:hover {
-    background-color: green;
+    background-color: var(--hover-red);
 }
     
 img {

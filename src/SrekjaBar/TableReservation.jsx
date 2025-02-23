@@ -97,6 +97,7 @@ export default function TableReservation() {
     );
 
     return (
+        
         <Wrapper>
             <Navbar/>
             <div>
@@ -194,7 +195,7 @@ export default function TableReservation() {
 
 const Wrapper = styled.div`
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
 
     & > div {
         display: grid;
