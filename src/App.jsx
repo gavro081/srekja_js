@@ -22,6 +22,7 @@ import Listings from './Listings.jsx';
 import BlogInput from './AI/BlogInput.jsx';
 import Media from './Media/Media.jsx';
 import AIinput from './AI/AIinput.jsx';
+import Wordle from "./UserManagement/Wordle/Wordle.jsx";
 import {StartupCreate} from "./StartupCreate/StartupCreate.jsx";
 
 
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
     element: <Wheel />,
   },
   {
+    path: '/wordle',
+    element: <Wordle />
+  },
+  {
     path: '/singleProductPage',
     element: <SingleProductPage />,
   },
@@ -101,6 +106,10 @@ const router = createBrowserRouter([
   {
     path: '/listings',
     element: <Listings />,
+  },
+  {
+    path: 'ai-test',
+    element: <AIinput />
   },
     {
         path: '/startupCreate',
