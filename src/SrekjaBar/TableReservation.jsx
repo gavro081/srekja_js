@@ -195,13 +195,13 @@ export default function TableReservation() {
 
 const Wrapper = styled.div`
     display: flex;
-    // flex-direction: column;
+    flex-direction: column;
 
     & > div {
         display: grid;
         grid-template-columns: 2fr 1fr;
         width: 100%;
-        height: 95vh;
+        height: 90vh;
         // margin-bottom: 5rem;
     }
 `;
@@ -230,7 +230,7 @@ const Table = styled.button`
     align-items: center;
     background: var(--logo-green-opacity50);
     width: fit-content;
-    padding: 3rem;
+    padding: 4rem;
     color: white;
     border-radius: 100%;
     font-size: 1rem;

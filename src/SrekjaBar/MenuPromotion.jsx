@@ -22,10 +22,26 @@ import user7 from "../../public/picturesUsers/user7.jpg"
 import {Link} from "react-router-dom";
 import FoodInput from "../AI/FoodInput.jsx";
 
+import image0 from '../../assets/images/srekja bar transparent.png'
+import image1 from '../../assets/images/srekja bar transparent 1.png'
+import image2 from '../../assets/images/srekja bar transparent 2.png'
+import image3 from '../../assets/images/srekja bar transparent 3.png'
+import image4 from '../../assets/images/srekja bar transparent 4.png'
+
 export default function MenuPromotion() {
     const handleAnimationComplete = () => {
         console.log('All letters have animated!');
     };
+
+    const images = [image0, image1, image2, image3, image4];
+    const items = [
+        'Поширани јајца',
+        'Свинско каре',
+        'Бифтек на жар',
+        'Паста',
+        'Зеленчук во фурна',
+    ]
+    const price = [200, 350, 500, 400, 180]
 
 
     return (
@@ -69,12 +85,12 @@ export default function MenuPromotion() {
                 className="mySwiper"
             >
 
-                {menuItems.slice(0, 10).map((item, index) =>
+                {items.map((item, index) =>
                     <SwiperSlideStyled key={index}>
                         <Card>
-                            <CardImage src={item.image} width={150}/>
-                            <CardHeader>{item.macedonian_name}</CardHeader>
-                            <CardPrice>{item.price} ден.</CardPrice>
+                            <CardImage src={images[index]} width={150}/>
+                            <CardHeader>{item}</CardHeader>
+                            <CardPrice>{price[index]} ден.</CardPrice>
 
                         </Card>
                     </SwiperSlideStyled>

@@ -62,6 +62,29 @@ export default function Navbar() {
           </Dropdown>
         </NavItemContainer>
         <NavItem to="/mainEshopPage">Среќни производи</NavItem>
+        <NavItemContainer>
+          <NavItem
+            to="/"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "2px",
+            }}
+          >
+            Среќни игри{" "}
+            <img
+              src="/assets/images/drop.png"
+              style={{ width: "18px", height: "16px", marginTop: "2px" }}
+            />
+          </NavItem>
+          <Dropdown>
+            <DropdownItem to='/wordle'>Среќен збор</DropdownItem>
+            <DropdownItem to='/wheel'>
+              Среќно тркало
+            </DropdownItem>
+          </Dropdown>
+        </NavItemContainer>
         <NavItem to="/about">За Нас</NavItem>
         {!currentUser && <Button to="/register">Регистрирај се</Button>}
 

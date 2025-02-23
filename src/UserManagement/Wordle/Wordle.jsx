@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import wordle from '../../../public/wordle.json'
 import {useState, useEffect, useRef} from "react";
+import Navbar from '../../shumaComponents/Navbar';
+import Footer from '../../shumaComponents/Footer';
 
 export default function Wordle() {
     const currentWord = useRef('');
@@ -88,8 +90,10 @@ export default function Wordle() {
     }
 
     return (
+        <>
+        <Navbar></Navbar>
         <Wrapper>
-            <h1>Wordle</h1>
+            <h1>Среќни зборови</h1>
             <CardsWrapper>
                 {[...Array(5)].map((_, rowIndex) => (
                     <CardsRow key={rowIndex} isActive={rowIndex === currentRow.current}>
@@ -107,15 +111,19 @@ export default function Wordle() {
                 ))}
             </CardsWrapper>
             <h1>Score: {score}</h1>
-            <p>Press Enter to proceed to the next row</p>
+            <p>Притисни ентер за да продолжиш во следниот ред</p>
         </Wrapper>
+        <Footer></Footer>
+        </>
     )
 }
 
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
+    padding-block: 30px;
     align-items: center;
+    gap: 30px;
     justify-content: center;
 `
 
