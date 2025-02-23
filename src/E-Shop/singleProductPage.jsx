@@ -196,8 +196,8 @@ function SingleProductPage() {
                 onClick={() => handleChangeImageClick(suggestedProduct)}
               >
                 <img src={suggestedProduct.img} alt="suggestedProduct" />
-                {currentProduct = suggestedProduct.type}
-                {console.log(currentProduct)}
+                {/* {currentProduct = suggestedProduct.type} */}
+                {console.log(currentProduct = suggestedProduct.type)}
               </div>
             ))}
           </SuggestedWrapper>
